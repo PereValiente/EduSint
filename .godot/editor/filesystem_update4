@@ -1,0 +1,12 @@
+res://default_bus_layout.tres
+res://Game/game.tscn
+res://Synth/Synth.tscn
+res://Settings/Settings.tscn
+res://main.tscn
+res://Main_menu/main.tscn
+res://Main_menu/src/menu_controller.gd
+res://Main_menu/main.gd
+res://Animation/Animation.tscn
+res://Animation/Camera2D.gd
+res://Animation/ParallaxBackground.gd
+res://Animation/Animation.gd

@@ -1,0 +1,14 @@
+AnimatedSprite2D
+ParallaxLayer
+ParallaxBackground
+Camera2D
+Sprite2D
+Node
+CanvasLayer
+Control
+Container
+Panel
+Button
+MarginContainer
+HSlider
+Label

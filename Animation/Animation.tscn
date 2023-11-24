@@ -1,0 +1,89 @@
+[gd_scene load_steps=14 format=3 uid="uid://dy6wmog2cla22"]
+
+[ext_resource type="Script" path="res://Animation/ParallaxBackground.gd" id="1_cvn7a"]
+[ext_resource type="Script" path="res://Animation/Animation.gd" id="1_pqcsg"]
+[ext_resource type="Texture2D" uid="uid://dn2f7wl4kqanq" path="res://Animation/Background.jpg" id="1_qbrmg"]
+[ext_resource type="Texture2D" uid="uid://beivhbkdnc76r" path="res://Animation/Main charachter/Face_normal.png" id="5_v7evm"]
+[ext_resource type="Texture2D" uid="uid://b6ly637l25tah" path="res://Animation/Main charachter/Face_talk_1.png" id="6_6g8w2"]
+[ext_resource type="Texture2D" uid="uid://cannm7oclrdk" path="res://Animation/Main charachter/Face_talk_2.png" id="7_i8c0g"]
+[ext_resource type="Texture2D" uid="uid://cox0pwn8ry6wm" path="res://Animation/Main charachter/Face_talk_3.png" id="8_sdxhi"]
+[ext_resource type="Texture2D" uid="uid://diwwgake8355a" path="res://Animation/Main charachter/Main_character_talk0.png" id="9_ggkme"]
+[ext_resource type="Texture2D" uid="uid://bdoggrc2yv4nl" path="res://Animation/Main charachter/Main_character_talk1.png" id="10_lhqm4"]
+[ext_resource type="Texture2D" uid="uid://cwfgcpk7nhac0" path="res://Animation/Main charachter/Main_character_talk2.png" id="11_irp8y"]
+[ext_resource type="Texture2D" uid="uid://dcg1woduos7p" path="res://Animation/Main charachter/Main_character_talk3.png" id="12_c78c4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qtd30"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_v7evm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6g8w2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i8c0g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sdxhi")
+}],
+"loop": true,
+"name": &"Face_talk",
+"speed": 7.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uo2yd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_ggkme")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_lhqm4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_irp8y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_c78c4")
+}],
+"loop": true,
+"name": &"Character_talk",
+"speed": 7.0
+}]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pqcsg")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_limit_end = Vector2(1750, 0)
+script = ExtResource("1_cvn7a")
+scrolling_speed = 100
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(2100, 0)
+
+[node name="Background" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(1050, 305)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_qbrmg")
+flip_h = true
+
+[node name="Face_talk" type="AnimatedSprite2D" parent="."]
+position = Vector2(823, 511)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_qtd30")
+animation = &"Face_talk"
+frame_progress = 0.92641
+
+[node name="Character_talk" type="AnimatedSprite2D" parent="."]
+position = Vector2(947, 488)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_uo2yd")
+animation = &"Character_talk"
