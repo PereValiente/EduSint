@@ -18,6 +18,11 @@ config/features=PackedStringArray("4.2", "GL Compatibility")
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
+[dialogue_manager]
+
+general/custom_test_scene_path="res://Dialogues/test_dialogue.tscn"
+general/balloon_path="res://Dialogues/balloon.tscn"
+
 [display]
 
 window/stretch/mode="canvas_items"

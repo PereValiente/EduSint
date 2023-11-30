@@ -1,7 +1,9 @@
+res://default_bus_layout.tres
 res://Animation/Animation.tscn
 res://Synth/Synth.tscn
 res://Settings/Settings.tscn
 res://Game/game.tscn
 res://Main_menu/main.tscn
-res://Dialogues/Customize_ballon/balloon.tscn
+res://Dialogues/small_balloon.tscn
+res://Dialogues/test_dialogue.tscn
 res://Animation/Animation.gd

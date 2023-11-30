@@ -101,7 +101,6 @@ animation = &"Face_talk"
 frame_progress = 0.92641
 
 [node name="TextureButton" type="TextureButton" parent="First_animation"]
-texture_repeat = 3
 offset_left = 673.0
 offset_top = 377.0
 offset_right = 2593.0

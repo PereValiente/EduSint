@@ -1,13 +1,5 @@
 ~ animation_dialogue
 
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => animation_dialogue
-- End the conversation => END
-Nathan: For more information see the online documentation.
+[speed=0.3]Año 2050, la inteligencia artificial ha tomado el dominio del mundo, destruyendo todos los instrumentos y canciones del planeta.
 
-=> END
+=> END	
