@@ -1,3 +1,9 @@
+TextureButton
+Button
+Node2D
+Timer
+TextEdit
+DialogueLabel
 AnimatedSprite2D
 ParallaxLayer
 ParallaxBackground
@@ -7,8 +13,3 @@ Node
 CanvasLayer
 Control
 Container
-Panel
-Button
-MarginContainer
-HSlider
-Label

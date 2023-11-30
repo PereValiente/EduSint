@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnts5buynqamt"
-path="res://.godot/imported/Main_charachter.png-cb78760d1ade106fd83001750b73a3b1.ctex"
+uid="uid://bt3ud4wtwwmpa"
+path="res://.godot/imported/exclamation_button_yellow.png-58ff966755c9b39af1e875a2c268cf80.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animation/Main_charachter.png"
-dest_files=["res://.godot/imported/Main_charachter.png-cb78760d1ade106fd83001750b73a3b1.ctex"]
+source_file="res://Animation/exclamation_button_yellow.png"
+dest_files=["res://.godot/imported/exclamation_button_yellow.png-58ff966755c9b39af1e875a2c268cf80.ctex"]
 
 [params]
 

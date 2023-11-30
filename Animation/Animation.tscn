@@ -1,8 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://dy6wmog2cla22"]
+[gd_scene load_steps=16 format=3 uid="uid://dy6wmog2cla22"]
 
-[ext_resource type="Script" path="res://Animation/ParallaxBackground.gd" id="1_cvn7a"]
+[ext_resource type="Script" path="res://Animation/Background/ParallaxBackground.gd" id="1_cvn7a"]
 [ext_resource type="Script" path="res://Animation/Animation.gd" id="1_pqcsg"]
-[ext_resource type="Texture2D" uid="uid://dn2f7wl4kqanq" path="res://Animation/Background.jpg" id="1_qbrmg"]
+[ext_resource type="Texture2D" uid="uid://dn2f7wl4kqanq" path="res://Animation/Background/Background.jpg" id="1_qbrmg"]
 [ext_resource type="Texture2D" uid="uid://beivhbkdnc76r" path="res://Animation/Main charachter/Face_normal.png" id="5_v7evm"]
 [ext_resource type="Texture2D" uid="uid://b6ly637l25tah" path="res://Animation/Main charachter/Face_talk_1.png" id="6_6g8w2"]
 [ext_resource type="Texture2D" uid="uid://cannm7oclrdk" path="res://Animation/Main charachter/Face_talk_2.png" id="7_i8c0g"]
@@ -11,26 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://bdoggrc2yv4nl" path="res://Animation/Main charachter/Main_character_talk1.png" id="10_lhqm4"]
 [ext_resource type="Texture2D" uid="uid://cwfgcpk7nhac0" path="res://Animation/Main charachter/Main_character_talk2.png" id="11_irp8y"]
 [ext_resource type="Texture2D" uid="uid://dcg1woduos7p" path="res://Animation/Main charachter/Main_character_talk3.png" id="12_c78c4"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qtd30"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_v7evm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_6g8w2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_i8c0g")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_sdxhi")
-}],
-"loop": true,
-"name": &"Face_talk",
-"speed": 7.0
-}]
+[ext_resource type="Texture2D" uid="uid://bt3ud4wtwwmpa" path="res://Animation/exclamation_button_yellow.png" id="12_hcux2"]
+[ext_resource type="Texture2D" uid="uid://coeymhdmn5mdf" path="res://Animation/exclamation_button_red.png" id="12_xgf1g"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uo2yd"]
 animations = [{
@@ -49,6 +31,26 @@ animations = [{
 }],
 "loop": true,
 "name": &"Character_talk",
+"speed": 7.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qtd30"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_v7evm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_6g8w2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i8c0g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_sdxhi")
+}],
+"loop": true,
+"name": &"Face_talk",
 "speed": 7.0
 }]
 
@@ -75,15 +77,38 @@ scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_qbrmg")
 flip_h = true
 
-[node name="Face_talk" type="AnimatedSprite2D" parent="."]
+[node name="Character_talk" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(947, 488)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_uo2yd")
+animation = &"Character_talk"
+
+[node name="First_animation" type="Node2D" parent="."]
+visible = false
+
+[node name="Timer" type="Timer" parent="First_animation"]
+process_callback = 0
+wait_time = 7.5
+one_shot = true
+autostart = true
+
+[node name="Face_talk" type="AnimatedSprite2D" parent="First_animation"]
 position = Vector2(823, 511)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_qtd30")
 animation = &"Face_talk"
 frame_progress = 0.92641
 
-[node name="Character_talk" type="AnimatedSprite2D" parent="."]
-position = Vector2(947, 488)
-scale = Vector2(0.25, 0.25)
-sprite_frames = SubResource("SpriteFrames_uo2yd")
-animation = &"Character_talk"
+[node name="TextureButton" type="TextureButton" parent="First_animation"]
+texture_repeat = 3
+offset_left = 673.0
+offset_top = 377.0
+offset_right = 2593.0
+offset_bottom = 2297.0
+scale = Vector2(0.1, 0.1)
+texture_normal = ExtResource("12_xgf1g")
+texture_hover = ExtResource("12_hcux2")
+
+[connection signal="timeout" from="First_animation/Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="First_animation/TextureButton" to="." method="_on_texture_button_pressed"]
