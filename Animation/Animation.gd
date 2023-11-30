@@ -6,7 +6,6 @@ extends Control
 @onready var background = $ParallaxBackground
 
 func _ready():
-	#DialogueManager.show_example_dialogue_balloon(load("res://Dialogues/test.dialogue"), "Prueba")
 	face_talk.play("Face_talk")
 	character_talk.play("Character_talk")
 	#Dialogo inicial
@@ -21,4 +20,4 @@ func _on_texture_button_pressed():
 	first_animation.visible = !first_animation.visible
 	character_talk.visible = !character_talk.visible
 	var dialogue = preload("res://Animation/first_mision.dialogue")
-	DialogueManager.show_example_dialogue_balloon(dialogue)
+	DialogueManager.show_dialogue_balloon(dialogue)

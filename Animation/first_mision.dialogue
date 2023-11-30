@@ -1,6 +1,6 @@
 ~ this_is_a_node_title
 
-Sint: Bip bop bip bip [wait=1] Quiero decir saludos.
+Sint: Bip bop bip bip. [wait=1] Quiero decir saludos, soy Sint.
 Sint: Here are some choices.
 - First one
 	Nathan: You picked the first one.

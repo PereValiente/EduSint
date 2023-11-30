@@ -50,9 +50,9 @@ lines = {
 "id": "3",
 "next_id": "4",
 "tags": PackedStringArray(),
-"text": "Bip bop bip bip [wait=1] Quiero decir saludos.",
+"text": "Bip bop bip bip. [wait=1] Quiero decir saludos, soy Sint.",
 "text_replacements": Array[Dictionary]([]),
-"translation_key": "Bip bop bip bip [wait=1] Quiero decir saludos.",
+"translation_key": "Bip bop bip bip. [wait=1] Quiero decir saludos, soy Sint.",
 "type": "dialogue"
 },
 "4": {

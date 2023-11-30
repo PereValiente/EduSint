@@ -9,3 +9,4 @@ res://Dialogues/test_dialogue.tscn
 res://Animation/Animation.gd
 res://Dialogues/balloon.gd
 res://Animation/Background/ParallaxBackground.gd
+res://Dialogues/balloon.tscn
