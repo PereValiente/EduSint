@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://13s5spsk34qu"]
+[gd_scene load_steps=11 format=3 uid="uid://13s5spsk34qu"]
 
 [ext_resource type="Script" path="res://Dialogues/balloon.gd" id="1_s2gbs"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_hfvdi"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_1j1j0"]
+[ext_resource type="AudioStream" uid="uid://cisovho8ebcmv" path="res://Dialogues/typewrite_sound.mp3" id="4_1oay0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_235ry"]
 content_margin_left = 6.0
@@ -72,6 +73,7 @@ border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -160,5 +162,11 @@ script = ExtResource("3_1j1j0")
 layout_mode = 2
 text = "Response Example"
 
+[node name="Typewriter_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_1oay0")
+volume_db = -12.0
+bus = &"sfx"
+
 [connection signal="gui_input" from="MarginContainer/Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="spoke" from="MarginContainer/Balloon/Dialogue/VBoxContainer/DialogueLabel" to="." method="_on_dialogue_label_spoke"]
 [connection signal="response_selected" from="MarginContainer/Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

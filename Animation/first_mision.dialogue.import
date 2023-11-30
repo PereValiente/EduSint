@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_11"
+type="Resource"
+uid="uid://draerrhcv8poy"
+path="res://.godot/imported/first_mision.dialogue-a57f4b2d7b97fe48a6f396606b6ac379.tres"
+
+[deps]
+
+source_file="res://Animation/first_mision.dialogue"
+dest_files=["res://.godot/imported/first_mision.dialogue-a57f4b2d7b97fe48a6f396606b6ac379.tres"]
+
+[params]
+
+defaults=true

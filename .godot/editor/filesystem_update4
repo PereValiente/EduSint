@@ -7,3 +7,5 @@ res://Main_menu/main.tscn
 res://Dialogues/small_balloon.tscn
 res://Dialogues/test_dialogue.tscn
 res://Animation/Animation.gd
+res://Dialogues/balloon.gd
+res://Animation/Background/ParallaxBackground.gd

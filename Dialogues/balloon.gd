@@ -5,6 +5,7 @@ extends CanvasLayer
 @onready var character_label: RichTextLabel = %CharacterLabel
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
+@onready var typewriter_sound = $Typewriter_sound
 
 ## The dialogue resource
 var resource: DialogueResource
@@ -121,3 +122,9 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 	next(response.next_id)
+
+
+func _on_dialogue_label_spoke(letter, letter_index, speed):
+	if not letter in ["."," "]:
+		typewriter_sound.pitch_scale = randf_range(0.9, 1.1)
+		typewriter_sound.play()

@@ -21,7 +21,7 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 [dialogue_manager]
 
 general/custom_test_scene_path="res://Dialogues/test_dialogue.tscn"
-general/balloon_path="res://Dialogues/balloon.tscn"
+general/balloon_path="res://Dialogues/small_balloon.tscn"
 
 [display]
 
@@ -33,7 +33,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://Animation/Introduction.dialogue", "res://Animation/test.dialogue")
+locale/translations_pot_files=PackedStringArray("res://Animation/introduction.dialogue", "res://Animation/first_mision.dialogue", "res://Animation/1st_mision.dialogue")
 
 [rendering]
 
