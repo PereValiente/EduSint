@@ -76,8 +76,6 @@ func oscillator():
 		var p = index - int(index)
 		output.append(0.0)
 		envelope = get_adsr_envelope(i)
-		#cubic_interpolation(output[i])
-		#output[i] = cubic_interpolation_sample
 		output[i] = cubic_interpolate(p0,p1,p2,p3,p)
 		index+=index_increment
 		index = int(index + index_increment) % sample_wave

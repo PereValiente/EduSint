@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_uxfgo"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_7sobp"]
 
 [resource]
-script = ExtResource("1_uxfgo")
+script = ExtResource("1_7sobp")
 using_states = PackedStringArray()
 titles = {
 "animation_dialogue": "3"
@@ -23,9 +23,9 @@ lines = {
 "id": "3",
 "next_id": "5",
 "tags": PackedStringArray(),
-"text": "[speed=0.4]Año 2050, la inteligencia artificial ha tomado el dominio del mundo, destruyendo todos los instrumentos y archivos musicales del planeta.",
+"text": "[speed=0.6]Año 2050, la inteligencia artificial ha tomado el dominio del mundo, destruyendo todos los instrumentos y archivos musicales del planeta.",
 "text_replacements": Array[Dictionary]([]),
-"translation_key": "[speed=0.4]Año 2050, la inteligencia artificial ha tomado el dominio del mundo, destruyendo todos los instrumentos y archivos musicales del planeta.",
+"translation_key": "[speed=0.6]Año 2050, la inteligencia artificial ha tomado el dominio del mundo, destruyendo todos los instrumentos y archivos musicales del planeta.",
 "type": "dialogue"
 },
 "5": {

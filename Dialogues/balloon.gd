@@ -6,6 +6,8 @@ extends CanvasLayer
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 @onready var typewriter_sound = $Typewriter_sound
+@onready var voice_character = $Voice_character
+@onready var select_sound: int = 0
 @onready var indicator = $MarginContainer/Balloon/Indicator
 
 ## The dialogue resource
@@ -134,4 +136,8 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 func _on_dialogue_label_spoke(letter, letter_index, speed):
 	if not letter in ["."," "]:
 		typewriter_sound.pitch_scale = randf_range(0.9, 1.1)
-		typewriter_sound.play()
+		if select_sound == 1:
+			
+			voice_character.play(0.1)
+		else:
+			typewriter_sound.play()

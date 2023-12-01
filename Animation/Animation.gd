@@ -5,14 +5,17 @@ extends Control
 @onready var character_talk = $Character_talk
 @onready var background = $ParallaxBackground
 
+
 func _ready():
 	face_talk.play("Face_talk")
 	character_talk.play("Character_talk")
 	#Dialogo inicial
 	DialogueManager.show_dialogue_balloon(load("res://Animation/introduction.dialogue"),"animation_dialogue")
-	#Animación aparición syntetizador
-	#$Synth/AnimationPlayer.play("popup")
-
+	"""
+	Animación aparición syntetizador
+	$Synth/AnimationPlayer.play("popup")
+	"""
+#tras finalizarse temporizador hace visible nodo First_animation
 func _on_timer_timeout():
 	first_animation.visible = !first_animation.visible
 
