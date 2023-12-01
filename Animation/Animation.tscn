@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dy6wmog2cla22"]
+[gd_scene load_steps=20 format=3 uid="uid://dy6wmog2cla22"]
 
 [ext_resource type="Script" path="res://Animation/Background/ParallaxBackground.gd" id="1_cvn7a"]
 [ext_resource type="Script" path="res://Animation/Animation.gd" id="1_pqcsg"]
@@ -11,8 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://bdoggrc2yv4nl" path="res://Animation/Main charachter/Main_character_talk1.png" id="10_lhqm4"]
 [ext_resource type="Texture2D" uid="uid://cwfgcpk7nhac0" path="res://Animation/Main charachter/Main_character_talk2.png" id="11_irp8y"]
 [ext_resource type="Texture2D" uid="uid://dcg1woduos7p" path="res://Animation/Main charachter/Main_character_talk3.png" id="12_c78c4"]
-[ext_resource type="Texture2D" uid="uid://bt3ud4wtwwmpa" path="res://Animation/exclamation_button_yellow.png" id="12_hcux2"]
-[ext_resource type="Texture2D" uid="uid://coeymhdmn5mdf" path="res://Animation/exclamation_button_red.png" id="12_xgf1g"]
+[ext_resource type="Texture2D" uid="uid://bt3ud4wtwwmpa" path="res://Animation/UI Animation/exclamation_button_yellow.png" id="12_hcux2"]
+[ext_resource type="Texture2D" uid="uid://coeymhdmn5mdf" path="res://Animation/UI Animation/exclamation_button_red.png" id="12_xgf1g"]
+[ext_resource type="Texture2D" uid="uid://bo5lhvaqrqn0d" path="res://Animation/UI Animation/Synth.PNG" id="14_qh26i"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uo2yd"]
 animations = [{
@@ -53,6 +54,42 @@ animations = [{
 "name": &"Face_talk",
 "speed": 7.0
 }]
+
+[sub_resource type="Animation" id="Animation_5p51p"]
+resource_name = "popup"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.6, 0.6)]
+}
+
+[sub_resource type="Animation" id="Animation_on8ti"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6, 0.6)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a4j2i"]
+_data = {
+"RESET": SubResource("Animation_on8ti"),
+"popup": SubResource("Animation_5p51p")
+}
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -108,6 +145,28 @@ offset_bottom = 2237.0
 scale = Vector2(0.15, 0.15)
 texture_normal = ExtResource("12_hcux2")
 texture_hover = ExtResource("12_xgf1g")
+
+[node name="Synth" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -577.5
+offset_top = -324.0
+offset_right = 577.5
+offset_bottom = 324.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(577, 324)
+texture = ExtResource("14_qh26i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Synth"]
+libraries = {
+"": SubResource("AnimationLibrary_a4j2i")
+}
 
 [connection signal="timeout" from="First_animation/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="First_animation/TextureButton" to="." method="_on_texture_button_pressed"]

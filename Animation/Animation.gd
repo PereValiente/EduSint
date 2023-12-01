@@ -10,7 +10,8 @@ func _ready():
 	character_talk.play("Character_talk")
 	#Dialogo inicial
 	DialogueManager.show_dialogue_balloon(load("res://Animation/introduction.dialogue"),"animation_dialogue")
-	
+	#Animación aparición syntetizador
+	#$Synth/AnimationPlayer.play("popup")
 
 func _on_timer_timeout():
 	first_animation.visible = !first_animation.visible
@@ -21,3 +22,5 @@ func _on_texture_button_pressed():
 	character_talk.visible = !character_talk.visible
 	var dialogue = preload("res://Animation/first_mision.dialogue")
 	DialogueManager.show_dialogue_balloon(dialogue)
+
+

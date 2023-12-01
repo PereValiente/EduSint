@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://13s5spsk34qu"]
+[gd_scene load_steps=12 format=3 uid="uid://13s5spsk34qu"]
 
 [ext_resource type="Script" path="res://Dialogues/balloon.gd" id="1_s2gbs"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_hfvdi"]
@@ -92,41 +92,6 @@ MarginContainer/constants/margin_right = 8
 MarginContainer/constants/margin_top = 4
 Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
-[sub_resource type="Animation" id="Animation_h3t3l"]
-resource_name = "indicate"
-loop_mode = 1
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(-158, -0.25, 0, 0.25, 0, -166, -0.25, 0, 0.25, 0, -158, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.5, 1)
-}
-
-[sub_resource type="Animation" id="Animation_i1y6y"]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-158, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_74pje"]
-_data = {
-"RESET": SubResource("Animation_i1y6y"),
-"indicate": SubResource("Animation_h3t3l")
-}
-
 [node name="ExampleBalloon" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_s2gbs")
@@ -152,6 +117,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Balloon/Dialogue"]
 layout_mode = 2
@@ -200,25 +167,20 @@ text = "Response Example"
 
 [node name="Indicator" type="TextureRect" parent="MarginContainer/Balloon"]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 738.0
-offset_top = -166.0
-offset_right = 1762.0
-offset_bottom = 858.0
+anchors_preset = -1
+anchor_left = -0.0389734
+anchor_top = -1.8375
+anchor_right = 0.207224
+anchor_bottom = 1.3625
+offset_left = 857.0
+offset_top = 66.0
+offset_right = 1893.0
+offset_bottom = 1090.0
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(0.45, 0.45)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_wyiil")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/Balloon/Indicator"]
-libraries = {
-"": SubResource("AnimationLibrary_74pje")
-}
-autoplay = "indicate"
+metadata/_edit_use_anchors_ = true
 
 [node name="Typewriter_sound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_1oay0")

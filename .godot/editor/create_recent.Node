@@ -1,4 +1,5 @@
 AnimationPlayer
+Panel
 TextureRect
 AudioStreamPlayer
 MarginContainer
@@ -11,5 +12,3 @@ DialogueLabel
 AnimatedSprite2D
 ParallaxLayer
 ParallaxBackground
-Camera2D
-Sprite2D
