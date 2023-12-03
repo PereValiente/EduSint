@@ -11,7 +11,7 @@
 [ext_resource type="Script" path="res://Synth/Slider_release.gd" id="8_dhq8l"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_yjr14"]
-buffer_length = 4.0
+buffer_length = 7.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbhgk"]
 
@@ -89,7 +89,7 @@ bg_color = Color(0, 0, 0, 1)
 [node name="Synth" type="CanvasLayer"]
 script = ExtResource("1_3g8h2")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Synth_audio_1" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamGenerator_yjr14")
 bus = &"music"
 
@@ -295,7 +295,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 theme_override_icons/grabber = ExtResource("2_1ftdj")
 theme_override_icons/grabber_highlight = ExtResource("2_1ftdj")
-max_value = 1.0
+max_value = 4.0
 step = 0.001
 script = ExtResource("7_u0w80")
 

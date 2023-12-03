@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dy6wmog2cla22"]
+[gd_scene load_steps=23 format=3 uid="uid://dy6wmog2cla22"]
 
 [ext_resource type="Script" path="res://Animation/Background/ParallaxBackground.gd" id="1_cvn7a"]
 [ext_resource type="Script" path="res://Animation/Animation.gd" id="1_pqcsg"]
@@ -54,6 +54,31 @@ animations = [{
 "name": &"Face_talk",
 "speed": 7.0
 }]
+
+[sub_resource type="Animation" id="Animation_xts20"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_5634q"]
+resource_name = "blinking"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8t8p0"]
+_data = {
+"RESET": SubResource("Animation_xts20"),
+"blinking": SubResource("Animation_5634q")
+}
 
 [sub_resource type="Animation" id="Animation_on8ti"]
 length = 0.001
@@ -122,7 +147,6 @@ sprite_frames = SubResource("SpriteFrames_uo2yd")
 animation = &"Character_talk"
 
 [node name="First_animation" type="Node2D" parent="."]
-visible = false
 
 [node name="Timer" type="Timer" parent="First_animation"]
 process_callback = 0
@@ -146,6 +170,12 @@ scale = Vector2(0.15, 0.15)
 texture_normal = ExtResource("12_hcux2")
 texture_hover = ExtResource("12_xgf1g")
 
+[node name="Blinking" type="AnimationPlayer" parent="First_animation/TextureButton"]
+libraries = {
+"": SubResource("AnimationLibrary_8t8p0")
+}
+autoplay = "blinking"
+
 [node name="Synth" type="TextureRect" parent="."]
 visible = false
 layout_mode = 1
@@ -164,7 +194,7 @@ scale = Vector2(0.6, 0.6)
 pivot_offset = Vector2(577, 324)
 texture = ExtResource("14_qh26i")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Synth"]
+[node name="Ampliation" type="AnimationPlayer" parent="Synth"]
 libraries = {
 "": SubResource("AnimationLibrary_a4j2i")
 }
