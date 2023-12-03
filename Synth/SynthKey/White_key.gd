@@ -6,7 +6,6 @@ class_name SynthKey
 @export var frequency : float
 
 @onready var audio_stream_player = $AudioStreamPlayer
-@onready var test_stream_player = $AudioStreamPlayer2
 var playback : AudioStreamGeneratorPlayback
 
 enum State{
@@ -93,9 +92,13 @@ func oscillator(oscilator_state:State, max_frames:int, multiplier:float = 1) -> 
 		
 		if synth.wave_type == 3: #DPW algorythm for sawtooth
 			output = dpw_algorithm(output)
-			
+		
 		output *= amplitude * envelope * correction_amplitude_filter #aplicar a la salida el valor de amplitud y envolvente
 		return_array.push_back(Vector2.ONE * output * multiplier)
+	
+	if synth.wave_type == 3: #Avoid Artifacts
+		var difference_frame = return_array[1] - return_array[2]
+		return_array[0] = return_array[1] + difference_frame
 	
 	return return_array
 
@@ -145,6 +148,7 @@ func dpw_algorithm(input_sample):
 	input_sample *= synth.sample_rate/(10*frequency*(1-frequency/synth.sample_rate))
 	return input_sample
 
+
 func difference_filter(input_sample): #H(z)=1-z^-1 filtro de retardo unitario discreto (DUR)
 	var previous_sample_aux = previous_sample
 	previous_sample = input_sample
@@ -152,4 +156,11 @@ func difference_filter(input_sample): #H(z)=1-z^-1 filtro de retardo unitario di
 	return input_sample - previous_sample_aux
 
 
-
+func save_buffer(fileName, buffer):
+	var to_string = ""
+	for vector2 in buffer:
+		to_string += str(vector2.x) + ","
+	
+	var file = FileAccess.open(fileName, FileAccess.WRITE)
+	file.store_string(to_string)
+	file.close()
