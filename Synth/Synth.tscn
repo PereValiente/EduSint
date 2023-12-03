@@ -260,72 +260,142 @@ offset_bottom = 40.0
 
 [node name="C4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
 layout_mode = 0
-offset_left = 109.0
-offset_right = 155.0
+anchor_left = 2.725
+anchor_top = 8.45
+anchor_right = 3.875
+anchor_bottom = 13.225
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 synth = NodePath("../..")
+metadata/_edit_use_anchors_ = true
 
 [node name="D4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
 layout_mode = 0
-offset_left = 181.0
-offset_right = 227.0
+anchor_left = 4.525
+anchor_top = 8.45
+anchor_right = 5.675
+anchor_bottom = 13.225
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 synth = NodePath("../..")
 frequency = 155.56
+metadata/_edit_use_anchors_ = true
 
 [node name="F4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
 layout_mode = 0
-offset_left = 331.0
-offset_right = 377.0
+anchor_left = 8.275
+anchor_top = 8.45
+anchor_right = 9.425
+anchor_bottom = 13.225
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 synth = NodePath("../..")
 frequency = 185.0
+metadata/_edit_use_anchors_ = true
 
 [node name="G4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
 layout_mode = 0
-offset_left = 405.0
-offset_right = 451.0
+anchor_left = 10.125
+anchor_top = 8.45
+anchor_right = 11.275
+anchor_bottom = 13.225
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 synth = NodePath("../..")
 frequency = 207.65
+metadata/_edit_use_anchors_ = true
 
 [node name="A4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
 layout_mode = 0
-offset_left = 479.0
-offset_right = 525.0
+anchor_left = 11.975
+anchor_top = 8.45
+anchor_right = 13.125
+anchor_bottom = 13.225
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 synth = NodePath("../..")
 frequency = 233.08
+metadata/_edit_use_anchors_ = true
 
 [node name="C5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
 layout_mode = 0
-offset_left = 627.0
-offset_right = 673.0
+anchor_left = 15.675
+anchor_top = 8.45
+anchor_right = 16.825
+anchor_bottom = 13.225
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 synth = NodePath("../..")
 frequency = 275.18
+metadata/_edit_use_anchors_ = true
 
 [node name="D5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
 layout_mode = 0
-offset_left = 701.0
-offset_right = 747.0
+anchor_left = 17.525
+anchor_top = 8.45
+anchor_right = 18.675
+anchor_bottom = 13.225
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 synth = NodePath("../..")
 frequency = 311.13
+metadata/_edit_use_anchors_ = true
 
 [node name="F5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
 layout_mode = 0
-offset_left = 849.0
-offset_right = 895.0
+anchor_left = 21.225
+anchor_top = 8.45
+anchor_right = 22.375
+anchor_bottom = 13.225
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 synth = NodePath("../..")
 frequency = 369.99
+metadata/_edit_use_anchors_ = true
 
 [node name="G5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
 layout_mode = 0
-offset_left = 923.0
-offset_right = 969.0
+anchor_left = 23.075
+anchor_top = 8.45
+anchor_right = 24.225
+anchor_bottom = 13.225
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 synth = NodePath("../..")
 frequency = 415.3
+metadata/_edit_use_anchors_ = true
 
 [node name="A5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
 layout_mode = 0
-offset_left = 997.0
-offset_right = 1043.0
+anchor_left = 24.925
+anchor_top = 8.45
+anchor_right = 26.075
+anchor_bottom = 13.225
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 synth = NodePath("../..")
 frequency = 466.16
+metadata/_edit_use_anchors_ = true
 
 [connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_wave" to="." method="_on_wave_type_value_changed"]
 [connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_filter" to="." method="_on_filter_value_changed"]
