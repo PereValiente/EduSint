@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Synth/Synth.gd" id="1_3g8h2"]
 [ext_resource type="Texture2D" uid="uid://bvp0ebffdw5cb" path="res://Synth/UI/grabber.png" id="2_1ftdj"]
-[ext_resource type="Script" path="res://Synth/White_key.gd" id="3_av8sb"]
+[ext_resource type="Script" path="res://Synth/SynthKey/White_key.gd" id="2_lms07"]
 [ext_resource type="Script" path="res://Synth/Slider_filter.gd" id="3_qdmf8"]
 [ext_resource type="Script" path="res://Synth/Volume_slider.gd" id="4_iue6o"]
 [ext_resource type="Script" path="res://Synth/Slider_attack.gd" id="5_222kq"]
@@ -120,7 +120,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_vbhgk")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_v70vw")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 130.81
 
 [node name="D4" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
@@ -128,7 +128,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_w3ela")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_eqjrg")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 146.83
 
 [node name="E4" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
@@ -136,7 +136,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_8iogg")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_o6f4x")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 164.81
 
 [node name="F4" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
@@ -144,7 +144,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_7p5jg")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ty8xu")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 174.61
 
 [node name="G4" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
@@ -152,7 +152,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_4l7fr")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_qqs14")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 196.0
 
 [node name="A4" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
@@ -160,7 +160,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_3b6po")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_bjy6o")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 220.0
 
 [node name="B4" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
@@ -168,7 +168,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_32f6w")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_0fu3m")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 246.94
 
 [node name="C5" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
@@ -176,7 +176,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_ixgl2")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wqpfj")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 261.63
 
 [node name="D5" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
@@ -184,7 +184,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_x1kh6")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wg86m")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 293.67
 
 [node name="E5" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
@@ -192,7 +192,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_5ah30")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_6unbi")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 329.63
 
 [node name="F5" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
@@ -200,7 +200,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_qlj5v")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_xh4qm")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 349.23
 
 [node name="G5" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
@@ -208,7 +208,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_p21ga")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_ed2ta")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 392.0
 
 [node name="A5" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
@@ -216,7 +216,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_c6stf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2ptd4")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 440.0
 
 [node name="B5" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
@@ -224,7 +224,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_xich8")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_q2r6l")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 493.88
 
 [node name="MarginContainer2" type="MarginContainer" parent="ColorRect"]
@@ -381,7 +381,7 @@ offset_right = 156.0
 offset_bottom = 529.0
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 138.59
 
 [node name="D4#" type="Button" parent="Black_key"]
@@ -392,7 +392,7 @@ offset_right = 230.0
 offset_bottom = 529.0
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 155.56
 
 [node name="F4#" type="Button" parent="Black_key"]
@@ -403,7 +403,7 @@ offset_right = 378.0
 offset_bottom = 529.0
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 185.0
 
 [node name="G4#" type="Button" parent="Black_key"]
@@ -414,7 +414,7 @@ offset_right = 452.0
 offset_bottom = 529.0
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 207.65
 
 [node name="A4#" type="Button" parent="Black_key"]
@@ -425,7 +425,7 @@ offset_right = 526.0
 offset_bottom = 529.0
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 233.08
 
 [node name="C5#" type="Button" parent="Black_key"]
@@ -436,7 +436,7 @@ offset_right = 672.0
 offset_bottom = 529.0
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 277.18
 
 [node name="D5#" type="Button" parent="Black_key"]
@@ -447,7 +447,7 @@ offset_right = 749.0
 offset_bottom = 529.0
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 311.13
 
 [node name="F5#" type="Button" parent="Black_key"]
@@ -458,7 +458,7 @@ offset_right = 896.0
 offset_bottom = 529.0
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 369.99
 
 [node name="G5#" type="Button" parent="Black_key"]
@@ -469,7 +469,7 @@ offset_right = 970.0
 offset_bottom = 529.0
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 415.3
 
 [node name="A5#" type="Button" parent="Black_key"]
@@ -480,7 +480,7 @@ offset_right = 1046.0
 offset_bottom = 529.0
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
-script = ExtResource("3_av8sb")
+script = ExtResource("2_lms07")
 frequency = 466.16
 
 [connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_wave" to="." method="_on_wave_type_value_changed"]
