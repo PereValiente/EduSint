@@ -1,8 +1,9 @@
-[gd_scene load_steps=40 format=3 uid="uid://kwr6dwirb8jd"]
+[gd_scene load_steps=39 format=3 uid="uid://kwr6dwirb8jd"]
 
 [ext_resource type="Script" path="res://Synth/Synth.gd" id="1_3g8h2"]
 [ext_resource type="Texture2D" uid="uid://bvp0ebffdw5cb" path="res://Synth/UI/grabber.png" id="2_1ftdj"]
 [ext_resource type="Script" path="res://Synth/SynthKey/White_key.gd" id="2_lms07"]
+[ext_resource type="PackedScene" uid="uid://pi7vexf72o6o" path="res://Synth/SynthKey/synth_key.tscn" id="2_yk25y"]
 [ext_resource type="Script" path="res://Synth/Slider_filter.gd" id="3_qdmf8"]
 [ext_resource type="Script" path="res://Synth/Volume_slider.gd" id="4_iue6o"]
 [ext_resource type="Script" path="res://Synth/Slider_attack.gd" id="5_222kq"]
@@ -12,11 +13,6 @@
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_yjr14"]
 buffer_length = 7.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbhgk"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v70vw"]
-bg_color = Color(0.384314, 0.65098, 0.67451, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3ela"]
 
@@ -115,13 +111,9 @@ theme_override_constants/margin_bottom = 10
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
-[node name="C4" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
+[node name="synth_key" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_vbhgk")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_v70vw")
-script = ExtResource("2_lms07")
-frequency = 130.81
+synth = NodePath("../../../..")
 
 [node name="D4" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
 layout_mode = 2

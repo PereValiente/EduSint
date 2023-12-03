@@ -8,15 +8,8 @@ var playback : AudioStreamGeneratorPlayback # Will hold the AudioStreamGenerator
 @onready var sample_rate = $Synth_audio_1.stream.mix_rate #muestras por segundo (44100)
 @onready var synth_audio_1 = $Synth_audio_1
 var sample_wave = 4096 
-var total_sample_envelope = 0
-var total_sample_ads = 0
-var previous_sample = 0.0
-var difference_filter_sample = 0.0
-var dpw_sample = 0.0
 var filter_value = 0.0
-var correction_amplitude_filter
 var cubic_interpolation_sample = 0.0
-var output = [] #Amplitud de la onda
 var adsr_attack = 0.1
 var adsr_decay = 0.2
 var adsr_sustain = 0.5
@@ -31,6 +24,9 @@ func _ready(): #Genera las tablas de las 4 formas de onda
 	wave_tables.append(generate_triangle_wave_table(sample_wave))
 	wave_tables.append(generate_sawtooth_wave_table(sample_wave))
 
+
+func get_current_wave():
+	return wave_tables[wave_type]
 
 
 func generate_sine_wave_table(sample_wave):
