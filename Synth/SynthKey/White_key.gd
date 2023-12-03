@@ -21,45 +21,71 @@ var current_table : PackedVector2Array
 var previous_sample = 0.0
 var total_sample_envelope = 0
 
-var pressed_time : float 
+var state_start_time : float 
 
 
 func _ready():
 	button_down.connect(on_button_down)
 	button_up.connect(on_button_up)
+	audio_stream_player.finished.connect(on_stream_finished)
 
 
 func on_button_down():
-	pressed_time = Time.get_ticks_msec() / 1000.0 #Miliseconds => Seconds
-	
-	state = State.Attack
-	
-	var attack_frames: float = synth.adsr_attack * synth.sample_rate
-	current_table = oscillator(state, attack_frames)
-	
-	audio_stream_player.play()
-	playback = audio_stream_player.get_stream_playback()
-	playback.push_buffer(current_table)
+	play_state(State.Attack)
+
 
 func on_button_up():
-	var current_time = Time.get_ticks_msec() / 1000.0 #Miliseconds => Seconds
-	var elapsed_time = current_time - pressed_time
+	play_state(State.Release)
+
+
+func on_stream_finished():
+	match state:
+		State.Attack:
+			play_state(State.Decay)
+		State.Decay:
+			play_state(State.Sustain)
+		State.Sustain:
+			play_state(State.Sustain)
+		State.Release:
+			audio_stream_player.stop()
+
+
+func play_state(new_state : State):
+	#Calculate buffer length
+	var buffer_length : float = 0
+	match new_state:
+		State.Attack:
+			buffer_length = synth.adsr_attack * synth.sample_rate
+		State.Decay:
+			buffer_length = synth.adsr_decay * synth.sample_rate
+		State.Sustain:
+			buffer_length = int(synth.adsr_sustain * synth.sample_rate)
+		State.Release:
+			buffer_length =  synth.adsr_release * synth.sample_rate
 	
-	var current_frame = elapsed_time * synth.sample_rate
-	var current_value = get_envelope(state, current_frame, current_table.size())
-	current_value = clamp(current_value, 0.0, 1.0)
+	#Check if we have previous state
+	var current_frame_value = 1
+	if new_state != State.Attack:
+		var current_time = Time.get_ticks_msec() / 1000.0 #Miliseconds => Seconds
+		var elapsed_time = current_time - state_start_time
+		
+		var current_frame = elapsed_time * synth.sample_rate
+		var current_value = get_envelope(state, current_frame, current_table.size())
+		current_frame_value = clamp(current_value, 0.0, 1.0)
 	
-	state = State.Release
 	
-	var release_frames: float = synth.adsr_release * synth.sample_rate
-	var buffer = oscillator(state, release_frames, current_value)
-	
+	#Create buffer and play buffer
+	var buffer = oscillator(state, buffer_length, current_frame_value)
 	audio_stream_player.stop()
 	playback.clear_buffer()
 	
 	audio_stream_player.play()
 	playback = audio_stream_player.get_stream_playback()
 	playback.push_buffer(buffer)
+	
+	#Update state machine
+	state = new_state
+	state_start_time = Time.get_ticks_msec() / 1000.0 #Miliseconds => Seconds
 
 
 func oscillator(oscilator_state:State, max_frames:int, multiplier:float = 1) -> PackedVector2Array: 
@@ -114,33 +140,6 @@ func get_envelope(oscilator_state : State, current_frame:float, frame_count):
 		State.Release:
 			return (1.0 - current_frame / frame_count)
 	
-
-func get_adsr_envelope(current_frame: float):
-	var attack_frames: float = synth.adsr_attack * synth.sample_rate
-	var decay_frames: float = synth.adsr_decay * synth.sample_rate
-	var sustain_frames = int(synth.adsr_sustain * synth.sample_rate)
-	var release_frames: float = synth.adsr_release * synth.sample_rate
-#	#total_sample_envelope = attack_frames + decay_frames + sustain_frames + release_frames
-#	total_sample_ads = attack_frames + decay_frames + sustain_frames
-#
-#	if current_frame < attack_frames:
-#		return current_frame / attack_frames
-#	elif current_frame < (attack_frames + decay_frames):
-#		return 1.0 - (1.0 - synth.adsr_sustain) * (current_frame - attack_frames) / decay_frames
-#	elif current_frame < total_sample_ads:
-#	#elif current_frame < (total_sample_envelope - release_frames):
-#		return synth.adsr_sustain
-#	#else:
-#	#	return adsr_sustain * (1.0 - float(current_frame - (total_sample_envelope - release_frames)) / release_frames)
-
-
-func get_r_envelope (current_frame: float):
-	var attack_frames: float = synth.adsr_attack * synth.sample_rate
-	var decay_frames: float = synth.adsr_decay * synth.sample_rate
-	var sustain_frames = int(synth.adsr_sustain * synth.sample_rate)
-	var release_frames: float = synth.adsr_release * synth.sample_rate
-	total_sample_envelope = attack_frames + decay_frames + sustain_frames + release_frames
-	return synth.adsr_sustain * (1.0 - float(current_frame - (total_sample_envelope - release_frames)) / release_frames)
 
 func dpw_algorithm(input_sample):
 	input_sample *= input_sample

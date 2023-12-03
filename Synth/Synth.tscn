@@ -1,8 +1,7 @@
-[gd_scene load_steps=39 format=3 uid="uid://kwr6dwirb8jd"]
+[gd_scene load_steps=12 format=3 uid="uid://kwr6dwirb8jd"]
 
 [ext_resource type="Script" path="res://Synth/Synth.gd" id="1_3g8h2"]
 [ext_resource type="Texture2D" uid="uid://bvp0ebffdw5cb" path="res://Synth/UI/grabber.png" id="2_1ftdj"]
-[ext_resource type="Script" path="res://Synth/SynthKey/White_key.gd" id="2_lms07"]
 [ext_resource type="PackedScene" uid="uid://pi7vexf72o6o" path="res://Synth/SynthKey/synth_key.tscn" id="2_yk25y"]
 [ext_resource type="Script" path="res://Synth/Slider_filter.gd" id="3_qdmf8"]
 [ext_resource type="Script" path="res://Synth/Volume_slider.gd" id="4_iue6o"]
@@ -10,77 +9,10 @@
 [ext_resource type="Script" path="res://Synth/Slider_decay.gd" id="6_6hb6f"]
 [ext_resource type="Script" path="res://Synth/Slider_sustain.gd" id="7_u0w80"]
 [ext_resource type="Script" path="res://Synth/Slider_release.gd" id="8_dhq8l"]
+[ext_resource type="PackedScene" uid="uid://cm4g6avx25r34" path="res://Synth/SynthKey/synth_key_black.tscn" id="10_yb2rn"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_yjr14"]
 buffer_length = 7.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w3ela"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqjrg"]
-bg_color = Color(0.384314, 0.65098, 0.67451, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8iogg"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6f4x"]
-bg_color = Color(0.384314, 0.65098, 0.67451, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7p5jg"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ty8xu"]
-bg_color = Color(0.384314, 0.65098, 0.67451, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4l7fr"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qqs14"]
-bg_color = Color(0.384314, 0.65098, 0.67451, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3b6po"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bjy6o"]
-bg_color = Color(0.384314, 0.65098, 0.67451, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32f6w"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0fu3m"]
-bg_color = Color(0.384314, 0.65098, 0.67451, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ixgl2"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wqpfj"]
-bg_color = Color(0.384314, 0.65098, 0.67451, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x1kh6"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wg86m"]
-bg_color = Color(0.384314, 0.65098, 0.67451, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ah30"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6unbi"]
-bg_color = Color(0.384314, 0.65098, 0.67451, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlj5v"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xh4qm"]
-bg_color = Color(0.384314, 0.65098, 0.67451, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p21ga"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ed2ta"]
-bg_color = Color(0.384314, 0.65098, 0.67451, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6stf"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ptd4"]
-bg_color = Color(0.384314, 0.65098, 0.67451, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xich8"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q2r6l"]
-bg_color = Color(0.384314, 0.65098, 0.67451, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cmn58"]
-bg_color = Color(0, 0, 0, 1)
 
 [node name="Synth" type="CanvasLayer"]
 script = ExtResource("1_3g8h2")
@@ -111,112 +43,73 @@ theme_override_constants/margin_bottom = 10
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
-[node name="synth_key" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
+[node name="C4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
 layout_mode = 2
 synth = NodePath("../../../..")
 
-[node name="D4" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
+[node name="D4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_w3ela")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_eqjrg")
-script = ExtResource("2_lms07")
+synth = NodePath("../../../..")
 frequency = 146.83
 
-[node name="E4" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
+[node name="E4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_8iogg")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_o6f4x")
-script = ExtResource("2_lms07")
+synth = NodePath("../../../..")
 frequency = 164.81
 
-[node name="F4" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
+[node name="F4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_7p5jg")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ty8xu")
-script = ExtResource("2_lms07")
+synth = NodePath("../../../..")
 frequency = 174.61
 
-[node name="G4" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
+[node name="G4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_4l7fr")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_qqs14")
-script = ExtResource("2_lms07")
+synth = NodePath("../../../..")
 frequency = 196.0
 
-[node name="A4" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
+[node name="A4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_3b6po")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_bjy6o")
-script = ExtResource("2_lms07")
+synth = NodePath("../../../..")
 frequency = 220.0
 
-[node name="B4" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
+[node name="B4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_32f6w")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_0fu3m")
-script = ExtResource("2_lms07")
+synth = NodePath("../../../..")
 frequency = 246.94
 
-[node name="C5" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
+[node name="C5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_ixgl2")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_wqpfj")
-script = ExtResource("2_lms07")
+synth = NodePath("../../../..")
 frequency = 261.63
 
-[node name="D5" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
+[node name="D5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_x1kh6")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_wg86m")
-script = ExtResource("2_lms07")
+synth = NodePath("../../../..")
 frequency = 293.67
 
-[node name="E5" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
+[node name="E5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_5ah30")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_6unbi")
-script = ExtResource("2_lms07")
+synth = NodePath("../../../..")
 frequency = 329.63
 
-[node name="F5" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
+[node name="F5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_qlj5v")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_xh4qm")
-script = ExtResource("2_lms07")
+synth = NodePath("../../../..")
 frequency = 349.23
 
-[node name="G5" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
+[node name="G5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_p21ga")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ed2ta")
-script = ExtResource("2_lms07")
+synth = NodePath("../../../..")
 frequency = 392.0
 
-[node name="A5" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
+[node name="A5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_c6stf")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_2ptd4")
-script = ExtResource("2_lms07")
+synth = NodePath("../../../..")
 frequency = 440.0
 
-[node name="B5" type="Button" parent="ColorRect/MarginContainer/HBoxContainer"]
+[node name="B5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_xich8")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_q2r6l")
-script = ExtResource("2_lms07")
+synth = NodePath("../../../..")
 frequency = 493.88
 
 [node name="MarginContainer2" type="MarginContainer" parent="ColorRect"]
@@ -365,114 +258,73 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="C4#" type="Button" parent="Black_key"]
-layout_mode = 2
-offset_left = 110.0
-offset_top = 338.0
-offset_right = 156.0
-offset_bottom = 529.0
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
-script = ExtResource("2_lms07")
-frequency = 138.59
-
-[node name="D4#" type="Button" parent="Black_key"]
+[node name="C4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
 layout_mode = 0
-offset_left = 184.0
-offset_top = 338.0
-offset_right = 230.0
-offset_bottom = 529.0
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
-script = ExtResource("2_lms07")
+offset_left = 109.0
+offset_right = 155.0
+synth = NodePath("../..")
+
+[node name="D4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
+layout_mode = 0
+offset_left = 181.0
+offset_right = 227.0
+synth = NodePath("../..")
 frequency = 155.56
 
-[node name="F4#" type="Button" parent="Black_key"]
+[node name="F4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
 layout_mode = 0
-offset_left = 332.0
-offset_top = 338.0
-offset_right = 378.0
-offset_bottom = 529.0
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
-script = ExtResource("2_lms07")
+offset_left = 331.0
+offset_right = 377.0
+synth = NodePath("../..")
 frequency = 185.0
 
-[node name="G4#" type="Button" parent="Black_key"]
+[node name="G4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
 layout_mode = 0
-offset_left = 406.0
-offset_top = 338.0
-offset_right = 452.0
-offset_bottom = 529.0
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
-script = ExtResource("2_lms07")
+offset_left = 405.0
+offset_right = 451.0
+synth = NodePath("../..")
 frequency = 207.65
 
-[node name="A4#" type="Button" parent="Black_key"]
+[node name="A4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
 layout_mode = 0
-offset_left = 480.0
-offset_top = 338.0
-offset_right = 526.0
-offset_bottom = 529.0
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
-script = ExtResource("2_lms07")
+offset_left = 479.0
+offset_right = 525.0
+synth = NodePath("../..")
 frequency = 233.08
 
-[node name="C5#" type="Button" parent="Black_key"]
+[node name="C5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
 layout_mode = 0
-offset_left = 626.0
-offset_top = 338.0
-offset_right = 672.0
-offset_bottom = 529.0
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
-script = ExtResource("2_lms07")
-frequency = 277.18
+offset_left = 627.0
+offset_right = 673.0
+synth = NodePath("../..")
+frequency = 275.18
 
-[node name="D5#" type="Button" parent="Black_key"]
+[node name="D5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
 layout_mode = 0
-offset_left = 703.0
-offset_top = 338.0
-offset_right = 749.0
-offset_bottom = 529.0
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
-script = ExtResource("2_lms07")
+offset_left = 701.0
+offset_right = 747.0
+synth = NodePath("../..")
 frequency = 311.13
 
-[node name="F5#" type="Button" parent="Black_key"]
+[node name="F5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
 layout_mode = 0
-offset_left = 850.0
-offset_top = 338.0
-offset_right = 896.0
-offset_bottom = 529.0
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
-script = ExtResource("2_lms07")
+offset_left = 849.0
+offset_right = 895.0
+synth = NodePath("../..")
 frequency = 369.99
 
-[node name="G5#" type="Button" parent="Black_key"]
+[node name="G5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
 layout_mode = 0
-offset_left = 924.0
-offset_top = 338.0
-offset_right = 970.0
-offset_bottom = 529.0
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
-script = ExtResource("2_lms07")
+offset_left = 923.0
+offset_right = 969.0
+synth = NodePath("../..")
 frequency = 415.3
 
-[node name="A5#" type="Button" parent="Black_key"]
+[node name="A5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
 layout_mode = 0
-offset_left = 1000.0
-offset_top = 338.0
-offset_right = 1046.0
-offset_bottom = 529.0
-size_flags_horizontal = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
-script = ExtResource("2_lms07")
+offset_left = 997.0
+offset_right = 1043.0
+synth = NodePath("../..")
 frequency = 466.16
 
 [connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_wave" to="." method="_on_wave_type_value_changed"]

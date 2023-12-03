@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm4g6avx25r34"]
+
+[ext_resource type="Script" path="res://Synth/SynthKey/White_key.gd" id="1_w1oxq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cmn58"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_2m17m"]
+buffer_length = 7.0
+
+[node name="synth_key_black" type="Button"]
+offset_left = 110.0
+offset_top = 338.0
+offset_right = 156.0
+offset_bottom = 529.0
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_cmn58")
+script = ExtResource("1_w1oxq")
+frequency = 138.59
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamGenerator_2m17m")
