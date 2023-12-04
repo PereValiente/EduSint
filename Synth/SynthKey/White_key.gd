@@ -84,13 +84,7 @@ func play_state(new_state : State):
 	
 	#Create buffer and play buffer
 	
-	var buffer = oscillator(new_state, buffer_length, previous_frame)
-	audio_stream_player.stop()
-	
-	if playback:
-		playback.clear_buffer()
-	
-	await get_tree().process_frame
+	var buffer = oscillator(new_state, buffer_length, previous_frame)	
 	
 	audio_stream_player.play()
 	playback = audio_stream_player.get_stream_playback()

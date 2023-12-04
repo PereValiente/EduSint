@@ -6,6 +6,7 @@
 bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_2m17m"]
+mix_rate = 22050.0
 buffer_length = 7.0
 
 [node name="synth_key_black" type="Button"]
