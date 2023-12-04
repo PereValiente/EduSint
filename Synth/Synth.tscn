@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cm4g6avx25r34" path="res://Synth/SynthKey/synth_key_black.tscn" id="10_yb2rn"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_yjr14"]
+mix_rate = 22050.0
 buffer_length = 7.0
 
 [node name="Synth" type="CanvasLayer"]
@@ -180,7 +181,7 @@ layout_mode = 2
 size_flags_horizontal = 6
 theme_override_icons/grabber = ExtResource("2_1ftdj")
 theme_override_icons/grabber_highlight = ExtResource("2_1ftdj")
-max_value = 4.0
+max_value = 1.0
 step = 0.001
 script = ExtResource("7_u0w80")
 
