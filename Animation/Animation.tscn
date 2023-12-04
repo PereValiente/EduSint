@@ -147,6 +147,7 @@ sprite_frames = SubResource("SpriteFrames_uo2yd")
 animation = &"Character_talk"
 
 [node name="First_animation" type="Node2D" parent="."]
+visible = false
 
 [node name="Timer" type="Timer" parent="First_animation"]
 process_callback = 0

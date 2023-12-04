@@ -1,7 +1,8 @@
-res://default_bus_layout.tres
+res://Animation/Animation.tscn
 res://Synth/Synth.tscn
 res://Settings/Settings.tscn
 res://Game/game.tscn
 res://Main_menu/main.tscn
-res://Animation/Animation.tscn
 res://Dialogues/small_balloon.tscn
+res://Synth/SynthKey/White_key.gd
+res://Synth/SynthKey/synth_key.tscn
