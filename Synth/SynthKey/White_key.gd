@@ -25,7 +25,7 @@ var total_sample_envelope = 0
 
 var state_start_time : float 
 
-var print_buffer : PackedVector2Array 
+var print_buffer : PackedVector2Array
 
 
 func _ready():
@@ -52,11 +52,11 @@ func on_stream_finished():
 			play_state(State.Sustain)
 		State.Release:
 			audio_stream_player.stop()
-			save_buffer("res://buffers/whole_buffer.txt", print_buffer)
+#			save_buffer("res://buffers/whole_buffer_4.txt", print_buffer)
 
 
 func play_state(new_state : State):
-	print(new_state)
+	print("State: " + str(new_state))
 	
 	#Calculate buffer length
 	var buffer_length : float = 0
@@ -67,26 +67,30 @@ func play_state(new_state : State):
 		State.Decay:
 			buffer_length = synth.adsr_decay * synth.sample_rate
 		State.Sustain:
-			buffer_length = int(synth.adsr_sustain * synth.sample_rate)
+			buffer_length = synth.adsr_sustain * synth.sample_rate
 		State.Release:
 			buffer_length =  synth.adsr_release * synth.sample_rate
 	
-	#Check if we have previous state
-	var current_frame_value = 1
-	if new_state != State.Attack:
-		var current_time = Time.get_ticks_msec() / 1000.0 #Miliseconds => Seconds
-		var elapsed_time = current_time - state_start_time
-		
-		var current_frame = int(elapsed_time * synth.sample_rate) %  current_table.size()
-		current_frame_value = get_envelope(state, current_frame, current_table.size())
+	if buffer_length <= 0: #Go to next state if this one is lenght == 0
+		state = new_state
+		on_stream_finished()
+		return
 	
+	
+	var current_time = Time.get_ticks_msec() / 1000.0 #Miliseconds => Seconds
+	var elapsed_time = current_time - state_start_time
+	
+	var previous_frame = elapsed_time * synth.sample_rate
 	
 	#Create buffer and play buffer
-	var buffer = oscillator(new_state, buffer_length, current_frame_value)	
+	
+	var buffer = oscillator(new_state, buffer_length, previous_frame)
 	audio_stream_player.stop()
 	
 	if playback:
 		playback.clear_buffer()
+	
+	await get_tree().process_frame
 	
 	audio_stream_player.play()
 	playback = audio_stream_player.get_stream_playback()
@@ -100,10 +104,10 @@ func play_state(new_state : State):
 	timer_state.start(buffer_length / synth.sample_rate)
 	
 
-func oscillator(oscilator_state:State, max_frames:int, multiplier:float = 1) -> PackedVector2Array: 
+func oscillator(oscilator_state:State, max_frames:int, previous_frame:float) -> PackedVector2Array: 
 	var return_array : PackedVector2Array = []
 	
-	var index = 0.0
+	var index = previous_frame
 	var index_increment = (frequency * synth.sample_wave) / synth.sample_rate
 	var table = synth.get_current_wave()
 	var gain_dB = -20
@@ -124,6 +128,7 @@ func oscillator(oscilator_state:State, max_frames:int, multiplier:float = 1) -> 
 		
 		var output = 0.0
 		var envelope = get_envelope(oscilator_state, i, max_frames)
+		
 		output = cubic_interpolate(p0,p1,p2,p3,p)
 		index += index_increment
 		index = int(index + index_increment) % synth.sample_wave
@@ -132,8 +137,8 @@ func oscillator(oscilator_state:State, max_frames:int, multiplier:float = 1) -> 
 			output = dpw_algorithm(output)
 		
 		output *= amplitude * envelope * correction_amplitude_filter #aplicar a la salida el valor de amplitud y envolvente
-		return_array.push_back(Vector2.ONE * output * multiplier)
-		print_buffer.push_back(Vector2.ONE * output * multiplier)
+		return_array.push_back(Vector2.ONE * output)
+		print_buffer.push_back(Vector2.ONE * output)
 	
 	if synth.wave_type == 3: #Avoid Artifacts
 		if return_array.size() > 2:
@@ -145,17 +150,24 @@ func oscillator(oscilator_state:State, max_frames:int, multiplier:float = 1) -> 
 	return return_array
 
 
-func get_envelope(oscilator_state : State, current_frame:float, frame_count):
+func get_envelope(oscilator_state : State, current_frame:float, frame_count:float):
 	match oscilator_state:
 		State.Attack:
 			return current_frame / frame_count
 		State.Decay:
-			return remap(current_frame / frame_count, 0.0, 1.0, synth.adsr_attack, synth.adsr_sustain)
+			return remap(current_frame / frame_count, 0.0, 1.0, 1.0, synth.adsr_sustain)
 		State.Sustain:
 			return synth.adsr_sustain
 		State.Release:
-			return (1.0 - current_frame / frame_count)
-	
+			var current_time = Time.get_ticks_msec() / 1000.0 #Miliseconds => Seconds
+			var elapsed_time = current_time - state_start_time
+			
+			var previous_frame = elapsed_time * synth.sample_rate
+			previous_frame = clamp(previous_frame, 0, current_table.size())
+			var pre_release_value = get_envelope(state, previous_frame, current_table.size())
+			
+			return remap(current_frame / frame_count, 0.0, 1.0, pre_release_value, 0.0)
+
 
 func dpw_algorithm(input_sample):
 	input_sample *= input_sample
@@ -173,8 +185,8 @@ func difference_filter(input_sample): #H(z)=1-z^-1 filtro de retardo unitario di
 
 func save_buffer(fileName, buffer):
 	var to_string = ""
-	for vector2 in buffer:
-		to_string += str(vector2.x) + ","
+	for value in buffer:
+		to_string += str(value.x) + ","
 	
 	var file = FileAccess.open(fileName, FileAccess.WRITE)
 	file.store_string(to_string)
