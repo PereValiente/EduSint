@@ -4,5 +4,7 @@ res://Settings/Settings.tscn
 res://Game/game.tscn
 res://Main_menu/main.tscn
 res://Dialogues/small_balloon.tscn
-res://Synth/SynthKey/White_key.gd
 res://Synth/SynthKey/synth_key.tscn
+res://Animation/Animation.gd
+res://Dialogues/balloon.gd
+res://Settings/Settings.gd

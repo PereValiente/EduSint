@@ -1,13 +1,13 @@
 ~ this_is_a_node_title
 set select_sound = 1
+do sint_talk()
 Sint: Bip bop bip bip. [wait=1] Quiero decir saludos, soy Sint. 
-Sint: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => this_is_a_node_title
-- End the conversation => END
-Nathan: For more information see the online documentation.
-
+Sint: Necesito tu ayuda. Antes de que la inteligencia artificial lo destruyera todo, conseguí salvar un objeto.
+Sint: No sé muy bien qué es ni como funciona, pero creo que puede ser algo importante.
+Sint: ¿Puedes guardarlo e investigar cómo funciona?
+- Sí, claro!
+	Sint: Sabía que podría confiar contigo, aquí tienes.
+- No me ralles. 
+	Nathan: Pues me da igual, te lo doy de todos modos y espabílate.
+do show_synth()
 => END

@@ -30,6 +30,8 @@ var will_hide_balloon: bool = false
 ## The current line
 var dialogue_line: DialogueLine:
 	set(next_dialogue_line):
+		#AFEGIT ELIEEES!!
+		var finish_write: bool = false
 		is_waiting_for_input = false
 
 		# The dialogue has finished so close the balloon
@@ -56,6 +58,8 @@ var dialogue_line: DialogueLine:
 		if not dialogue_line.text.is_empty():
 			dialogue_label.type_out()
 			await dialogue_label.finished_typing
+			#AFEGIT ELIEEES!!
+			finish_write = true 
 
 		# Wait for input
 		if dialogue_line.responses.size() > 0:

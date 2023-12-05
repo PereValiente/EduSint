@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dy6wmog2cla22"]
+[gd_scene load_steps=26 format=3 uid="uid://dy6wmog2cla22"]
 
 [ext_resource type="Script" path="res://Animation/Background/ParallaxBackground.gd" id="1_cvn7a"]
 [ext_resource type="Script" path="res://Animation/Animation.gd" id="1_pqcsg"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://bt3ud4wtwwmpa" path="res://Animation/UI Animation/exclamation_button_yellow.png" id="12_hcux2"]
 [ext_resource type="Texture2D" uid="uid://coeymhdmn5mdf" path="res://Animation/UI Animation/exclamation_button_red.png" id="12_xgf1g"]
 [ext_resource type="Texture2D" uid="uid://bo5lhvaqrqn0d" path="res://Animation/UI Animation/Synth.PNG" id="14_qh26i"]
+[ext_resource type="Texture2D" uid="uid://boo5hyw81aww2" path="res://Animation/UI Animation/transparentLight23.png" id="15_nm7oj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uo2yd"]
 animations = [{
@@ -116,6 +117,12 @@ _data = {
 "popup": SubResource("Animation_5p51p")
 }
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o5qpw"]
+texture = ExtResource("15_nm7oj")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2nwse"]
+texture = ExtResource("15_nm7oj")
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -191,7 +198,7 @@ offset_right = 577.5
 offset_bottom = 324.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.6, 0.6)
+scale = Vector2(1e-05, 1e-05)
 pivot_offset = Vector2(577, 324)
 texture = ExtResource("14_qh26i")
 
@@ -200,5 +207,26 @@ libraries = {
 "": SubResource("AnimationLibrary_a4j2i")
 }
 
+[node name="Go_synth" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 575.0
+offset_bottom = 648.0
+grow_horizontal = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/margin_left = 1036
+theme_override_constants/margin_top = 17
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 10
+
+[node name="Go_synth" type="Button" parent="Go_synth"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_o5qpw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2nwse")
+
 [connection signal="timeout" from="First_animation/Timer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="First_animation/TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="Go_synth/Go_synth" to="." method="_on_go_synth_pressed"]
