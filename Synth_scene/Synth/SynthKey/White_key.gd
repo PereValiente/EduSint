@@ -88,6 +88,10 @@ func play_state(new_state : State):
 #		save_buffer("res://buffers/whole_buffer_8.txt", print_buffer)
 		return
 	
+	if new_state == State.Sustain and state == State.Sustain:
+		increment_frame_index = 0 #Reuse last buffer
+		return
+	
 	
 	#Calculate buffer length
 	var state_length : float = 0
