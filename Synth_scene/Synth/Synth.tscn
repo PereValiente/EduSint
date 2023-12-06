@@ -12,8 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cm4g6avx25r34" path="res://Synth_scene/Synth/SynthKey/synth_key_black.tscn" id="10_i226n"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_yjr14"]
-mix_rate = 22050.0
-buffer_length = 7.0
+buffer_length = 0.1
 
 [node name="Synth" type="CanvasLayer"]
 script = ExtResource("1_8dr87")

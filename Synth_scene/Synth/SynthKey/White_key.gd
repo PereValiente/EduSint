@@ -6,24 +6,23 @@ class_name SynthKey
 @export var frequency : float
 
 @onready var audio_stream_player = $AudioStreamPlayer
-@onready var timer_state = $Timer_State
 
 var playback : AudioStreamGeneratorPlayback
 
 enum State{
+	Stopped,
 	Attack,
 	Decay,
 	Sustain,
 	Release
 }
 
-var state : State
-var current_table : PackedVector2Array
+var state : State = State.Stopped
+var increment_buffer : PackedVector2Array
+var increment_frame_index : int = 0
 
 var previous_sample = 0.0
 var total_sample_envelope = 0
-
-var state_start_time : float 
 
 var print_buffer : PackedVector2Array
 
@@ -31,10 +30,36 @@ var print_buffer : PackedVector2Array
 func _ready():
 	button_down.connect(on_button_down)
 	button_up.connect(on_button_up)
-	timer_state.timeout.connect(on_stream_finished)
+
+
+func _process(_delta):
+	if state != State.Stopped:
+		_fill_buffer()
+
+
+func _fill_buffer():
+	var generator_new_buffer : PackedVector2Array = []
+	
+	var to_fill = playback.get_frames_available()
+	for i in to_fill:
+		generator_new_buffer.push_back(increment_buffer[increment_frame_index])
+		
+		increment_frame_index += 1
+		
+		if increment_frame_index >= increment_buffer.size():
+			on_state_finished()
+		
+		if state == State.Stopped:
+			return
+	
+	playback.push_buffer(generator_new_buffer)
+
 
 
 func on_button_down():
+	audio_stream_player.play()
+	playback = audio_stream_player.get_stream_playback()
+	
 	play_state(State.Attack)
 
 
@@ -42,7 +67,7 @@ func on_button_up():
 	play_state(State.Release)
 
 
-func on_stream_finished():
+func on_state_finished():
 	match state:
 		State.Attack:
 			play_state(State.Decay)
@@ -51,57 +76,52 @@ func on_stream_finished():
 		State.Sustain:
 			play_state(State.Sustain)
 		State.Release:
-			audio_stream_player.stop()
-#			save_buffer("res://buffers/whole_buffer_4.txt", print_buffer)
+			play_state(State.Stopped)
 
 
 func play_state(new_state : State):
 	print("State: " + str(new_state))
 	
-	#Calculate buffer length
-	var buffer_length : float = 0
-	match new_state:
-		State.Attack:
-			print_buffer = []
-			buffer_length = synth.adsr_attack * synth.sample_rate
-		State.Decay:
-			buffer_length = synth.adsr_decay * synth.sample_rate
-		State.Sustain:
-			buffer_length = synth.adsr_sustain * synth.sample_rate
-		State.Release:
-			buffer_length =  synth.adsr_release * synth.sample_rate
-	
-	if buffer_length <= 0: #Go to next state if this one is lenght == 0
-		state = new_state
-		on_stream_finished()
+	if new_state == State.Stopped:
+		audio_stream_player.stop()
+		state = State.Stopped
+#		save_buffer("res://buffers/whole_buffer_4.txt", print_buffer)
 		return
 	
 	
-	var current_time = Time.get_ticks_msec() / 1000.0 #Miliseconds => Seconds
-	var elapsed_time = current_time - state_start_time
+	#Calculate buffer length
+	var state_length : float = 0
+	match new_state:
+		State.Attack:
+			print_buffer = [] 
+			state_length = synth.adsr_attack * synth.sample_rate
+		State.Decay:
+			state_length = synth.adsr_decay * synth.sample_rate
+		State.Sustain:
+			state_length = synth.adsr_sustain * synth.sample_rate
+		State.Release:
+			state_length =  synth.adsr_release * synth.sample_rate
 	
-	var previous_frame = elapsed_time * synth.sample_rate
+	if state_length <= 0: #Go to next state if this one is lenght == 0
+		state = new_state
+		on_state_finished()
+		return
+	
 	
 	#Create buffer and play buffer
-	
-	var buffer = oscillator(new_state, buffer_length, previous_frame)	
-	
-	audio_stream_player.play()
-	playback = audio_stream_player.get_stream_playback()
-	playback.push_buffer(buffer)
+	var buffer = oscillator(new_state, state_length)
+	increment_frame_index = 0
 	
 	#Update state machine
 	state = new_state
-	state_start_time = Time.get_ticks_msec() / 1000.0 #Miliseconds => Seconds
-	current_table = buffer
+	increment_buffer = buffer
 	
-	timer_state.start(buffer_length / synth.sample_rate)
 	
 
-func oscillator(oscilator_state:State, max_frames:int, previous_frame:float) -> PackedVector2Array: 
+func oscillator(oscilator_state:State, max_frames:int) -> PackedVector2Array: 
 	var return_array : PackedVector2Array = []
 	
-	var index = previous_frame
+	var index = increment_frame_index
 	var index_increment = (frequency * synth.sample_wave) / synth.sample_rate
 	var table = synth.get_current_wave()
 	var gain_dB = -20
@@ -153,12 +173,9 @@ func get_envelope(oscilator_state : State, current_frame:float, frame_count:floa
 		State.Sustain:
 			return synth.adsr_sustain
 		State.Release:
-			var current_time = Time.get_ticks_msec() / 1000.0 #Miliseconds => Seconds
-			var elapsed_time = current_time - state_start_time
-			
-			var previous_frame = elapsed_time * synth.sample_rate
-			previous_frame = clamp(previous_frame, 0, current_table.size())
-			var pre_release_value = get_envelope(state, previous_frame, current_table.size())
+			var previous_frame = increment_frame_index
+			previous_frame = clamp(previous_frame, 0, increment_buffer.size())
+			var pre_release_value = get_envelope(state, previous_frame, increment_buffer.size())
 			
 			return remap(current_frame / frame_count, 0.0, 1.0, pre_release_value, 0.0)
 
