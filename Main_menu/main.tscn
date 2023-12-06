@@ -1,12 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://biyyejk3jgomd"]
+[gd_scene load_steps=6 format=3 uid="uid://biyyejk3jgomd"]
 
 [ext_resource type="Script" path="res://Main_menu/src/menu_controller.gd" id="1_7x6vp"]
-[ext_resource type="Texture2D" uid="uid://c7ycnhy7dx87w" path="res://Main_menu/res/00000.png" id="1_lg33l"]
 [ext_resource type="PackedScene" uid="uid://dy6wmog2cla22" path="res://Animation/Animation.tscn" id="2_1ftrh"]
-[ext_resource type="LabelSettings" uid="uid://1oyxx8ys1m6d" path="res://Main_menu/font.res" id="2_yfgsl"]
+[ext_resource type="Texture2D" uid="uid://f42fe8btugkt" path="res://Main_menu/menu.jpg" id="3_pt7cx"]
 [ext_resource type="Script" path="res://Main_menu/src/Scroll_Label.gd" id="3_v2ba3"]
-[ext_resource type="PackedScene" uid="uid://dvihby5h57lu1" path="res://Synth_scene/Settings/Settings.tscn" id="5_4w0wu"]
-[ext_resource type="PackedScene" uid="uid://kwr6dwirb8jd" path="res://Synth_scene/Synth/Synth.tscn" id="6_6asog"]
+[ext_resource type="AudioStream" uid="uid://b150c8hse1c3a" path="res://Main_menu/Música Menú.mp3" id="8_y6rj2"]
 
 [node name="main" type="Node"]
 
@@ -22,8 +20,9 @@ script = ExtResource("1_7x6vp")
 scene_animation = ExtResource("2_1ftrh")
 
 [node name="Bg" type="Sprite2D" parent="MainMenu"]
-position = Vector2(960, 544)
-texture = ExtResource("1_lg33l")
+position = Vector2(509, 325)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_pt7cx")
 
 [node name="MainContainer" type="VBoxContainer" parent="MainMenu"]
 unique_name_in_owner = true
@@ -77,148 +76,7 @@ custom_minimum_size = Vector2(0, 500)
 layout_mode = 2
 tab_alignment = 1
 
-[node name="Video" type="TabBar" parent="MainMenu/OptionContainer/TabContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
-[node name="General_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video"]
-layout_mode = 0
-offset_left = 26.0
-offset_top = 2.0
-offset_right = 95.0
-offset_bottom = 31.0
-text = "General"
-label_settings = ExtResource("2_yfgsl")
-
-[node name="Resolution_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video"]
-layout_mode = 0
-offset_left = 82.0
-offset_top = 42.0
-offset_right = 173.0
-offset_bottom = 68.0
-text = "Resolution :"
-
-[node name="Resolution_Optionbutton" type="OptionButton" parent="MainMenu/OptionContainer/TabContainer/Video"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 26.0
-offset_top = 72.5
-offset_right = 210.0
-offset_bottom = 103.5
-item_count = 10
-popup/item_0/text = "640x480"
-popup/item_0/id = 0
-popup/item_1/text = "800x600"
-popup/item_1/id = 1
-popup/item_2/text = "1024x768"
-popup/item_2/id = 2
-popup/item_3/text = "1280x720"
-popup/item_3/id = 3
-popup/item_4/text = "1366x768"
-popup/item_4/id = 4
-popup/item_5/text = "1600x900"
-popup/item_5/id = 5
-popup/item_6/text = "1920x1080"
-popup/item_6/id = 6
-popup/item_7/text = "2560x1440"
-popup/item_7/id = 7
-popup/item_8/text = "3840x2160"
-popup/item_8/id = 8
-popup/item_9/text = "7680x4320"
-popup/item_9/id = 9
-
-[node name="WindowMode_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video"]
-layout_mode = 0
-offset_left = 314.0
-offset_top = 42.0
-offset_right = 434.0
-offset_bottom = 68.0
-text = "Window Mode :"
-
-[node name="WindowMode_Optionbutton" type="OptionButton" parent="MainMenu/OptionContainer/TabContainer/Video"]
-layout_mode = 0
-offset_left = 298.0
-offset_top = 73.0
-offset_right = 474.0
-offset_bottom = 105.0
-
-[node name="Vsync_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video"]
-layout_mode = 0
-offset_left = 100.0
-offset_top = 132.0
-offset_right = 145.0
-offset_bottom = 158.0
-text = "Vsync"
-
-[node name="Vsync_OptionButton" type="OptionButton" parent="MainMenu/OptionContainer/TabContainer/Video"]
-layout_mode = 0
-offset_left = 26.0
-offset_top = 169.0
-offset_right = 210.0
-offset_bottom = 201.0
-item_count = 4
-popup/item_0/text = "off"
-popup/item_0/id = 0
-popup/item_1/text = "Normal"
-popup/item_1/id = 1
-popup/item_2/text = "Adaptative"
-popup/item_2/id = 2
-popup/item_3/text = "MailBox"
-popup/item_3/id = 3
-
-[node name="Color_blind" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video"]
-layout_mode = 0
-offset_left = 318.0
-offset_top = 131.0
-offset_right = 451.0
-offset_bottom = 157.0
-text = "Color blind mode"
-
-[node name="ColorBlind_OptionButton" type="OptionButton" parent="MainMenu/OptionContainer/TabContainer/Video"]
-layout_mode = 0
-offset_left = 298.0
-offset_top = 169.0
-offset_right = 474.0
-offset_bottom = 200.0
-item_count = 4
-selected = 0
-popup/item_0/text = "OFF"
-popup/item_0/id = 0
-popup/item_1/text = "Protanopia"
-popup/item_1/id = 1
-popup/item_2/text = "Deuteranopia"
-popup/item_2/id = 2
-popup/item_3/text = "Tritanopia"
-popup/item_3/id = 3
-
-[node name="Graphics_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video"]
-layout_mode = 0
-offset_left = 26.0
-offset_top = 256.0
-offset_right = 103.0
-offset_bottom = 285.0
-text = "Graphics"
-label_settings = ExtResource("2_yfgsl")
-
-[node name="Preset_HSlider" type="HSlider" parent="MainMenu/OptionContainer/TabContainer/Video"]
-layout_mode = 0
-offset_left = 26.0
-offset_top = 342.0
-offset_right = 378.0
-offset_bottom = 358.0
-max_value = 20.0
-step = 5.0
-value = 5.0
-
-[node name="Preset_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Video/Preset_HSlider"]
-layout_mode = 0
-offset_top = -24.0
-offset_right = 352.0
-offset_bottom = -1.0
-text = " Low  	   medium          high 	    very high      ultra"
-
 [node name="Sound" type="TabBar" parent="MainMenu/OptionContainer/TabContainer"]
-visible = false
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
@@ -317,19 +175,15 @@ layout_mode = 2
 text = "Return
 "
 
-[node name="Settings" parent="." instance=ExtResource("5_4w0wu")]
-visible = false
-
-[node name="Synth" parent="." instance=ExtResource("6_6asog")]
-visible = false
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_y6rj2")
+volume_db = -12.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="MainMenu/MainContainer/Start_button" to="MainMenu" method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/MainContainer/Option_button" to="MainMenu" method="_on_option_button_pressed"]
 [connection signal="pressed" from="MainMenu/MainContainer/Exit_button" to="MainMenu" method="_on_exit_button_pressed"]
-[connection signal="item_selected" from="MainMenu/OptionContainer/TabContainer/Video/Resolution_Optionbutton" to="MainMenu" method="_on_resolution_optionbutton_item_selected"]
-[connection signal="item_selected" from="MainMenu/OptionContainer/TabContainer/Video/WindowMode_Optionbutton" to="MainMenu" method="_on_window_mode_optionbutton_item_selected"]
-[connection signal="item_selected" from="MainMenu/OptionContainer/TabContainer/Video/Vsync_OptionButton" to="MainMenu" method="_on_vsync_option_button_item_selected"]
-[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Video/Preset_HSlider" to="MainMenu" method="_on_preset_h_slider_value_changed"]
 [connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar" to="MainMenu" method="_on_general_h_scroll_bar_value_changed"]
 [connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar" to="MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar/Scroll_Label" method="_on_h_scroll_bar_value_changed"]
 [connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar" to="MainMenu" method="_on_music_h_scroll_bar_value_changed"]

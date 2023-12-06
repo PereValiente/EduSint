@@ -11,6 +11,7 @@ extends CanvasLayer
 
 
 func _ready():
+	await get_tree().create_timer(2).timeout
 	face_talk.play("Face_talk")
 	#Dialogo inicial
 	DialogueManager.show_dialogue_balloon(load("res://Animation/introduction.dialogue"),"animation_dialogue")

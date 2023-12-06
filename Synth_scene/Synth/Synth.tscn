@@ -20,7 +20,7 @@ script = ExtResource("1_8dr87")
 
 [node name="Synth_audio_1" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamGenerator_yjr14")
-bus = &"music"
+bus = &"Sintetizador"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

@@ -20,6 +20,7 @@ frequency = 130.81
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamGenerator_t87uf")
+bus = &"Sintetizador"
 
 [node name="Timer_State" type="Timer" parent="."]
 one_shot = true

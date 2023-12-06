@@ -1,14 +1,14 @@
+Timer
+AudioStreamPlayer
 Node
 CanvasLayer
 AnimationPlayer
-AudioStreamPlayer
 Panel
 TextureRect
 MarginContainer
 TextureButton
 Button
 Node2D
-Timer
 TextEdit
 DialogueLabel
 AnimatedSprite2D

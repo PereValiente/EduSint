@@ -6,7 +6,6 @@ extends Control
 # Check out Colorblind addon for godot : https://github.com/paulloz/godot-colorblindness
 #--
 
-@onready var Resolution_ob = get_node("%Resolution_Optionbutton")
 @onready var OptionContainer = get_node("%OptionContainer")
 @onready var MainContainer = get_node("%MainContainer")
 @export var scene_animation : PackedScene
@@ -14,38 +13,20 @@ extends Control
 # Config file
 # Move it into a singleton 
 var SettingsFile = ConfigFile.new()
-#--
-var Vsync : int = 0
 # I'm a Vector3 instead of 3 var float
 # - x : General , y : Music , z : SFX
 var Audio : Vector3 = Vector3(70.0,70.0,70.0)
 
 
-func _get_resolution(index) -> Vector2i:
-	var resolution_arr = Resolution_ob.get_item_text(index).split("x")
-	return Vector2i(int(resolution_arr[0]),int(resolution_arr[1]))
-
-func _check_resolution( resolution : Vector2i):
-	for i in Resolution_ob.get_item_count() :
-		if _get_resolution(i) == resolution :
-			return i
-
 func _first_time() -> void:
 	DisplayServer.window_set_size(DisplayServer.screen_get_size())
 	DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_MAXIMIZED)
-	DisplayServer.window_set_vsync_mode(Vsync)
-	Resolution_ob.select(_check_resolution(DisplayServer.screen_get_size()))
-	# -- Video
-	SettingsFile.set_value("VIDEO","Resolution",_get_resolution(Resolution_ob.get_index()))
-	SettingsFile.set_value("VIDEO","Vsync",Vsync)
-	SettingsFile.set_value("VIDEO","Window Mode",_get_resolution(Resolution_ob.get_index()))
-	SettingsFile.set_value("VIDEO","Graphics",_get_resolution(Resolution_ob.get_index()))
-	SettingsFile.set_value("VIDEO","Color blind",_get_resolution(Resolution_ob.get_index()))
+	#DisplayServer.window_set_vsync_mode(Vsync)
 	# -- Audio
-	SettingsFile.set_value("AUDIO","General",Audio.x)
-	SettingsFile.set_value("AUDIO","Music",Audio.y)
-	SettingsFile.set_value("AUDIO","SFX",Audio.z)
-	
+	SettingsFile.set_value("Audio","Master",Audio.x)
+	SettingsFile.set_value("Audio","Music",Audio.y)
+	SettingsFile.set_value("Audio","Efectos de sonido",Audio.z)
+
 	SettingsFile.save("res://settings.cfg")
 
 
@@ -55,28 +36,12 @@ func _load_settings():
 	else:
 		pass
 func _save_settings() -> void:
-	# -- Video
-	SettingsFile.set_value("VIDEO","Resolution",_get_resolution(Resolution_ob.get_index()))
-	SettingsFile.set_value("VIDEO","Vsync",Vsync)
-	SettingsFile.set_value("VIDEO","Window Mode",_get_resolution(Resolution_ob.get_index()))
-	SettingsFile.set_value("VIDEO","Graphics",_get_resolution(Resolution_ob.get_index()))
-	SettingsFile.set_value("VIDEO","Color blind",_get_resolution(Resolution_ob.get_index()))
 	# -- Audio
-	SettingsFile.set_value("AUDIO","General",Audio.x)
-	SettingsFile.set_value("AUDIO","Music",Audio.y)
-	SettingsFile.set_value("AUDIO","SFX",Audio.z)
+	SettingsFile.set_value("Audio","Master",Audio.x)
+	SettingsFile.set_value("Audio","Music",Audio.y)
+	SettingsFile.set_value("Audio","Efectos de sonido",Audio.z)
 	
 	SettingsFile.save("res://settings.cfg")
-
-
-
-func _ready():
-	_load_settings()
-	Resolution_ob.select(_check_resolution(DisplayServer.screen_get_size()))
-
-
-
-
 
 
 func _on_start_button_pressed():
@@ -94,17 +59,8 @@ func _on_exit_button_pressed():
 	get_tree().quit()
 
 
-# -- VIDEO TAB --
-
-func _on_resolution_optionbutton_item_selected(index):
-	DisplayServer.window_set_size(_get_resolution(index))
-
-
-
 func _on_window_mode_optionbutton_item_selected(index):
 	pass # Replace with function body.
-
-
 
 
 func _on_preset_h_slider_value_changed(value):
@@ -140,6 +96,6 @@ func _on_apply_button_pressed():
 
 
 
-func _on_vsync_option_button_item_selected(index):
-	# check the documentation about Vsync : https://docs.godotengine.org/en/stable/classes/class_displayserver.html#enum-displayserver-vsyncmode
-	Vsync = index
+#func _on_vsync_option_button_item_selected(index):
+	## check the documentation about Vsync : https://docs.godotengine.org/en/stable/classes/class_displayserver.html#enum-displayserver-vsyncmode
+	#Vsync = index
