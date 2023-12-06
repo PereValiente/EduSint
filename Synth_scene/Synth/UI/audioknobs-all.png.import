@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmnxug6twwcxx"
-path="res://.godot/imported/flatDark30.png-585213f221a46a1517c68295c8849ea5.ctex"
+uid="uid://b560bd1tdrcr3"
+path="res://.godot/imported/audioknobs-all.png-6e122fb2d8b11d1c59c1c3d2843aacd0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Synth/UI/flatDark30.png"
-dest_files=["res://.godot/imported/flatDark30.png-585213f221a46a1517c68295c8849ea5.ctex"]
+source_file="res://Synth_scene/Synth/UI/audioknobs-all.png"
+dest_files=["res://.godot/imported/audioknobs-all.png-6e122fb2d8b11d1c59c1c3d2843aacd0.ctex"]
 
 [params]
 

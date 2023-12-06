@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cblsxt4rybwvh"
-path="res://.godot/imported/transparentDark29.png-b14deed97e8592b15b78046abcdc71aa.ctex"
+uid="uid://bo5f7wv2tirih"
+path="res://.godot/imported/lineDark26.png-19bb88e15fa7cb8313b021c8f50e8443.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Synth/UI/transparentDark29.png"
-dest_files=["res://.godot/imported/transparentDark29.png-b14deed97e8592b15b78046abcdc71aa.ctex"]
+source_file="res://Synth_scene/Synth/UI/lineDark26.png"
+dest_files=["res://.godot/imported/lineDark26.png-19bb88e15fa7cb8313b021c8f50e8443.ctex"]
 
 [params]
 

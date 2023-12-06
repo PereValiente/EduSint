@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvp0ebffdw5cb"
-path="res://.godot/imported/grabber.png-772506f800bd8616d4f9d5e75e06b873.ctex"
+uid="uid://bkw208nsll0on"
+path="res://.godot/imported/transparentLight29.png-67cc4a36687646ebe50504ea8cdfcfcd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Synth/UI/grabber.png"
-dest_files=["res://.godot/imported/grabber.png-772506f800bd8616d4f9d5e75e06b873.ctex"]
+source_file="res://Synth_scene/Synth/UI/transparentLight29.png"
+dest_files=["res://.godot/imported/transparentLight29.png-67cc4a36687646ebe50504ea8cdfcfcd.ctex"]
 
 [params]
 

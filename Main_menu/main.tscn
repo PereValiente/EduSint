@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://biyyejk3jgomd"]
+[gd_scene load_steps=8 format=3 uid="uid://biyyejk3jgomd"]
 
 [ext_resource type="Script" path="res://Main_menu/src/menu_controller.gd" id="1_7x6vp"]
 [ext_resource type="Texture2D" uid="uid://c7ycnhy7dx87w" path="res://Main_menu/res/00000.png" id="1_lg33l"]
+[ext_resource type="PackedScene" uid="uid://dy6wmog2cla22" path="res://Animation/Animation.tscn" id="2_1ftrh"]
 [ext_resource type="LabelSettings" uid="uid://1oyxx8ys1m6d" path="res://Main_menu/font.res" id="2_yfgsl"]
 [ext_resource type="Script" path="res://Main_menu/src/Scroll_Label.gd" id="3_v2ba3"]
-[ext_resource type="PackedScene" uid="uid://dvihby5h57lu1" path="res://Settings/Settings.tscn" id="5_4w0wu"]
-[ext_resource type="PackedScene" uid="uid://kwr6dwirb8jd" path="res://Synth/Synth.tscn" id="6_6asog"]
+[ext_resource type="PackedScene" uid="uid://dvihby5h57lu1" path="res://Synth_scene/Settings/Settings.tscn" id="5_4w0wu"]
+[ext_resource type="PackedScene" uid="uid://kwr6dwirb8jd" path="res://Synth_scene/Synth/Synth.tscn" id="6_6asog"]
 
 [node name="main" type="Node"]
 
@@ -18,6 +19,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 script = ExtResource("1_7x6vp")
+scene_animation = ExtResource("2_1ftrh")
 
 [node name="Bg" type="Sprite2D" parent="MainMenu"]
 position = Vector2(960, 544)

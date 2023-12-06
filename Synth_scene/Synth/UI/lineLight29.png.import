@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo5f7wv2tirih"
-path="res://.godot/imported/lineDark26.png-6ef3fd1ba2f423e33d86f60a1000443c.ctex"
+uid="uid://dvbarmo3rqseh"
+path="res://.godot/imported/lineLight29.png-e4a6b1b632c39823a63c1be99f1fdd03.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Synth/UI/lineDark26.png"
-dest_files=["res://.godot/imported/lineDark26.png-6ef3fd1ba2f423e33d86f60a1000443c.ctex"]
+source_file="res://Synth_scene/Synth/UI/lineLight29.png"
+dest_files=["res://.godot/imported/lineLight29.png-e4a6b1b632c39823a63c1be99f1fdd03.ctex"]
 
 [params]
 

@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 @onready var face_talk = $First_animation/Face_talk
 @onready var first_animation = $First_animation
@@ -7,6 +7,7 @@ extends Control
 @onready var ampliation = $Synth/Ampliation
 @onready var synth = $Synth
 @onready var go_synth = $Go_synth
+@export var scene_synth : PackedScene
 
 
 func _ready():
@@ -38,5 +39,6 @@ func sint_talk():
 	character_talk.play("Character_talk")
 
 
-#func _on_go_synth_pressed():
+func _on_go_synth_pressed():
+	get_tree().change_scene_to_packed(scene_synth)
 	

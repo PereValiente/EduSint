@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://pi7vexf72o6o"]
 
-[ext_resource type="Script" path="res://Synth/SynthKey/White_key.gd" id="1_o7l6w"]
+[ext_resource type="Script" path="res://Synth_scene/Synth/SynthKey/White_key.gd" id="1_85lnf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vbhgk"]
 
@@ -15,7 +15,7 @@ buffer_length = 7.0
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_vbhgk")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_v70vw")
-script = ExtResource("1_o7l6w")
+script = ExtResource("1_85lnf")
 frequency = 130.81
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

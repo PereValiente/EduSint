@@ -9,6 +9,7 @@ extends Control
 @onready var Resolution_ob = get_node("%Resolution_Optionbutton")
 @onready var OptionContainer = get_node("%OptionContainer")
 @onready var MainContainer = get_node("%MainContainer")
+@export var scene_animation : PackedScene
 
 # Config file
 # Move it into a singleton 
@@ -79,9 +80,7 @@ func _ready():
 
 
 func _on_start_button_pressed():
-	# Put your load scene here
-	# Check the documentation https://docs.godotengine.org/en/stable/tutorials/scripting/change_scenes_manually.html
-	pass # Replace with function body.
+	get_tree().change_scene_to_packed(scene_animation)
 
 
 

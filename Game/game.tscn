@@ -1,14 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://beafndbd2fajh"]
 
-[ext_resource type="PackedScene" uid="uid://kwr6dwirb8jd" path="res://Synth/Synth.tscn" id="2_0afpk"]
-[ext_resource type="PackedScene" uid="uid://dvihby5h57lu1" path="res://Settings/Settings.tscn" id="3_glfiy"]
+[ext_resource type="PackedScene" uid="uid://b4yv2whodaylm" path="res://Synth_scene/synth_scene.tscn" id="3_yno5q"]
+[ext_resource type="PackedScene" uid="uid://dy6wmog2cla22" path="res://Animation/Animation.tscn" id="4_1kiuj"]
 [ext_resource type="PackedScene" uid="uid://biyyejk3jgomd" path="res://Main_menu/main.tscn" id="4_6jvwx"]
 
 [node name="Game" type="Node"]
 
-[node name="Synth" parent="." instance=ExtResource("2_0afpk")]
-
-[node name="Settings" parent="." instance=ExtResource("3_glfiy")]
-layer = 2
-
 [node name="main" parent="." instance=ExtResource("4_6jvwx")]
+
+[node name="Animation" parent="." instance=ExtResource("4_1kiuj")]
+
+[node name="Synth_scene2" parent="." instance=ExtResource("3_yno5q")]

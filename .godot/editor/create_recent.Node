@@ -1,3 +1,5 @@
+Node
+CanvasLayer
 AnimationPlayer
 AudioStreamPlayer
 Panel
@@ -10,5 +12,3 @@ Timer
 TextEdit
 DialogueLabel
 AnimatedSprite2D
-ParallaxLayer
-ParallaxBackground

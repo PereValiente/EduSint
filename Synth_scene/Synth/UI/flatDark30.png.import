@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvbarmo3rqseh"
-path="res://.godot/imported/lineLight29.png-e27edf3a811fd52f7aa3ff26077730e0.ctex"
+uid="uid://bmnxug6twwcxx"
+path="res://.godot/imported/flatDark30.png-ae187cb99aa4672de0dd83b4a576e4cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Synth/UI/lineLight29.png"
-dest_files=["res://.godot/imported/lineLight29.png-e27edf3a811fd52f7aa3ff26077730e0.ctex"]
+source_file="res://Synth_scene/Synth/UI/flatDark30.png"
+dest_files=["res://.godot/imported/flatDark30.png-ae187cb99aa4672de0dd83b4a576e4cd.ctex"]
 
 [params]
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://dy6wmog2cla22"]
+[gd_scene load_steps=27 format=3 uid="uid://dy6wmog2cla22"]
 
 [ext_resource type="Script" path="res://Animation/Background/ParallaxBackground.gd" id="1_cvn7a"]
 [ext_resource type="Script" path="res://Animation/Animation.gd" id="1_pqcsg"]
 [ext_resource type="Texture2D" uid="uid://dn2f7wl4kqanq" path="res://Animation/Background/Background.jpg" id="1_qbrmg"]
+[ext_resource type="PackedScene" uid="uid://b4yv2whodaylm" path="res://Synth_scene/synth_scene.tscn" id="2_job08"]
 [ext_resource type="Texture2D" uid="uid://beivhbkdnc76r" path="res://Animation/Main charachter/Face_normal.png" id="5_v7evm"]
 [ext_resource type="Texture2D" uid="uid://b6ly637l25tah" path="res://Animation/Main charachter/Face_talk_1.png" id="6_6g8w2"]
 [ext_resource type="Texture2D" uid="uid://cannm7oclrdk" path="res://Animation/Main charachter/Face_talk_2.png" id="7_i8c0g"]
@@ -123,14 +124,9 @@ texture = ExtResource("15_nm7oj")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2nwse"]
 texture = ExtResource("15_nm7oj")
 
-[node name="Control" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Animation" type="CanvasLayer"]
 script = ExtResource("1_pqcsg")
+scene_synth = ExtResource("2_job08")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 scroll_limit_end = Vector2(1750, 0)
@@ -154,7 +150,6 @@ sprite_frames = SubResource("SpriteFrames_uo2yd")
 animation = &"Character_talk"
 
 [node name="First_animation" type="Node2D" parent="."]
-visible = false
 
 [node name="Timer" type="Timer" parent="First_animation"]
 process_callback = 0
@@ -186,7 +181,6 @@ autoplay = "blinking"
 
 [node name="Synth" type="TextureRect" parent="."]
 visible = false
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -209,7 +203,6 @@ libraries = {
 
 [node name="Go_synth" type="MarginContainer" parent="."]
 visible = false
-layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_top = 575.0

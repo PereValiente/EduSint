@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Oscilador"
-run/main_scene="res://Synth/Synth.tscn"
+run/main_scene="res://Synth_scene/Synth/Synth.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 
 [autoload]

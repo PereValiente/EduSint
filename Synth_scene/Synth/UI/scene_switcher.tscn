@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bjcnxnh7lrdlm"]
 
-[ext_resource type="PackedScene" uid="uid://kwr6dwirb8jd" path="res://Synth/Synth.tscn" id="1_ivk73"]
+[ext_resource type="PackedScene" uid="uid://kwr6dwirb8jd" path="res://Synth_scene/Synth/Synth.tscn" id="1_ivk73"]
 [ext_resource type="Script" path="res://Scene_switcher/scene_switcher.gd" id="1_kaw1d"]
 
 [node name="Scene_switcher" type="Node"]

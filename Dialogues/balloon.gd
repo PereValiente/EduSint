@@ -32,6 +32,7 @@ var dialogue_line: DialogueLine:
 	set(next_dialogue_line):
 		#AFEGIT ELIEEES!!
 		var finish_write: bool = false
+		
 		is_waiting_for_input = false
 
 		# The dialogue has finished so close the balloon

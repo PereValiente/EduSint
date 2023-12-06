@@ -2,7 +2,6 @@ extends Node
 
 class_name Synth
 
-#@export var scene_settings : PackedScene
 
 var playback : AudioStreamGeneratorPlayback # Will hold the AudioStreamGeneratorPlayback.
 @onready var sample_rate = $Synth_audio_1.stream.mix_rate #muestras por segundo (44100)

@@ -1,22 +1,22 @@
 [gd_scene load_steps=12 format=3 uid="uid://kwr6dwirb8jd"]
 
-[ext_resource type="Script" path="res://Synth/Synth.gd" id="1_3g8h2"]
-[ext_resource type="Texture2D" uid="uid://bvp0ebffdw5cb" path="res://Synth/UI/grabber.png" id="2_1ftdj"]
-[ext_resource type="PackedScene" uid="uid://pi7vexf72o6o" path="res://Synth/SynthKey/synth_key.tscn" id="2_yk25y"]
-[ext_resource type="Script" path="res://Synth/Slider_filter.gd" id="3_qdmf8"]
-[ext_resource type="Script" path="res://Synth/Volume_slider.gd" id="4_iue6o"]
-[ext_resource type="Script" path="res://Synth/Slider_attack.gd" id="5_222kq"]
-[ext_resource type="Script" path="res://Synth/Slider_decay.gd" id="6_6hb6f"]
-[ext_resource type="Script" path="res://Synth/Slider_sustain.gd" id="7_u0w80"]
-[ext_resource type="Script" path="res://Synth/Slider_release.gd" id="8_dhq8l"]
-[ext_resource type="PackedScene" uid="uid://cm4g6avx25r34" path="res://Synth/SynthKey/synth_key_black.tscn" id="10_yb2rn"]
+[ext_resource type="Script" path="res://Synth_scene/Synth/Synth.gd" id="1_8dr87"]
+[ext_resource type="PackedScene" uid="uid://pi7vexf72o6o" path="res://Synth_scene/Synth/SynthKey/synth_key.tscn" id="2_lqs5k"]
+[ext_resource type="Texture2D" uid="uid://bvp0ebffdw5cb" path="res://Synth_scene/Synth/UI/grabber.png" id="3_px3va"]
+[ext_resource type="Script" path="res://Synth_scene/Synth/Slider_filter.gd" id="4_ykmb3"]
+[ext_resource type="Script" path="res://Synth_scene/Synth/Volume_slider.gd" id="5_4fx2c"]
+[ext_resource type="Script" path="res://Synth_scene/Synth/Slider_attack.gd" id="6_v4q2j"]
+[ext_resource type="Script" path="res://Synth_scene/Synth/Slider_decay.gd" id="7_4qnkk"]
+[ext_resource type="Script" path="res://Synth_scene/Synth/Slider_sustain.gd" id="8_5dvic"]
+[ext_resource type="Script" path="res://Synth_scene/Synth/Slider_release.gd" id="9_u5kst"]
+[ext_resource type="PackedScene" uid="uid://cm4g6avx25r34" path="res://Synth_scene/Synth/SynthKey/synth_key_black.tscn" id="10_i226n"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_yjr14"]
 mix_rate = 22050.0
 buffer_length = 7.0
 
 [node name="Synth" type="CanvasLayer"]
-script = ExtResource("1_3g8h2")
+script = ExtResource("1_8dr87")
 
 [node name="Synth_audio_1" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamGenerator_yjr14")
@@ -44,71 +44,71 @@ theme_override_constants/margin_bottom = 10
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 
-[node name="C4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
+[node name="C4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_lqs5k")]
 layout_mode = 2
 synth = NodePath("../../../..")
 
-[node name="D4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
+[node name="D4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_lqs5k")]
 layout_mode = 2
 synth = NodePath("../../../..")
 frequency = 146.83
 
-[node name="E4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
+[node name="E4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_lqs5k")]
 layout_mode = 2
 synth = NodePath("../../../..")
 frequency = 164.81
 
-[node name="F4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
+[node name="F4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_lqs5k")]
 layout_mode = 2
 synth = NodePath("../../../..")
 frequency = 174.61
 
-[node name="G4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
+[node name="G4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_lqs5k")]
 layout_mode = 2
 synth = NodePath("../../../..")
 frequency = 196.0
 
-[node name="A4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
+[node name="A4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_lqs5k")]
 layout_mode = 2
 synth = NodePath("../../../..")
 frequency = 220.0
 
-[node name="B4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
+[node name="B4" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_lqs5k")]
 layout_mode = 2
 synth = NodePath("../../../..")
 frequency = 246.94
 
-[node name="C5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
+[node name="C5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_lqs5k")]
 layout_mode = 2
 synth = NodePath("../../../..")
 frequency = 261.63
 
-[node name="D5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
+[node name="D5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_lqs5k")]
 layout_mode = 2
 synth = NodePath("../../../..")
 frequency = 293.67
 
-[node name="E5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
+[node name="E5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_lqs5k")]
 layout_mode = 2
 synth = NodePath("../../../..")
 frequency = 329.63
 
-[node name="F5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
+[node name="F5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_lqs5k")]
 layout_mode = 2
 synth = NodePath("../../../..")
 frequency = 349.23
 
-[node name="G5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
+[node name="G5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_lqs5k")]
 layout_mode = 2
 synth = NodePath("../../../..")
 frequency = 392.0
 
-[node name="A5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
+[node name="A5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_lqs5k")]
 layout_mode = 2
 synth = NodePath("../../../..")
 frequency = 440.0
 
-[node name="B5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_yk25y")]
+[node name="B5" parent="ColorRect/MarginContainer/HBoxContainer" node_paths=PackedStringArray("synth") instance=ExtResource("2_lqs5k")]
 layout_mode = 2
 synth = NodePath("../../../..")
 frequency = 493.88
@@ -134,65 +134,65 @@ size_flags_vertical = 3
 [node name="Slider_wave" type="VSlider" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-theme_override_icons/grabber = ExtResource("2_1ftdj")
-theme_override_icons/grabber_highlight = ExtResource("2_1ftdj")
+theme_override_icons/grabber = ExtResource("3_px3va")
+theme_override_icons/grabber_highlight = ExtResource("3_px3va")
 max_value = 3.0
 
 [node name="Slider_filter" type="VSlider" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-theme_override_icons/grabber = ExtResource("2_1ftdj")
-theme_override_icons/grabber_highlight = ExtResource("2_1ftdj")
+theme_override_icons/grabber = ExtResource("3_px3va")
+theme_override_icons/grabber_highlight = ExtResource("3_px3va")
 min_value = 100.0
 max_value = 10000.0
 value = 500.0
-script = ExtResource("3_qdmf8")
+script = ExtResource("4_ykmb3")
 
 [node name="Volume" type="VSlider" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-theme_override_icons/grabber = ExtResource("2_1ftdj")
-theme_override_icons/grabber_highlight = ExtResource("2_1ftdj")
+theme_override_icons/grabber = ExtResource("3_px3va")
+theme_override_icons/grabber_highlight = ExtResource("3_px3va")
 max_value = 1.0
 step = 0.001
-script = ExtResource("4_iue6o")
+script = ExtResource("5_4fx2c")
 bus_name = "music"
 
 [node name="Slider_attack" type="VSlider" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-theme_override_icons/grabber = ExtResource("2_1ftdj")
-theme_override_icons/grabber_highlight = ExtResource("2_1ftdj")
+theme_override_icons/grabber = ExtResource("3_px3va")
+theme_override_icons/grabber_highlight = ExtResource("3_px3va")
 max_value = 1.0
 step = 0.001
-script = ExtResource("5_222kq")
+script = ExtResource("6_v4q2j")
 
 [node name="Slider_decay" type="VSlider" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-theme_override_icons/grabber = ExtResource("2_1ftdj")
-theme_override_icons/grabber_highlight = ExtResource("2_1ftdj")
+theme_override_icons/grabber = ExtResource("3_px3va")
+theme_override_icons/grabber_highlight = ExtResource("3_px3va")
 max_value = 1.0
 step = 0.001
-script = ExtResource("6_6hb6f")
+script = ExtResource("7_4qnkk")
 
 [node name="Slider_sustain" type="VSlider" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-theme_override_icons/grabber = ExtResource("2_1ftdj")
-theme_override_icons/grabber_highlight = ExtResource("2_1ftdj")
+theme_override_icons/grabber = ExtResource("3_px3va")
+theme_override_icons/grabber_highlight = ExtResource("3_px3va")
 max_value = 1.0
 step = 0.001
-script = ExtResource("7_u0w80")
+script = ExtResource("8_5dvic")
 
 [node name="Slider_release" type="VSlider" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 6
-theme_override_icons/grabber = ExtResource("2_1ftdj")
-theme_override_icons/grabber_highlight = ExtResource("2_1ftdj")
+theme_override_icons/grabber = ExtResource("3_px3va")
+theme_override_icons/grabber_highlight = ExtResource("3_px3va")
 max_value = 1.0
 step = 0.001
-script = ExtResource("8_dhq8l")
+script = ExtResource("9_u5kst")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/MarginContainer2/VBoxContainer"]
 layout_mode = 2
@@ -259,7 +259,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="C4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
+[node name="C4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_i226n")]
 layout_mode = 0
 anchor_left = 2.725
 anchor_top = 8.45
@@ -272,7 +272,7 @@ offset_bottom = 0.0
 synth = NodePath("../..")
 metadata/_edit_use_anchors_ = true
 
-[node name="D4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
+[node name="D4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_i226n")]
 layout_mode = 0
 anchor_left = 4.525
 anchor_top = 8.45
@@ -286,7 +286,7 @@ synth = NodePath("../..")
 frequency = 155.56
 metadata/_edit_use_anchors_ = true
 
-[node name="F4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
+[node name="F4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_i226n")]
 layout_mode = 0
 anchor_left = 8.275
 anchor_top = 8.45
@@ -300,7 +300,7 @@ synth = NodePath("../..")
 frequency = 185.0
 metadata/_edit_use_anchors_ = true
 
-[node name="G4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
+[node name="G4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_i226n")]
 layout_mode = 0
 anchor_left = 10.125
 anchor_top = 8.45
@@ -314,7 +314,7 @@ synth = NodePath("../..")
 frequency = 207.65
 metadata/_edit_use_anchors_ = true
 
-[node name="A4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
+[node name="A4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_i226n")]
 layout_mode = 0
 anchor_left = 11.975
 anchor_top = 8.45
@@ -328,7 +328,7 @@ synth = NodePath("../..")
 frequency = 233.08
 metadata/_edit_use_anchors_ = true
 
-[node name="C5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
+[node name="C5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_i226n")]
 layout_mode = 0
 anchor_left = 15.675
 anchor_top = 8.45
@@ -342,7 +342,7 @@ synth = NodePath("../..")
 frequency = 275.18
 metadata/_edit_use_anchors_ = true
 
-[node name="D5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
+[node name="D5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_i226n")]
 layout_mode = 0
 anchor_left = 17.525
 anchor_top = 8.45
@@ -356,7 +356,7 @@ synth = NodePath("../..")
 frequency = 311.13
 metadata/_edit_use_anchors_ = true
 
-[node name="F5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
+[node name="F5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_i226n")]
 layout_mode = 0
 anchor_left = 21.225
 anchor_top = 8.45
@@ -370,7 +370,7 @@ synth = NodePath("../..")
 frequency = 369.99
 metadata/_edit_use_anchors_ = true
 
-[node name="G5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
+[node name="G5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_i226n")]
 layout_mode = 0
 anchor_left = 23.075
 anchor_top = 8.45
@@ -384,7 +384,7 @@ synth = NodePath("../..")
 frequency = 415.3
 metadata/_edit_use_anchors_ = true
 
-[node name="A5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_yb2rn")]
+[node name="A5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_i226n")]
 layout_mode = 0
 anchor_left = 24.925
 anchor_top = 8.45

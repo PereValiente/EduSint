@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1e8evbkf2s3f"
-path="res://.godot/imported/shadedLight31.png-62a84caae0cc047a8523a7f1d0203ec7.ctex"
+uid="uid://bvp0ebffdw5cb"
+path="res://.godot/imported/grabber.png-a8512757da3a642753cc49536267ff1d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Synth/UI/shadedLight31.png"
-dest_files=["res://.godot/imported/shadedLight31.png-62a84caae0cc047a8523a7f1d0203ec7.ctex"]
+source_file="res://Synth_scene/Synth/UI/grabber.png"
+dest_files=["res://.godot/imported/grabber.png-a8512757da3a642753cc49536267ff1d.ctex"]
 
 [params]
 
