@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://blkwssqojb7g"]
+
+[ext_resource type="Texture2D" uid="uid://diwwgake8355a" path="res://Animation/Main charachter/Main_character_talk0.png" id="1_6xa1e"]
+[ext_resource type="Script" path="res://Activity1_synth/animation_activity_1.gd" id="1_w15op"]
+[ext_resource type="Texture2D" uid="uid://bdoggrc2yv4nl" path="res://Animation/Main charachter/Main_character_talk1.png" id="2_fyrpl"]
+[ext_resource type="Texture2D" uid="uid://cwfgcpk7nhac0" path="res://Animation/Main charachter/Main_character_talk2.png" id="3_m0pk0"]
+[ext_resource type="Texture2D" uid="uid://dcg1woduos7p" path="res://Animation/Main charachter/Main_character_talk3.png" id="4_hset4"]
+[ext_resource type="Texture2D" uid="uid://boo5hyw81aww2" path="res://Animation/UI Animation/transparentLight23.png" id="5_aln7k"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cyfdd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6xa1e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fyrpl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_m0pk0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_hset4")
+}],
+"loop": true,
+"name": &"Character_talk",
+"speed": 7.0
+}]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2svht"]
+texture = ExtResource("5_aln7k")
+modulate_color = Color(0.364706, 0.364706, 0.364706, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mwdlh"]
+texture = ExtResource("5_aln7k")
+
+[node name="Activity1" type="CanvasLayer"]
+script = ExtResource("1_w15op")
+
+[node name="Character_talk" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(845, 303)
+scale = Vector2(0.65, 0.65)
+sprite_frames = SubResource("SpriteFrames_cyfdd")
+animation = &"Character_talk"
+
+[node name="Go_synth" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 575.0
+offset_bottom = 648.0
+grow_horizontal = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/margin_left = 1019
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 70
+theme_override_constants/margin_bottom = 10
+
+[node name="Go_activity" type="Button" parent="Go_synth"]
+visible = false
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_2svht")
+theme_override_styles/hover = SubResource("StyleBoxTexture_mwdlh")
+
+[connection signal="pressed" from="Go_synth/Go_activity" to="." method="_on_go_activity_pressed"]

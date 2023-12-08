@@ -4,7 +4,6 @@ class_name SynthKey
 
 @export var synth : Synth
 @export var frequency : float
-
 @onready var audio_stream_player = $AudioStreamPlayer
 
 var playback : AudioStreamGeneratorPlayback

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvihby5h57lu1"]
+[gd_scene load_steps=7 format=3 uid="uid://dvihby5h57lu1"]
 
 [ext_resource type="Script" path="res://Synth_scene/Settings/Settings.gd" id="1_nj8ct"]
 [ext_resource type="Script" path="res://Synth_scene/Settings/Sound_slider.gd" id="2_4ncgg"]
+[ext_resource type="Texture2D" uid="uid://cumi7i83gmy5i" path="res://Synth_scene/Settings/transparentLight41.png" id="3_dqaj1"]
 [ext_resource type="Texture2D" uid="uid://bkw208nsll0on" path="res://Synth_scene/Synth/UI/transparentLight29.png" id="3_hiqwn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yfuoo"]
@@ -9,6 +10,7 @@ texture = ExtResource("3_hiqwn")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b60il"]
 texture = ExtResource("3_hiqwn")
+modulate_color = Color(0.603922, 0.603922, 0.603922, 1)
 
 [node name="Settings" type="CanvasLayer"]
 script = ExtResource("1_nj8ct")
@@ -101,6 +103,15 @@ value = 1.0
 script = ExtResource("2_4ncgg")
 bus_name = "SFX"
 
+[node name="Container" type="HBoxContainer" parent="Panel_Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Select" type="Button" parent="Panel_Settings/MarginContainer/VBoxContainer/Container"]
+layout_mode = 2
+icon = ExtResource("3_dqaj1")
+
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 anchors_preset = 10
 anchor_right = 1.0
@@ -121,4 +132,5 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_b60il")
 [connection signal="value_changed" from="Panel_Settings/MarginContainer/VBoxContainer/GridContainer/Music_slider" to="Panel_Settings/MarginContainer/VBoxContainer/GridContainer/Music_slider" method="_on_value_changed"]
 [connection signal="value_changed" from="Panel_Settings/MarginContainer/VBoxContainer/GridContainer/Synth_slider" to="." method="_on_synth_slider_value_changed"]
 [connection signal="value_changed" from="Panel_Settings/MarginContainer/VBoxContainer/GridContainer/SFX_slider" to="Panel_Settings/MarginContainer/VBoxContainer/GridContainer/SFX_slider" method="_on_value_changed"]
+[connection signal="pressed" from="Panel_Settings/MarginContainer/VBoxContainer/Container/Select" to="." method="_on_select_pressed"]
 [connection signal="pressed" from="MarginContainer2/Settings" to="." method="_on_settings_pressed"]

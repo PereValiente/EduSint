@@ -1,0 +1,12 @@
+~ activity1
+
+set select_sound = 1
+Sint: Hola de nuevo. ¿Cómo va esa investigación?
+- Bien :)
+	Sint: Genial, puedes seguir el tiempo que quieras.
+	Una vez termines tu estudio, pulsa la flecha de abajo a la derecha para continuar con la indagación. 
+- Bien mal :(
+	Ánimo, puedes seguir el tiempo que quieras.
+	Una vez termines tu estudio, pulsa la flecha de abajo a la derecha para continuar con la indagación. 
+do show_button()
+=> END

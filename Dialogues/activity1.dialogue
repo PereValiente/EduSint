@@ -1,0 +1,18 @@
+~ this_is_a_node_title
+
+set select_sound = 1
+do sint_talk()
+Sint: Hola de nuevo. ¿Cómo va esa investigación?
+- Bien :)
+	Sint: Genial, puedes investigar cuanto quieras, una vez termines pulsa la flecha de abajo a la derecha para continuar.
+-Bien mal :(
+	Ánimo, puedes investigar cuanto quieras, una vez termines pulsa la flecha de abajo a la derechapara continuar.
+do _on_go_synth_pressed()
+Sint: Quieres 
+Sint: No sé muy bien qué es ni como funciona, pero creo que puede ser algo importante.
+Sint: ¿Puedes guardarlo e investigar cómo funciona?
+- Sí, claro!
+	Sint: Sabía que podría confiar contigo, aquí tienes.
+- No me ralles. 
+	Nathan: Pues me da igual, te lo doy de todos modos y espabílate.
+=> END

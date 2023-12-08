@@ -4,3 +4,7 @@ extends CanvasLayer
 
 func _on_settings_pressed():
 	settings.visible = !settings.visible
+
+
+func _on_select_pressed():
+	settings.visible = !settings.visible

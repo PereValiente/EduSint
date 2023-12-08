@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://biyyejk3jgomd"]
+[gd_scene load_steps=7 format=3 uid="uid://biyyejk3jgomd"]
 
 [ext_resource type="Script" path="res://Main_menu/src/menu_controller.gd" id="1_7x6vp"]
 [ext_resource type="PackedScene" uid="uid://dy6wmog2cla22" path="res://Animation/Animation.tscn" id="2_1ftrh"]
 [ext_resource type="Texture2D" uid="uid://f42fe8btugkt" path="res://Main_menu/menu.jpg" id="3_pt7cx"]
-[ext_resource type="Script" path="res://Main_menu/src/Scroll_Label.gd" id="3_v2ba3"]
+[ext_resource type="Script" path="res://Synth_scene/Settings/Sound_slider.gd" id="5_6pf3u"]
+[ext_resource type="Texture2D" uid="uid://cumi7i83gmy5i" path="res://Synth_scene/Settings/transparentLight41.png" id="6_psd42"]
 [ext_resource type="AudioStream" uid="uid://b150c8hse1c3a" path="res://Main_menu/Música Menú.mp3" id="8_y6rj2"]
 
 [node name="main" type="Node"]
@@ -54,141 +55,112 @@ size_flags_vertical = 4
 text = "EXIT
 "
 
-[node name="OptionContainer" type="VBoxContainer" parent="MainMenu"]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(500, 500)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -250.0
-offset_right = 250.0
-offset_bottom = 250.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TabContainer" type="TabContainer" parent="MainMenu/OptionContainer"]
-custom_minimum_size = Vector2(0, 500)
-layout_mode = 2
-tab_alignment = 1
-
-[node name="Sound" type="TabBar" parent="MainMenu/OptionContainer/TabContainer"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
-[node name="General_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Sound"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 46.0
-offset_right = 48.0
-offset_bottom = 69.0
-text = "General volume :"
-
-[node name="General_HScrollBar" type="HScrollBar" parent="MainMenu/OptionContainer/TabContainer/Sound"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 78.0
-offset_right = 458.0
-offset_bottom = 94.0
-value = 70.0
-rounded = true
-
-[node name="Scroll_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar"]
-layout_mode = 0
-offset_left = 456.0
-offset_top = -5.0
-offset_right = 489.0
-offset_bottom = 21.0
-text = "70%"
-script = ExtResource("3_v2ba3")
-
-[node name="Music_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Sound"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 99.0
-offset_right = 142.0
-offset_bottom = 125.0
-text = "Music volume :"
-
-[node name="Music_HScrollBar" type="HScrollBar" parent="MainMenu/OptionContainer/TabContainer/Sound"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 124.0
-offset_right = 458.0
-offset_bottom = 140.0
-value = 67.0
-rounded = true
-
-[node name="Scroll_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar"]
-layout_mode = 0
-offset_left = 456.0
-offset_top = -5.0
-offset_right = 489.0
-offset_bottom = 21.0
-text = "67%"
-script = ExtResource("3_v2ba3")
-
-[node name="SFX_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Sound"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 146.0
-offset_right = 142.0
-offset_bottom = 172.0
-text = "SFX volume :"
-
-[node name="SFX_HScrollBar" type="HScrollBar" parent="MainMenu/OptionContainer/TabContainer/Sound"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 171.0
-offset_right = 458.0
-offset_bottom = 187.0
-value = 67.0
-rounded = true
-
-[node name="Scroll_Label" type="Label" parent="MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar"]
-layout_mode = 0
-offset_left = 456.0
-offset_top = -5.0
-offset_right = 489.0
-offset_bottom = 21.0
-text = "67%"
-script = ExtResource("3_v2ba3")
-
-[node name="Container" type="HBoxContainer" parent="MainMenu/OptionContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-alignment = 1
-
-[node name="Apply_button" type="Button" parent="MainMenu/OptionContainer/Container"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-text = "Apply
-"
-
-[node name="Return_button" type="Button" parent="MainMenu/OptionContainer/Container"]
-layout_mode = 2
-text = "Return
-"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music_menu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_y6rj2")
 volume_db = -12.0
 autoplay = true
 bus = &"Music"
 
+[node name="Panel_Settings" type="Panel" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Panel_Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.133333, 0.133333, 0.133333, 0.803922)
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel_Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_right = 250
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel_Settings/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="Panel_Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 16
+columns = 2
+
+[node name="Music_label" type="Label" parent="Panel_Settings/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "
+Music
+
+"
+
+[node name="Music_slider" type="HSlider" parent="Panel_Settings/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("5_6pf3u")
+bus_name = "Music"
+
+[node name="Synth_label" type="Label" parent="Panel_Settings/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "
+Synth
+
+"
+
+[node name="Synth_slider" type="HSlider" parent="Panel_Settings/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("5_6pf3u")
+bus_name = "Synth"
+
+[node name="SFX_label" type="Label" parent="Panel_Settings/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Sound
+effects
+
+"
+
+[node name="SFX_slider" type="HSlider" parent="Panel_Settings/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+value = 1.0
+script = ExtResource("5_6pf3u")
+bus_name = "SFX"
+
+[node name="Container" type="HBoxContainer" parent="Panel_Settings/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Select" type="Button" parent="Panel_Settings/MarginContainer/VBoxContainer/Container"]
+layout_mode = 2
+icon = ExtResource("6_psd42")
+
 [connection signal="pressed" from="MainMenu/MainContainer/Start_button" to="MainMenu" method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/MainContainer/Option_button" to="MainMenu" method="_on_option_button_pressed"]
 [connection signal="pressed" from="MainMenu/MainContainer/Exit_button" to="MainMenu" method="_on_exit_button_pressed"]
-[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar" to="MainMenu" method="_on_general_h_scroll_bar_value_changed"]
-[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar" to="MainMenu/OptionContainer/TabContainer/Sound/General_HScrollBar/Scroll_Label" method="_on_h_scroll_bar_value_changed"]
-[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar" to="MainMenu" method="_on_music_h_scroll_bar_value_changed"]
-[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar" to="MainMenu/OptionContainer/TabContainer/Sound/Music_HScrollBar/Scroll_Label" method="_on_h_scroll_bar_value_changed"]
-[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar" to="MainMenu" method="_on_sfx_h_scroll_bar_value_changed"]
-[connection signal="value_changed" from="MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar" to="MainMenu/OptionContainer/TabContainer/Sound/SFX_HScrollBar/Scroll_Label" method="_on_h_scroll_bar_value_changed"]
-[connection signal="pressed" from="MainMenu/OptionContainer/Container/Apply_button" to="MainMenu" method="_on_apply_button_pressed"]
-[connection signal="pressed" from="MainMenu/OptionContainer/Container/Return_button" to="MainMenu" method="_on_return_button_pressed"]
+[connection signal="value_changed" from="Panel_Settings/MarginContainer/VBoxContainer/GridContainer/Music_slider" to="Panel_Settings/MarginContainer/VBoxContainer/GridContainer/Music_slider" method="_on_value_changed"]
+[connection signal="value_changed" from="Panel_Settings/MarginContainer/VBoxContainer/GridContainer/SFX_slider" to="Panel_Settings/MarginContainer/VBoxContainer/GridContainer/SFX_slider" method="_on_value_changed"]
+[connection signal="pressed" from="Panel_Settings/MarginContainer/VBoxContainer/Container/Select" to="MainMenu" method="_on_select_pressed"]

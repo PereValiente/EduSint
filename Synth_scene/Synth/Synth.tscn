@@ -88,48 +88,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.137255, 0.137255, 0.137255, 1)
 
-[node name="Balloon4" type="Panel" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 76.0
-offset_top = -580.0
-offset_right = -966.0
-offset_bottom = -337.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = SubResource("Theme_a611b")
-
-[node name="Balloon3" type="Panel" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 254.0
-offset_top = -580.0
-offset_right = -788.0
-offset_bottom = -337.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = SubResource("Theme_a611b")
-
-[node name="Balloon2" type="Panel" parent="ColorRect"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 432.0
-offset_top = -580.0
-offset_right = -77.0
-offset_bottom = -337.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = SubResource("Theme_a611b")
-
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
 layout_mode = 0
 offset_top = 323.0
@@ -374,6 +332,42 @@ offset_left = 1099.0
 offset_right = 1152.0
 offset_bottom = 647.0
 color = Color(0.34902, 0.258824, 0.117647, 1)
+
+[node name="Ballon_container" type="ColorRect" parent="ColorRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 1, 1, 0)
+
+[node name="Balloon1" type="Panel" parent="ColorRect/Ballon_container"]
+layout_mode = 2
+offset_left = 76.0
+offset_top = 68.0
+offset_right = 186.0
+offset_bottom = 309.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_a611b")
+
+[node name="Balloon2" type="Panel" parent="ColorRect/Ballon_container"]
+layout_mode = 2
+offset_left = 254.0
+offset_top = 68.0
+offset_right = 364.0
+offset_bottom = 309.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_a611b")
+
+[node name="Balloon3" type="Panel" parent="ColorRect/Ballon_container"]
+layout_mode = 2
+offset_left = 432.0
+offset_top = 68.0
+offset_right = 1073.0
+offset_bottom = 309.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_a611b")
 
 [node name="Black_key" type="Control" parent="."]
 layout_mode = 3

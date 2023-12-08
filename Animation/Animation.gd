@@ -10,6 +10,7 @@ extends CanvasLayer
 @export var scene_synth : PackedScene
 
 
+
 func _ready():
 	await get_tree().create_timer(2).timeout
 	face_talk.play("Face_talk")

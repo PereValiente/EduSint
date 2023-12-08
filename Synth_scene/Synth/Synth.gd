@@ -7,6 +7,10 @@ var playback : AudioStreamGeneratorPlayback # Will hold the AudioStreamGenerator
 @onready var sample_rate = $Synth_audio_1.stream.mix_rate #muestras por segundo (44100)
 @onready var synth_audio_1 = $Synth_audio_1
 @onready var label_type_wave = $ColorRect/MarginContainer2/VBoxContainer/HBoxContainer3/Label_type_wave
+@onready var margin_container_2 = $ColorRect/MarginContainer2
+@onready var ballon_container = $ColorRect/Ballon_container
+
+
 
 var sample_wave = 4096 
 var filter_value = 0.0

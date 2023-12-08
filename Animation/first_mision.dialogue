@@ -8,6 +8,6 @@ Sint: ¿Puedes guardarlo e investigar cómo funciona?
 - Sí, claro!
 	Sint: Sabía que podría confiar contigo, aquí tienes.
 - No me ralles. 
-	Nathan: Pues me da igual, te lo doy de todos modos y espabílate.
+	Sint: Pues me da igual, te lo doy de todos modos y espabílate.
 do show_synth()
 => END

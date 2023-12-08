@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_ggtjl"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_resource.gd" id="1_op46p"]
 
 [resource]
-script = ExtResource("1_ggtjl")
+script = ExtResource("1_op46p")
 using_states = PackedStringArray()
 titles = {
 "this_is_a_node_title": "2"
 }
-character_names = PackedStringArray("Sint", "Nathan")
+character_names = PackedStringArray("Sint")
 first_title = "2"
 lines = {
 "1": {
@@ -28,7 +28,7 @@ lines = {
 "type": "response"
 },
 "11": {
-"character": "Nathan",
+"character": "Sint",
 "character_replacements": Array[Dictionary]([]),
 "id": "11",
 "next_id": "12",
