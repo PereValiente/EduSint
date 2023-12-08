@@ -10,4 +10,4 @@
 
 [node name="Animation" parent="." instance=ExtResource("4_1kiuj")]
 
-[node name="Synth_scene2" parent="." instance=ExtResource("3_yno5q")]
+[node name="Synth_scene" parent="." instance=ExtResource("3_yno5q")]

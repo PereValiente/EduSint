@@ -6,6 +6,8 @@ class_name Synth
 var playback : AudioStreamGeneratorPlayback # Will hold the AudioStreamGeneratorPlayback.
 @onready var sample_rate = $Synth_audio_1.stream.mix_rate #muestras por segundo (44100)
 @onready var synth_audio_1 = $Synth_audio_1
+@onready var label_type_wave = $ColorRect/MarginContainer2/VBoxContainer/HBoxContainer3/Label_type_wave
+
 var sample_wave = 4096 
 var filter_value = 0.0
 var cubic_interpolation_sample = 0.0
@@ -22,6 +24,7 @@ func _ready(): #Genera las tablas de las 4 formas de onda
 	wave_tables.append(generate_square_wave_table(sample_wave))
 	wave_tables.append(generate_triangle_wave_table(sample_wave))
 	wave_tables.append(generate_sawtooth_wave_table(sample_wave))
+	label_type_wave.text = "Sin"
 
 
 func get_current_wave():
@@ -90,10 +93,20 @@ func _on_slider_release_value_changed(value):
 
 func _on_wave_type_value_changed(value):
 	wave_type = value
+	
+	if value == 0:
+		label_type_wave.text = "Sin"
+	elif value == 1:
+		label_type_wave.text = "Square"
+	elif value == 2:
+		label_type_wave.text = "Triangle"
+	elif value == 3:
+		label_type_wave.text = "Saw tooth"
+	
 
 func _on_filter_value_changed(value):
 	filter_value = value
-	var effect:AudioEffectLowPassFilter = AudioServer.get_bus_effect(AudioServer.get_bus_index("Sintetizador"),0)
+	var effect:AudioEffectLowPassFilter = AudioServer.get_bus_effect(AudioServer.get_bus_index("Synth"),0)
 	effect.set_cutoff(filter_value)
 
 

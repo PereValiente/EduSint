@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvbarmo3rqseh"
-path="res://.godot/imported/lineLight29.png-e4a6b1b632c39823a63c1be99f1fdd03.ctex"
+uid="uid://dn8vdjpodolk6"
+path="res://.godot/imported/tecla seno.png-46874d1939b79dde0f11478226bb71bd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Synth_scene/Synth/UI/lineLight29.png"
-dest_files=["res://.godot/imported/lineLight29.png-e4a6b1b632c39823a63c1be99f1fdd03.ctex"]
+source_file="res://Synth_scene/Synth/UI/tecla seno.png"
+dest_files=["res://.godot/imported/tecla seno.png-46874d1939b79dde0f11478226bb71bd.ctex"]
 
 [params]
 

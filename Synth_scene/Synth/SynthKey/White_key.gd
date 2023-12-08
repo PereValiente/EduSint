@@ -161,6 +161,8 @@ func oscillator(oscilator_state:State, max_frames:int) -> PackedVector2Array:
 		
 		var envelope = get_envelope(oscilator_state, i, max_frames)		
 		output *= amplitude * envelope * correction_amplitude_filter #aplicar a la salida el valor de amplitud y envolvente
+		#if i == max_frames:
+		#	output = 0.0
 		return_array.push_back(Vector2.ONE * output)
 		print_buffer.push_back(Vector2.ONE * output)
 		

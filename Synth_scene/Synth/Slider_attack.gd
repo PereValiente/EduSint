@@ -1,4 +1,5 @@
 extends VSlider
+@onready var label_value_attack = $"../../HBoxContainer3/Label_value_attack"
 
 
 func _ready() -> void:
@@ -7,3 +8,4 @@ func _ready() -> void:
 
 func _on_value_changed(value: float):
 	value
+	label_value_attack.text = str(value * 100) 
