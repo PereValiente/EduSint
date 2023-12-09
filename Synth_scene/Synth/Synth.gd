@@ -7,8 +7,13 @@ var playback : AudioStreamGeneratorPlayback # Will hold the AudioStreamGenerator
 @onready var sample_rate = $Synth_audio_1.stream.mix_rate #muestras por segundo (44100)
 @onready var synth_audio_1 = $Synth_audio_1
 @onready var label_type_wave = $ColorRect/MarginContainer2/VBoxContainer/HBoxContainer3/Label_type_wave
-@onready var margin_container_2 = $ColorRect/MarginContainer2
-@onready var ballon_container = $ColorRect/Ballon_container
+@onready var hide_wave = $Hide_wave
+@onready var hide_filter = $Hide_filter
+@onready var hide_dsr = $Hide_dsr
+@onready var hide_asr = $Hide_asr
+@onready var hide_adr = $Hide_adr
+@onready var hide_ads = $Hide_ads
+@onready var hide_adsr = $Hide_adsr
 
 
 
@@ -114,5 +119,11 @@ func _on_filter_value_changed(value):
 	effect.set_cutoff(filter_value)
 
 
-#func _on_settings_pressed():
 #	get_tree().change_scene_to_packed(scene_settings)
+
+# FUNCIONES PARA LA ACTIVIDAD 1
+
+func show_wave():
+	hide_filter.visible = !hide_filter.visible
+	hide_adsr.visible = !hide_adsr.visible
+	

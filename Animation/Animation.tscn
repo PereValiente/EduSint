@@ -155,6 +155,7 @@ visible = false
 
 [node name="Timer" type="Timer" parent="First_animation"]
 process_callback = 0
+wait_time = 15.5
 one_shot = true
 autostart = true
 

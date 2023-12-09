@@ -9,6 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://dvihby5h57lu1" path="res://Synth_scene/Settings/Settings.tscn" id="7_j6rii"]
 [ext_resource type="PackedScene" uid="uid://kwr6dwirb8jd" path="res://Synth_scene/Synth/Synth.tscn" id="8_ca3va"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2svht"]
+texture = ExtResource("5_aln7k")
+modulate_color = Color(0.364706, 0.364706, 0.364706, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mwdlh"]
+texture = ExtResource("5_aln7k")
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_cyfdd"]
 animations = [{
 "frames": [{
@@ -29,17 +36,29 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2svht"]
-texture = ExtResource("5_aln7k")
-modulate_color = Color(0.364706, 0.364706, 0.364706, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mwdlh"]
-texture = ExtResource("5_aln7k")
-
-[node name="Activity1" type="CanvasLayer"]
+[node name="Activity1" type="CanvasLayer" node_paths=PackedStringArray("synth")]
 script = ExtResource("1_w15op")
+synth = NodePath("Synth")
 
 [node name="Synth" parent="." instance=ExtResource("8_ca3va")]
+
+[node name="wave_activity1" type="MarginContainer" parent="."]
+offset_left = 1057.0
+offset_top = 574.0
+offset_right = 1125.0
+offset_bottom = 649.0
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="wave_activity1" type="Button" parent="wave_activity1"]
+visible = false
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_2svht")
+theme_override_styles/hover = SubResource("StyleBoxTexture_mwdlh")
 
 [node name="Character_talk" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -48,7 +67,7 @@ scale = Vector2(0.65, 0.65)
 sprite_frames = SubResource("SpriteFrames_cyfdd")
 animation = &"Character_talk"
 
-[node name="Go_synth" type="MarginContainer" parent="."]
+[node name="Intro_activity1" type="MarginContainer" parent="."]
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 1057.0
@@ -63,7 +82,7 @@ theme_override_constants/margin_top = 0
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 10
 
-[node name="Go_activity" type="Button" parent="Go_synth"]
+[node name="Intro_activity1" type="Button" parent="Intro_activity1"]
 visible = false
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxTexture_2svht")
@@ -71,4 +90,5 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_mwdlh")
 
 [node name="Settings" parent="." instance=ExtResource("7_j6rii")]
 
-[connection signal="pressed" from="Go_synth/Go_activity" to="." method="_on_go_activity_pressed"]
+[connection signal="pressed" from="wave_activity1/wave_activity1" to="." method="_on_wave_activity_1_pressed"]
+[connection signal="pressed" from="Intro_activity1/Intro_activity1" to="." method="_on_intro_activity1_pressed"]

@@ -1,13 +1,22 @@
-~ activity1
+~ intro_activity1
 
 set select_sound = 1
 do sint_talk()
 Sint: Hola de nuevo. ¿Cómo va esa investigación?
 - Bien :)
 	Sint: Genial, puedes seguir el tiempo que quieras.
-	Una vez termines tu estudio, pulsa la flecha de abajo a la derecha para continuar con la indagación. 
+	Sint: Una vez termines tu estudio, pulsa la flecha de abajo a la derecha para continuar con la indagación. 
 - Bien mal :(
-	Ánimo, puedes seguir el tiempo que quieras.
-	Una vez termines tu estudio, pulsa la flecha de abajo a la derecha para continuar con la indagación. 
-do show_button()
+	Sint: Ánimo, puedes seguir el tiempo que quieras.
+	Sint: Una vez termines tu estudio, pulsa la flecha de abajo a la derecha para continuar con la indagación. 
+do show_intro_button()
+=> END
+
+~ wave_activity1
+
+set select_sound = 1
+do sint_talk()
+Sint: Ahora, centra la atención en dezifrar qué hace el primer deslizador.
+Sint: Una vez lo sepas, pulsa la flecha para informarme de tus descubrimientos.
+do show_wave_button()
 => END
