@@ -1,6 +1,7 @@
 ~ activity1
 
 set select_sound = 1
+do sint_talk()
 Sint: Hola de nuevo. ¿Cómo va esa investigación?
 - Bien :)
 	Sint: Genial, puedes seguir el tiempo que quieras.

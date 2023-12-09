@@ -8,6 +8,6 @@
 
 [node name="Synth" parent="." instance=ExtResource("1_13uhw")]
 
-[node name="Settings" parent="." instance=ExtResource("2_de83x")]
-
 [node name="Animation_activity1" parent="." instance=ExtResource("3_rq3vs")]
+
+[node name="Settings" parent="." instance=ExtResource("2_de83x")]

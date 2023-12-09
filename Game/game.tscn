@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://beafndbd2fajh"]
 
-[ext_resource type="PackedScene" uid="uid://b4yv2whodaylm" path="res://Synth_scene/synth_scene.tscn" id="3_yno5q"]
+[ext_resource type="PackedScene" uid="uid://blkwssqojb7g" path="res://Activity1_synth/animation_activity_1.tscn" id="3_avirp"]
 [ext_resource type="PackedScene" uid="uid://dy6wmog2cla22" path="res://Animation/Animation.tscn" id="4_1kiuj"]
 [ext_resource type="PackedScene" uid="uid://biyyejk3jgomd" path="res://Main_menu/main.tscn" id="4_6jvwx"]
 
@@ -10,4 +10,4 @@
 
 [node name="Animation" parent="." instance=ExtResource("4_1kiuj")]
 
-[node name="Synth_scene" parent="." instance=ExtResource("3_yno5q")]
+[node name="Activity1" parent="." instance=ExtResource("3_avirp")]

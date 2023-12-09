@@ -8,3 +8,4 @@ func _on_settings_pressed():
 
 func _on_select_pressed():
 	settings.visible = !settings.visible
+
