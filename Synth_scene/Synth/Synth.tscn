@@ -547,6 +547,7 @@ offset_bottom = 298.0
 color = Color(0.137255, 0.137255, 0.137255, 1)
 
 [node name="Hide_asr1" type="ColorRect" parent="Hide_asr"]
+layout_mode = 0
 offset_left = -290.0
 offset_top = 2.0
 offset_right = -174.0
@@ -562,6 +563,7 @@ offset_bottom = 299.0
 color = Color(0.137255, 0.137255, 0.137255, 1)
 
 [node name="Hide_adr1" type="ColorRect" parent="Hide_adr"]
+layout_mode = 0
 offset_left = 487.0
 offset_top = 2.0
 offset_right = 603.0

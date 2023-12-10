@@ -9,7 +9,7 @@ Sint: Hola de nuevo. ¿Cómo va esa investigación?
 - Bien mal :(
 	Sint: Ánimo, puedes seguir el tiempo que quieras.
 	Sint: Una vez termines tu estudio, pulsa la flecha de abajo a la derecha para continuar con la indagación. 
-do show_intro_button()
+do show_button_and_sint()
 => END
 
 ~ wave_activity1
@@ -18,5 +18,162 @@ set select_sound = 1
 do sint_talk()
 Sint: Ahora, centra la atención en dezifrar qué hace el primer deslizador.
 Sint: Una vez lo sepas, pulsa la flecha para informarme de tus descubrimientos.
-do show_wave_button()
+do show_button_and_sint()
 => END
+
+~ question_wave_activity1
+
+set select_sound = 1
+do sint_talk()
+Sint: Wave activity
+- True
+	Sitn: Exacto. 
+	=> filter_activity1 
+- False
+if has_made_mistake == false
+	Sint: No exactamente. Revisa el funcionamiento.
+	do minus_pressed_counter()
+	set has_made_mistake = true
+else
+	Sint: No exactamente. Vuelve a revisar el funcionamiento.
+	do minus_pressed_counter()
+do show_button_and_sint() 
+=> END
+
+~ filter_activity1
+
+set select_sound = 1
+do show_filter()
+Sint: ¿Qué repercusión tendrá el segundo deslizador sobre el primero?
+do show_button_and_sint()
+=> END
+
+~ question_filter_activity1
+
+set select_sound = 1
+do sint_talk()
+Sint: Filter activity
+- True
+	Sitn: Exacto. 
+	do show_button() 
+	=> attack_activity1 
+- False
+if has_made_mistake == false
+	Sint: No exactamente. Revisa el funcionamiento.
+	do minus_pressed_counter()
+	set has_made_mistake = true
+else
+	Sint: No exactamente. Vuelve a revisar el funcionamiento.
+	do minus_pressed_counter()
+do show_button_and_sint() 
+=> END
+
+~ attack_activity1
+set select_sound = 1
+do show_attack()
+Sint: ¿Qué repercusión tendrá el tercer deslizador?
+do show_button_and_sint()
+=> END
+
+~ question_attack_activity1
+
+set select_sound = 1
+do sint_talk()
+Sint: Attack activity
+- True
+	Sitn: Exacto.
+	do show_button() 
+	=> decay_activity1 
+- False
+if has_made_mistake == false
+	Sint: No exactamente. Revisa el funcionamiento.
+	do minus_pressed_counter()
+	set has_made_mistake = true
+else
+	Sint: No exactamente. Vuelve a revisar el funcionamiento.
+	do minus_pressed_counter()
+do show_button_and_sint() 
+=> END
+
+~ decay_activity1
+set select_sound = 1
+do show_decay()
+Sint: ¿Qué repercusión tendrá el cuarto deslizador?
+do show_button_and_sint()
+=> END
+
+~ question_decay_activity1
+
+set select_sound = 1
+do sint_talk()
+Sint: Decay activity
+- True
+	Sitn: Exacto. 
+	do show_button() 
+	=> sustain_activity1 
+- False
+if has_made_mistake == false
+	Sint: No exactamente. Revisa el funcionamiento.
+	do minus_pressed_counter()
+	set has_made_mistake = true
+else
+	Sint: No exactamente. Vuelve a revisar el funcionamiento.
+	do minus_pressed_counter()
+do show_button_and_sint() 
+=> END
+
+~ sustain_activity1
+set select_sound = 1
+do show_sustain()
+Sint: ¿Qué repercusión tendrá el quinto deslizador?
+do show_button_and_sint()
+=> END
+
+~ question_sustain_activity1
+
+set select_sound = 1
+do sint_talk()
+Sint: Sustain activity
+- True
+	Sitn: Exacto. 
+	do show_button() 
+	=> release_activity1 
+- False
+if has_made_mistake == false
+	Sint: No exactamente. Revisa el funcionamiento.
+	do minus_pressed_counter()
+	set has_made_mistake = true
+else
+	Sint: No exactamente. Vuelve a revisar el funcionamiento.
+	do minus_pressed_counter()
+do show_button_and_sint() 
+=> END
+
+~ release_activity1
+set select_sound = 1
+do show_release()
+Sint: ¿Qué repercusión tendrá el sexto deslizador?
+do show_button_and_sint()
+=> END
+
+~ question_release_activity1
+
+set select_sound = 1
+do sint_talk()
+Sint: Release activity
+- True
+	Sitn: Exacto. 
+	=> finish_activity1 
+- False
+if has_made_mistake == false
+	Sint: No exactamente. Revisa el funcionamiento.
+	do minus_pressed_counter()
+	set has_made_mistake = true
+else
+	Sint: No exactamente. Vuelve a revisar el funcionamiento.
+	do minus_pressed_counter()
+do show_button_and_sint() 
+=> END
+
+~ finish_activity1
+Sint: 

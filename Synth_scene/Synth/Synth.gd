@@ -126,4 +126,25 @@ func _on_filter_value_changed(value):
 func show_wave():
 	hide_filter.visible = !hide_filter.visible
 	hide_adsr.visible = !hide_adsr.visible
-	
+
+
+func show_filter():
+	hide_filter.visible = !hide_filter.visible
+
+func show_attack(): 
+	hide_wave.visible = !hide_wave.visible
+	hide_adsr.visible = !hide_adsr.visible
+	hide_dsr.visible = !hide_dsr.visible
+	hide_filter.visible = !hide_filter.visible
+
+func show_decay():
+	hide_dsr.visible = !hide_dsr.visible
+	hide_asr.visible = !hide_asr.visible
+
+func show_sustain():
+	hide_asr.visible = !hide_asr.visible
+	hide_adr.visible = !hide_adr.visible
+
+func show_release():
+	hide_adr.visible = !hide_adr.visible
+	hide_ads.visible = !hide_ads.visible
