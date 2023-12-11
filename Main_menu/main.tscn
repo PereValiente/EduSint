@@ -1,11 +1,33 @@
-[gd_scene load_steps=7 format=3 uid="uid://biyyejk3jgomd"]
+[gd_scene load_steps=11 format=3 uid="uid://biyyejk3jgomd"]
 
 [ext_resource type="Script" path="res://Main_menu/src/menu_controller.gd" id="1_7x6vp"]
 [ext_resource type="PackedScene" uid="uid://dy6wmog2cla22" path="res://Animation/Animation.tscn" id="2_1ftrh"]
 [ext_resource type="Texture2D" uid="uid://f42fe8btugkt" path="res://Main_menu/menu.jpg" id="3_pt7cx"]
+[ext_resource type="Texture2D" uid="uid://dppuratph8lmk" path="res://Main_menu/particle.png" id="4_vu8b2"]
 [ext_resource type="Script" path="res://Synth_scene/Settings/Sound_slider.gd" id="5_6pf3u"]
 [ext_resource type="Texture2D" uid="uid://cumi7i83gmy5i" path="res://Synth_scene/Settings/transparentLight41.png" id="6_psd42"]
 [ext_resource type="AudioStream" uid="uid://b150c8hse1c3a" path="res://Main_menu/Música Menú.mp3" id="8_y6rj2"]
+
+[sub_resource type="Curve" id="Curve_5s6o3"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.175399, 1), 0.0, 0.0, 0, 0, Vector2(0.8041, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_af3gp"]
+curve = SubResource("Curve_5s6o3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ivamn"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10000.0
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.03
+scale_max = 0.05
+scale_curve = SubResource("CurveTexture_af3gp")
+color = Color(1, 1, 1, 0.364706)
 
 [node name="main" type="Node"]
 
@@ -54,6 +76,12 @@ layout_mode = 2
 size_flags_vertical = 4
 text = "EXIT
 "
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="MainMenu"]
+position = Vector2(551, 140)
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_ivamn")
+texture = ExtResource("4_vu8b2")
 
 [node name="Music_menu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_y6rj2")

@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cm4g6avx25r34" path="res://Synth_scene/Synth/SynthKey/synth_key_black.tscn" id="10_i226n"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_yjr14"]
-buffer_length = 0.05
+buffer_length = 10.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vmwb6"]
 bg_color = Color(0, 0, 0, 1)
