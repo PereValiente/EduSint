@@ -24,7 +24,7 @@ var previous_sample = 0.0
 var total_sample_envelope = 0
 
 var print_buffer : PackedVector2Array
-
+var index : float = 0
 
 func _ready():
 	button_down.connect(on_button_down)
@@ -58,6 +58,7 @@ func _fill_buffer():
 func on_button_down():
 	audio_stream_player.play()
 	playback = audio_stream_player.get_stream_playback()
+	index = 0
 	
 	play_state(State.Attack)
 
@@ -84,7 +85,7 @@ func play_state(new_state : State):
 	if new_state == State.Stopped:
 		audio_stream_player.stop()
 		state = State.Stopped
-#		save_buffer("res://buffers/whole_buffer_8.txt", print_buffer)
+#		save_buffer("res://buffers/whole_buffer_9.txt", print_buffer)
 		return
 	
 	if new_state == State.Sustain and state == State.Sustain:
@@ -112,7 +113,15 @@ func play_state(new_state : State):
 	
 	
 	#Create buffer and play buffer
+	var empty_test : PackedVector2Array = []
+	for i in 10000:
+		empty_test.append(Vector2.ZERO)
+	
 	increment_buffer = oscillator(new_state, state_length)
+	increment_buffer.append_array(empty_test)
+	increment_buffer.append_array(oscillator(new_state, state_length))
+	increment_buffer.append_array(empty_test)
+	
 	increment_frame_index = 0
 	
 	#Update state machine
@@ -123,14 +132,13 @@ func play_state(new_state : State):
 func oscillator(oscilator_state:State, max_frames:int) -> PackedVector2Array: 
 	var return_array : PackedVector2Array = []
 	
-	var index = 0 #Start from 0 position
+	print("Index: " + str(index))
 	var index_increment = (frequency * synth.sample_wave) / synth.sample_rate
 	
-	var frames_per_period = (1 / frequency) * synth.sample_rate 
-	
-	max_frames += frames_per_period - fmod(max_frames, frames_per_period)
-	
 	var table = synth.get_current_wave()
+	print("Table size: " + str(table.size()) + " - Wave size: " + str(synth.sample_wave))
+	print("Index increment: " + str(index_increment))
+	
 	var gain_dB = -20
 	var amplitude = pow(10,gain_dB/20)
 	
@@ -150,21 +158,20 @@ func oscillator(oscilator_state:State, max_frames:int) -> PackedVector2Array:
 		var output = 0.0
 		output = cubic_interpolate(p0,p1,p2,p3,p)
 		
-		output = table[int(index) % synth.sample_wave]
-		
-		index += index_increment
-		index = int(index + index_increment) % synth.sample_wave
-		
 		if synth.wave_type == 3: #DPW algorythm for sawtooth
 			output = dpw_algorithm(output)
 		
-		var envelope = get_envelope(oscilator_state, i, max_frames)		
+		var envelope = get_envelope(oscilator_state, i, max_frames)
 		output *= amplitude * envelope * correction_amplitude_filter #aplicar a la salida el valor de amplitud y envolvente
 		#if i == max_frames:
 		#	output = 0.0
 		return_array.push_back(Vector2.ONE * output)
 		print_buffer.push_back(Vector2.ONE * output)
 		
+#		index += index_increment
+		index = fmod(index + index_increment, synth.sample_wave)
+	
+	print("Index: " + str(index))
 	
 	if synth.wave_type == 3: #Avoid Artifacts
 		if return_array.size() > 2:
