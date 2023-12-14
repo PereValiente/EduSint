@@ -1,3 +1,8 @@
+Label
+TextureButton
+TextureRect
+RichTextLabel
+TextEdit
 MarginContainer
 GPUParticles2D
 ColorRect
@@ -7,9 +12,4 @@ CanvasLayer
 Node
 Button
 Panel
-TextureRect
 VSlider
-Label
-HBoxContainer
-AudioStreamPlayer
-AnimationPlayer
