@@ -20,3 +20,4 @@ frequency = 130.81
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamGenerator_t87uf")
+bus = &"Synth"

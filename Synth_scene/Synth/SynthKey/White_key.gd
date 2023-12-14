@@ -44,6 +44,7 @@ var increment_frame_index : int = 0
 var previous_sample = 0.0
 var total_sample_envelope = 0
 var last_index = 0.0
+var value = 0
 
 
 
@@ -55,7 +56,7 @@ func _ready():
 func on_button_down():
 	audio_stream_player.play()
 	playback = audio_stream_player.get_stream_playback()
-	playback.push_buffer(oscillator(synth.sample_rate * 5))
+	playback.push_buffer(oscillator(value, synth.sample_rate + value))
 
 func on_button_up():
 	#play_state(State.Release)
@@ -121,20 +122,20 @@ func on_button_up():
 	#return return_array
 
 
-func oscillator(max_frames:int) -> PackedVector2Array: 
+func oscillator(value:int, max_frames:int) -> PackedVector2Array: 
 	var return_array : PackedVector2Array = []
-	
+
 	var index = increment_frame_index
 	var index_increment = (frequency * synth.sample_wave) / synth.sample_rate
 	var table = synth.get_current_wave()
 	var gain_dB = -20
 	var amplitude = pow(10,gain_dB/20)
-	
 	var correction_amplitude_filter = 1
+	
 	if synth.filter_value < 1000:
 		correction_amplitude_filter = 20
 	
-	for i in range(max_frames): 
+	for i in range(value, max_frames, 1): 
 		 #Obtener cuatro puntos consecutivos para la interpolación cúbica
 		var p0 = table[int(index) % synth.sample_wave]
 		var p1 = table[int(index + 1) % synth.sample_wave]
@@ -144,6 +145,7 @@ func oscillator(max_frames:int) -> PackedVector2Array:
 		var p = index - int(index)
 		
 		var output = 0.0
+		
 		var envelope = get_envelope(i)
 		
 		output = cubic_interpolate(p0,p1,p2,p3,p)
@@ -175,15 +177,13 @@ func get_envelope(current_frame):
 	total_sample_envelope = attack_frames + decay_frames + sustain_frames + release_frames
 
 	if current_frame < attack_frames:
-		return current_frame / attack_frames
+		return float(current_frame) / float(attack_frames)
 	elif current_frame < (attack_frames + decay_frames):
-		return remap(current_frame / decay_frames, 0.0, 1.0, 1.0, synth.adsr_sustain)
+		return 1.0 - (1.0 - synth.adsr_sustain) * float(current_frame - attack_frames) / float(decay_frames)
 	elif current_frame < (total_sample_envelope - release_frames):
 		return synth.adsr_sustain
 	else:
-		var previous_frame = increment_frame_index
-		previous_frame = clamp(previous_frame, 0, increment_buffer.size())
-		return remap(current_frame / release_frames, 0.0, 1.0, 1.0, 0.0)
+		return synth.adsr_sustain * (1.0 - float(current_frame - (total_sample_envelope - release_frames)) / float(release_frames))
 
 
 

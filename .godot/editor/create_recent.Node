@@ -1,3 +1,4 @@
+MarginContainer
 GPUParticles2D
 ColorRect
 Timer
@@ -12,4 +13,3 @@ Label
 HBoxContainer
 AudioStreamPlayer
 AnimationPlayer
-MarginContainer

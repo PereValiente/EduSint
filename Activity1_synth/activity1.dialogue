@@ -16,7 +16,7 @@ do show_button_and_sint()
 
 set select_sound = 1
 do sint_talk()
-Sint: Ahora, centra la atención en dezifrar qué hace el primer deslizador.
+Sint: Ahora, centra la atención en descifrar qué hace el primer deslizador.
 Sint: Una vez lo sepas, pulsa la flecha para informarme de tus descubrimientos.
 do show_button_and_sint()
 => END
