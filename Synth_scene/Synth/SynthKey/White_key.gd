@@ -4,141 +4,129 @@ class_name SynthKey
 
 @export var synth : Synth
 @export var frequency : float
+
 @onready var audio_stream_player = $AudioStreamPlayer
 
-var playback : AudioStreamGeneratorPlayback
 
-enum State{
-	Stopped,
-	Attack,
-	Decay,
-	Sustain,
-	Release
-}
+#var sample_hz = 22050.0 # Keep the number of samples to mix low, GDScript is not super fast.
+#var pulse_hz = 440.0
+#var phase = 0.0
+#
 
-var state : State = State.Stopped
+
+#func _process(_delta):
+	#_fill_buffer()
+#
+#
+#func _fill_buffer():
+	#var increment = pulse_hz / sample_hz
+#
+	#var to_fill = playback.get_frames_available()
+	#while to_fill > 0:
+		#playback.push_frame(Vector2.ONE * sin(phase * TAU)) # Audio frames are stereo.
+		#phase = fmod(phase + increment, 1.0)
+		#to_fill -= 1
+#
+#
+#func _ready():
+	#audio_stream_player.stream.mix_rate = sample_hz # Setting mix rate is only possible before play().
+	#audio_stream_player.play()
+	#playback = audio_stream_player.get_stream_playback()
+	#_fill_buffer() # Prefill, do before play() to avoid delay.
+
+
+var playback : AudioStreamGeneratorPlayback = null
+
+
 var increment_buffer : PackedVector2Array
 var increment_frame_index : int = 0
 
 var previous_sample = 0.0
 var total_sample_envelope = 0
+var last_index = 0.0
 
-var print_buffer : PackedVector2Array
-var index : float = 0
+
 
 func _ready():
 	button_down.connect(on_button_down)
 	button_up.connect(on_button_up)
 
 
-func _process(_delta):
-	if state != State.Stopped:
-		_fill_buffer()
-
-
-func _fill_buffer():
-	var generator_new_buffer : PackedVector2Array = []
-	
-	var to_fill = playback.get_frames_available()
-	for i in to_fill:
-		generator_new_buffer.push_back(increment_buffer[increment_frame_index])
-		
-		increment_frame_index += 1
-		
-		if increment_frame_index >= increment_buffer.size():
-			on_state_finished()
-		
-		if state == State.Stopped:
-			return
-	
-	playback.push_buffer(generator_new_buffer)
-
-
-
 func on_button_down():
 	audio_stream_player.play()
 	playback = audio_stream_player.get_stream_playback()
-	index = 0
-	
-	play_state(State.Attack)
-
+	playback.push_buffer(oscillator(synth.sample_rate * 5))
 
 func on_button_up():
-	play_state(State.Release)
+	#play_state(State.Release)
+	audio_stream_player.stop()
 
 
-func on_state_finished():
-	match state:
-		State.Attack:
-			play_state(State.Decay)
-		State.Decay:
-			play_state(State.Sustain)
-		State.Sustain:
-			play_state(State.Sustain)
-		State.Release:
-			play_state(State.Stopped)
+
+#func play_state(new_state : State):
+	#
+	#if new_state == State.Stopped:
+		#audio_stream_player.stop()
+		#state = State.Stopped
+##		save_buffer("res://buffers/whole_buffer_4.txt", print_buffer)
+		#return
+	#
+	##Calculate buffer length
+	#var state_length : float = 0
+	#
+##Create buffer and play buffer
+	##var buffer = basic_wave_oscilator(new_state, state_length)
+	##var buffer = oscillator(new_state, state_length)
+	#increment_frame_index = 0
+#
+	##Update state machine
+	#
+	##increment_buffer = buffer
 
 
-func play_state(new_state : State):
-	print("State: " + str(new_state))
-	
-	if new_state == State.Stopped:
-		audio_stream_player.stop()
-		state = State.Stopped
-#		save_buffer("res://buffers/whole_buffer_9.txt", print_buffer)
-		return
-	
-	if new_state == State.Sustain and state == State.Sustain:
-		increment_frame_index = 0 #Reuse last buffer
-		return
-	
-	
-	#Calculate buffer length
-	var state_length : float = 0
-	match new_state:
-		State.Attack:
-			print_buffer = [] 
-			state_length = synth.adsr_attack * synth.sample_rate
-		State.Decay:
-			state_length = synth.adsr_decay * synth.sample_rate
-		State.Sustain:
-			state_length = synth.adsr_sustain * synth.sample_rate
-		State.Release:
-			state_length =  synth.adsr_release * synth.sample_rate
-	
-	if state_length <= 0: #Go to next state if this one is lenght == 0
-		state = new_state
-		on_state_finished()
-		return
-	
-	
-	#Create buffer and play buffer
-	var empty_test : PackedVector2Array = []
-	for i in 10000:
-		empty_test.append(Vector2.ZERO)
-	
-	increment_buffer = oscillator(new_state, state_length)
-	increment_buffer.append_array(empty_test)
-	increment_buffer.append_array(oscillator(new_state, state_length))
-	increment_buffer.append_array(empty_test)
-	
-	increment_frame_index = 0
-	
-	#Update state machine
-	state = new_state
-	
-	
+#func fill_audio_buffer(buffer_size):
+	#var data = playback.push_buffer(basic_wave_oscilator(synth.sample_rate * 0.1))
 
-func oscillator(oscilator_state:State, max_frames:int) -> PackedVector2Array: 
+#
+#func basic_wave_oscilator(max_frames:int) -> PackedVector2Array:
+	#var return_array : PackedVector2Array = []
+	#var index = increment_frame_index
+	#var index_increment = (frequency * synth.sample_wave) / synth.sample_rate
+	#var table = synth.get_current_wave()
+	#var gain_dB = -20
+	#var amplitude = pow(10,gain_dB/20)
+	#
+	#for i in range(max_frames):
+		## Obtener cuatro puntos consecutivos para la interpolación cúbica
+		#var p0 = table[int(index) % synth.sample_wave]
+		#var p1 = table[int(index + 1) % synth.sample_wave]
+		#var p2 = table[int(index + 2) % synth.sample_wave]
+		#var p3 = table[int(index + 3) % synth.sample_wave]
+		## Calcular el parámetro de interpolación (p) entre 0 y 1
+		#var p = index - int(index)
+#
+		#var output = 0.0
+		#output = cubic_interpolate(p0,p1,p2,p3,p)
+		##if i == 0:
+			##index = last_index
+		#
+		#index += index_increment
+		#index = int(index + index_increment) % synth.sample_wave
+		##if max_frames > i:
+			##index = int(index + index_increment) % synth.sample_wave
+		##else:
+			##last_index = index
+		#output *= amplitude
+		#return_array.push_back(Vector2.ONE * output)
+	#return return_array
+
+
+func oscillator(max_frames:int) -> PackedVector2Array: 
 	var return_array : PackedVector2Array = []
 	
-	print("Index: " + str(index))
+	var index = increment_frame_index
 	var index_increment = (frequency * synth.sample_wave) / synth.sample_rate
-	
 	var table = synth.get_current_wave()
-	print("Table size: " + str(table.size()) + " - Wave size: " + str(synth.sample_wave))
-	print("Index increment: " + str(index_increment))
-	
 	var gain_dB = -20
 	var amplitude = pow(10,gain_dB/20)
 	
@@ -147,7 +135,7 @@ func oscillator(oscilator_state:State, max_frames:int) -> PackedVector2Array:
 		correction_amplitude_filter = 20
 	
 	for i in range(max_frames): 
-		# Obtener cuatro puntos consecutivos para la interpolación cúbica
+		 #Obtener cuatro puntos consecutivos para la interpolación cúbica
 		var p0 = table[int(index) % synth.sample_wave]
 		var p1 = table[int(index + 1) % synth.sample_wave]
 		var p2 = table[int(index + 2) % synth.sample_wave]
@@ -156,22 +144,17 @@ func oscillator(oscilator_state:State, max_frames:int) -> PackedVector2Array:
 		var p = index - int(index)
 		
 		var output = 0.0
+		var envelope = get_envelope(i)
+		
 		output = cubic_interpolate(p0,p1,p2,p3,p)
+		index += index_increment
+		index = int(index + index_increment) % synth.sample_wave
 		
 		if synth.wave_type == 3: #DPW algorythm for sawtooth
 			output = dpw_algorithm(output)
 		
-		var envelope = get_envelope(oscilator_state, i, max_frames)
 		output *= amplitude * envelope * correction_amplitude_filter #aplicar a la salida el valor de amplitud y envolvente
-		#if i == max_frames:
-		#	output = 0.0
 		return_array.push_back(Vector2.ONE * output)
-		print_buffer.push_back(Vector2.ONE * output)
-		
-#		index += index_increment
-		index = fmod(index + index_increment, synth.sample_wave)
-	
-	print("Index: " + str(index))
 	
 	if synth.wave_type == 3: #Avoid Artifacts
 		if return_array.size() > 2:
@@ -183,20 +166,25 @@ func oscillator(oscilator_state:State, max_frames:int) -> PackedVector2Array:
 	return return_array
 
 
-func get_envelope(oscilator_state : State, current_frame:float, frame_count:float):
-	match oscilator_state:
-		State.Attack:
-			return current_frame / frame_count
-		State.Decay:
-			return remap(current_frame / frame_count, 0.0, 1.0, 1.0, synth.adsr_sustain)
-		State.Sustain:
-			return synth.adsr_sustain
-		State.Release:
-			var previous_frame = increment_frame_index
-			previous_frame = clamp(previous_frame, 0, increment_buffer.size())
-			var pre_release_value = get_envelope(state, previous_frame, increment_buffer.size())
-			
-			return remap(current_frame / frame_count, 0.0, 1.0, pre_release_value, 0.0)
+
+func get_envelope(current_frame):
+	var attack_frames = synth.adsr_attack * synth.sample_rate
+	var decay_frames = synth.adsr_decay * synth.sample_rate
+	var sustain_frames = synth.adsr_sustain * synth.sample_rate
+	var release_frames = synth.adsr_release * synth.sample_rate
+	total_sample_envelope = attack_frames + decay_frames + sustain_frames + release_frames
+
+	if current_frame < attack_frames:
+		return current_frame / attack_frames
+	elif current_frame < (attack_frames + decay_frames):
+		return remap(current_frame / decay_frames, 0.0, 1.0, 1.0, synth.adsr_sustain)
+	elif current_frame < (total_sample_envelope - release_frames):
+		return synth.adsr_sustain
+	else:
+		var previous_frame = increment_frame_index
+		previous_frame = clamp(previous_frame, 0, increment_buffer.size())
+		return remap(current_frame / release_frames, 0.0, 1.0, 1.0, 0.0)
+
 
 
 func dpw_algorithm(input_sample):
@@ -212,12 +200,3 @@ func difference_filter(input_sample): #H(z)=1-z^-1 filtro de retardo unitario di
 	
 	return input_sample - previous_sample_aux
 
-
-func save_buffer(fileName, buffer):
-	var to_string = ""
-	for value in buffer:
-		to_string += str(value.x) + ","
-	
-	var file = FileAccess.open(fileName, FileAccess.WRITE)
-	file.store_string(to_string)
-	file.close()

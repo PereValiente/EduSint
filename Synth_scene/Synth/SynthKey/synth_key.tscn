@@ -8,7 +8,7 @@
 bg_color = Color(0.384314, 0.65098, 0.67451, 1)
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_t87uf"]
-buffer_length = 10.0
+buffer_length = 5.0
 
 [node name="synth_key" type="Button"]
 size_flags_horizontal = 3
@@ -20,4 +20,3 @@ frequency = 130.81
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamGenerator_t87uf")
-bus = &"Synth"
