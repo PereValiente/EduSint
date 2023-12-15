@@ -45,8 +45,30 @@ var previous_sample = 0.0
 var total_sample_envelope = 0
 var last_index = 0.0
 var value = 0
+var sound_stopped: bool = true
 
 
+func _process(_delta):
+	if sound_stopped == false:
+		_fill_buffer()
+
+
+func _fill_buffer():
+	var generator_new_buffer : PackedVector2Array = []
+	
+	var to_fill = playback.get_frames_available()
+	for i in to_fill:
+		generator_new_buffer.push_back(increment_buffer[increment_frame_index])
+		
+		increment_frame_index += 1
+		
+		#if increment_frame_index >= increment_buffer.size():
+			#on_state_finished()
+		#
+		#if state == State.Stopped:
+			#return
+	
+	playback.push_buffer(generator_new_buffer)
 
 func _ready():
 	button_down.connect(on_button_down)
@@ -56,11 +78,16 @@ func _ready():
 func on_button_down():
 	audio_stream_player.play()
 	playback = audio_stream_player.get_stream_playback()
-	playback.push_buffer(oscillator(value, synth.sample_rate + value))
+	sound_stopped = false
+	#playback.push_buffer(oscillator(value, synth.sample_rate + value))
+	increment_buffer = oscillator(value, synth.sample_rate + value)
+	increment_frame_index = 0
+	
 
 func on_button_up():
 	#play_state(State.Release)
 	audio_stream_player.stop()
+	sound_stopped = true
 
 
 
@@ -164,7 +191,8 @@ func oscillator(value:int, max_frames:int) -> PackedVector2Array:
 			return_array[0] = return_array[1] + difference_frame
 		else:
 			return_array[0] = Vector2.ZERO
-
+	if value == synth.sample_rate + value:
+		value = synth.sample_rate
 	return return_array
 
 
