@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cm4g6avx25r34" path="res://Synth_scene/Synth/SynthKey/synth_key_black.tscn" id="10_i226n"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_yjr14"]
-buffer_length = 0.1
+buffer_length = 0.05
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vmwb6"]
 bg_color = Color(0, 0, 0, 1)
@@ -319,8 +319,10 @@ size_flags_horizontal = 6
 focus_mode = 0
 theme_override_icons/grabber = ExtResource("3_px3va")
 theme_override_icons/grabber_highlight = ExtResource("3_px3va")
+min_value = 0.01
 max_value = 1.0
 step = 0.01
+value = 0.01
 script = ExtResource("9_u5kst")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/MarginContainer2/VBoxContainer"]

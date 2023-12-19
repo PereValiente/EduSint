@@ -32,6 +32,7 @@ func _on_activity_1_pressed():
 	pressed_counter += 1
 	
 	if pressed_counter == 1:
+		synth.adsr_attack = 0
 		synth.show_wave()
 		activity_1.visible = !activity_1.visible
 		DialogueManager.show_dialogue_balloon(load("res://Activity1_synth/activity1.dialogue"),"wave_activity1")

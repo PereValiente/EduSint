@@ -16,7 +16,6 @@ var playback : AudioStreamGeneratorPlayback # Will hold the AudioStreamGenerator
 @onready var hide_adsr = $Hide_adsr
 
 
-
 var sample_wave = 4096 
 var filter_value = 0.0
 var cubic_interpolation_sample = 0.0
@@ -25,7 +24,6 @@ var adsr_decay = 0.2
 var adsr_sustain = 0.5
 var adsr_release = 0.3
 var wave_type: int = 0
-var wave_tables = []
 
 
 func _ready(): 
@@ -37,17 +35,19 @@ func generate_wave_form(phase):
 		0:
 			return sin(phase * TAU)
 		1:
-			return square_wave(phase)
+			return square_wave(phase) * 0.5
 		2:
 			return triangle_wave(phase)
 		3:
 			return saw_tooth_wave(phase)
+
 
 func square_wave(phase: float):
 	if phase < 0.5:
 		return 1
 	else:
 		return -1
+
 
 func triangle_wave(phase):
 	if phase < 0.25:
@@ -57,24 +57,9 @@ func triangle_wave(phase):
 	else:
 		return (phase - 1) / 0.25
 
+
 func saw_tooth_wave(phase):
 	return (-0.5 + phase) / 0.5
-
-
-
-func generate_triangle_wave_table(sample_wave):
-	var table = []
-	var quarter_sample_wave = float(sample_wave / 4)
-	var sample_t = 0.0
-	for i in range(sample_wave):
-		if i < quarter_sample_wave:
-			sample_t = i / quarter_sample_wave
-		elif i < 3 * quarter_sample_wave:
-			sample_t = (2 * quarter_sample_wave - i) / quarter_sample_wave
-		elif i < 4 * quarter_sample_wave:
-			sample_t = (i - 4 * quarter_sample_wave) / quarter_sample_wave
-		table.append(sample_t)
-	return table
 
 
 func _on_slider_attack_value_changed(value):
@@ -108,8 +93,6 @@ func _on_filter_value_changed(value):
 	effect.set_cutoff(filter_value)
 
 
-#	get_tree().change_scene_to_packed(scene_settings)
-
 # FUNCIONES PARA LA ACTIVIDAD 1
 
 func show_wave():
@@ -119,9 +102,9 @@ func show_wave():
 
 func show_filter():
 	hide_filter.visible = !hide_filter.visible
+	hide_wave.visible = !hide_wave.visible
 
 func show_attack(): 
-	hide_wave.visible = !hide_wave.visible
 	hide_adsr.visible = !hide_adsr.visible
 	hide_dsr.visible = !hide_dsr.visible
 	hide_filter.visible = !hide_filter.visible
