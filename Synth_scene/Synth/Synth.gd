@@ -28,16 +28,9 @@ var wave_type: int = 0
 var wave_tables = []
 
 
-func _ready(): #Genera las tablas de las 4 formas de onda
-	wave_tables.append(generate_sine_wave_table(sample_wave))
-	wave_tables.append(generate_square_wave_table(sample_wave))
-	wave_tables.append(generate_triangle_wave_table(sample_wave))
-	wave_tables.append(generate_sawtooth_wave_table(sample_wave))
+func _ready(): 
 	label_type_wave.text = "Sin"
 
-
-func get_current_wave():
-	return wave_tables[wave_type]
 
 func generate_wave_form(phase):
 	match wave_type:
@@ -68,28 +61,6 @@ func saw_tooth_wave(phase):
 	return (-0.5 + phase) / 0.5
 
 
-func generate_sine_wave_table(sample_wave):
-	var table = []
-	for i in range(sample_wave):
-		var angle = (i * TAU) / float (sample_wave) 
-		var sample_s = sin(angle)
-		table.append(sample_s) #almacena sample_wave muestras de la amplitud de un seno
-		#print(sample_s)
-	return table
-
-
-func generate_square_wave_table(sample_wave):
-	var table = []
-	var half_sample_wave = sample_wave / 2
-	for i in range(sample_wave):
-		var sample_c = 0.0
-		if i < half_sample_wave:
-			sample_c = 1.0 
-		else: 
-			sample_c = -1.0
-		table.append(sample_c)
-	return table
-
 
 func generate_triangle_wave_table(sample_wave):
 	var table = []
@@ -103,16 +74,6 @@ func generate_triangle_wave_table(sample_wave):
 		elif i < 4 * quarter_sample_wave:
 			sample_t = (i - 4 * quarter_sample_wave) / quarter_sample_wave
 		table.append(sample_t)
-	return table
-
-
-func generate_sawtooth_wave_table(sample_wave):
-	var table = []
-	var half_sample_wave = sample_wave / 2
-	var sample = 0.0
-	for i in range(sample_wave):
-		sample = float(-half_sample_wave + i) / half_sample_wave
-		table.append(sample)
 	return table
 
 
