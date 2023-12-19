@@ -59,14 +59,11 @@ func _fill_buffer():
 	var to_fill = playback.get_frames_available()
 	for i in to_fill:
 		generator_new_buffer.push_back(increment_buffer[increment_frame_index])
-		
 		increment_frame_index += 1
 		
-		#if increment_frame_index >= increment_buffer.size():
-			#on_state_finished()
-		#
-		#if state == State.Stopped:
-			#return
+		if increment_frame_index >= increment_buffer.size():
+			increment_frame_index = 0
+		
 	
 	playback.push_buffer(generator_new_buffer)
 
@@ -80,7 +77,7 @@ func on_button_down():
 	playback = audio_stream_player.get_stream_playback()
 	sound_stopped = false
 	#playback.push_buffer(oscillator(value, synth.sample_rate + value))
-	increment_buffer = oscillator(value, synth.sample_rate + value)
+	increment_buffer = oscillator(value, synth.sample_rate + value )
 	increment_frame_index = 0
 	
 
@@ -152,15 +149,17 @@ func on_button_up():
 func oscillator(value:int, max_frames:int) -> PackedVector2Array: 
 	var return_array : PackedVector2Array = []
 
-	var index = increment_frame_index
+	var index: int = increment_frame_index
 	var index_increment = (frequency * synth.sample_wave) / synth.sample_rate
 	var table = synth.get_current_wave()
 	var gain_dB = -20
 	var amplitude = pow(10,gain_dB/20)
 	var correction_amplitude_filter = 1
-	
 	if synth.filter_value < 1000:
 		correction_amplitude_filter = 20
+	
+	if value == synth.sample_rate + value:
+		value = synth.sample_rate
 	
 	for i in range(value, max_frames, 1): 
 		 #Obtener cuatro puntos consecutivos para la interpolación cúbica
@@ -172,7 +171,7 @@ func oscillator(value:int, max_frames:int) -> PackedVector2Array:
 		var p = index - int(index)
 		
 		var output = 0.0
-		
+
 		var envelope = get_envelope(i)
 		
 		output = cubic_interpolate(p0,p1,p2,p3,p)
@@ -191,8 +190,6 @@ func oscillator(value:int, max_frames:int) -> PackedVector2Array:
 			return_array[0] = return_array[1] + difference_frame
 		else:
 			return_array[0] = Vector2.ZERO
-	if value == synth.sample_rate + value:
-		value = synth.sample_rate
 	return return_array
 
 
