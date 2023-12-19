@@ -10,7 +10,7 @@ class_name SynthKey
 
 #var sample_hz = 22050.0 # Keep the number of samples to mix low, GDScript is not super fast.
 #var pulse_hz = 440.0
-#var phase = 0.0
+var phase = 0.0
 #
 
 
@@ -18,15 +18,18 @@ class_name SynthKey
 	#_fill_buffer()
 #
 #
-#func _fill_buffer():
-	#var increment = pulse_hz / sample_hz
-#
-	#var to_fill = playback.get_frames_available()
-	#while to_fill > 0:
-		#playback.push_frame(Vector2.ONE * sin(phase * TAU)) # Audio frames are stereo.
-		#phase = fmod(phase + increment, 1.0)
-		#to_fill -= 1
-#
+func _fill_buffer():
+	var increment = frequency / synth.sample_rate
+	var output: float = 0.0
+
+	var to_fill = playback.get_frames_available()
+	while to_fill > 0:
+		output = synth.generate_wave_form(phase)
+		output *= amplitude * correction_amplitude_filter #aplicar a la salida el valor de amplitud y envolvente		
+		playback.push_frame(Vector2.ONE * output)
+		phase = fmod(phase + increment, 1.0)
+		to_fill -= 1
+
 #
 #func _ready():
 	#audio_stream_player.stream.mix_rate = sample_hz # Setting mix rate is only possible before play().
@@ -46,6 +49,8 @@ var total_sample_envelope = 0
 var last_index = 0.0
 var value = 0
 var sound_stopped: bool = true
+var amplitude
+var correction_amplitude_filter
 
 
 func _process(_delta):
@@ -53,23 +58,28 @@ func _process(_delta):
 		_fill_buffer()
 
 
-func _fill_buffer():
-	var generator_new_buffer : PackedVector2Array = []
-	
-	var to_fill = playback.get_frames_available()
-	for i in to_fill:
-		generator_new_buffer.push_back(increment_buffer[increment_frame_index])
-		increment_frame_index += 1
+#func _fill_buffer():
+	#var generator_new_buffer : PackedVector2Array = []
+	#
+	#var to_fill = playback.get_frames_available()
+	#for i in to_fill:
+		#generator_new_buffer.push_back(increment_buffer[increment_frame_index])
+		#increment_frame_index += 1
+		#
+		#if increment_frame_index >= increment_buffer.size():
+			#increment_buffer = oscillator(value, synth.sample_rate + value )
+			#increment_frame_index = 0
 		
-		if increment_frame_index >= increment_buffer.size():
-			increment_frame_index = 0
-		
 	
-	playback.push_buffer(generator_new_buffer)
+	#playback.push_buffer(generator_new_buffer)
 
 func _ready():
 	button_down.connect(on_button_down)
 	button_up.connect(on_button_up)
+	amplitude = pow(10,-1) #-1 = gain db (-20)/20
+	correction_amplitude_filter = 1
+	if synth.filter_value < 1000:
+		correction_amplitude_filter = 20
 
 
 func on_button_down():
@@ -77,8 +87,8 @@ func on_button_down():
 	playback = audio_stream_player.get_stream_playback()
 	sound_stopped = false
 	#playback.push_buffer(oscillator(value, synth.sample_rate + value))
-	increment_buffer = oscillator(value, synth.sample_rate + value )
-	increment_frame_index = 0
+	#increment_buffer = oscillator(value, synth.sample_rate + value )
+	#increment_frame_index = 0
 	
 
 func on_button_up():
@@ -150,7 +160,7 @@ func oscillator(value:int, max_frames:int) -> PackedVector2Array:
 	var return_array : PackedVector2Array = []
 
 	var index: int = increment_frame_index
-	var index_increment = (frequency * synth.sample_wave) / synth.sample_rate
+	var index_increment = int((frequency * synth.sample_wave) / synth.sample_rate)
 	var table = synth.get_current_wave()
 	var gain_dB = -20
 	var amplitude = pow(10,gain_dB/20)
@@ -172,7 +182,7 @@ func oscillator(value:int, max_frames:int) -> PackedVector2Array:
 		
 		var output = 0.0
 
-		var envelope = get_envelope(i)
+		#var envelope = get_envelope(i)
 		
 		output = cubic_interpolate(p0,p1,p2,p3,p)
 		index += index_increment
@@ -181,7 +191,8 @@ func oscillator(value:int, max_frames:int) -> PackedVector2Array:
 		if synth.wave_type == 3: #DPW algorythm for sawtooth
 			output = dpw_algorithm(output)
 		
-		output *= amplitude * envelope * correction_amplitude_filter #aplicar a la salida el valor de amplitud y envolvente
+		#output *= amplitude * envelope * correction_amplitude_filter #aplicar a la salida el valor de amplitud y envolvente
+		output *= amplitude * correction_amplitude_filter #aplicar a la salida el valor de amplitud y envolvente
 		return_array.push_back(Vector2.ONE * output)
 	
 	if synth.wave_type == 3: #Avoid Artifacts

@@ -24,7 +24,7 @@ var adsr_attack = 0.1
 var adsr_decay = 0.2
 var adsr_sustain = 0.5
 var adsr_release = 0.3
-var wave_type = 0
+var wave_type: int = 0
 var wave_tables = []
 
 
@@ -38,6 +38,34 @@ func _ready(): #Genera las tablas de las 4 formas de onda
 
 func get_current_wave():
 	return wave_tables[wave_type]
+
+func generate_wave_form(phase):
+	match wave_type:
+		0:
+			return sin(phase * TAU)
+		1:
+			return square_wave(phase)
+		2:
+			return triangle_wave(phase)
+		3:
+			return saw_tooth_wave(phase)
+
+func square_wave(phase: float):
+	if phase < 0.5:
+		return 1
+	else:
+		return -1
+
+func triangle_wave(phase):
+	if phase < 0.25:
+		return phase / 0.25
+	elif phase < 0.75:
+		return (0.5 - phase) / 0.25
+	else:
+		return (phase - 1) / 0.25
+
+func saw_tooth_wave(phase):
+	return (-0.5 + phase) / 0.5
 
 
 func generate_sine_wave_table(sample_wave):
