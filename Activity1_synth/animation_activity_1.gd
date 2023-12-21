@@ -32,12 +32,17 @@ func _on_activity_1_pressed():
 	pressed_counter += 1
 	
 	if pressed_counter == 1:
-		synth.adsr_attack = 0
+		synth.adsr_attack = 0.01
+		synth.adsr_decay = 0.0
+		synth.adsr_sustain = 1.0
+		synth.adsr_release = 0.05
+		synth.filter_value = 100000
 		synth.show_wave()
 		activity_1.visible = !activity_1.visible
 		DialogueManager.show_dialogue_balloon(load("res://Activity1_synth/activity1.dialogue"),"wave_activity1")
 	
 	elif pressed_counter == 2:
+		synth.wave_type = 3
 		activity_1.visible = !activity_1.visible
 		DialogueManager.show_dialogue_balloon(load("res://Activity1_synth/activity1.dialogue"),"question_wave_activity1")
 		

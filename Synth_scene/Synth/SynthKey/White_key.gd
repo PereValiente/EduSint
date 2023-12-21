@@ -17,14 +17,14 @@ var correction_amplitude_filter
 var last_envelope_value: float = 0.0
 var envelope_frame: int = 0
 var release_frame: int = 0
-var button_pulsed: bool = false
+var button_pulsed: bool = true
 
 
 func _ready():
 	button_down.connect(on_button_down)
 	button_up.connect(on_button_up)
-	mouse_entered.connect(on_mouse_entered)
-	mouse_exited.connect(on_mouse_exited)
+	#mouse_entered.connect(on_mouse_entered)
+	#mouse_exited.connect(on_mouse_exited)
 
 
 func _process(_delta):
@@ -65,23 +65,23 @@ func on_button_down():
 	on_ads = true
 	fill_buffer = true
 	envelope_frame = 0
-	button_pulsed = true
+	#button_pulsed = true
 
 
-func on_mouse_entered():
+#func on_mouse_entered():
+	#if fill_buffer:
+		#audio_stream_player.play()
+		#playback = audio_stream_player.get_stream_playback()
+		#on_ads = true
+		#fill_buffer = true
+		#envelope_frame = 0
+
+
+#func on_mouse_exited():
 	#if button_pulsed:
-		audio_stream_player.play()
-		playback = audio_stream_player.get_stream_playback()
-		on_ads = true
-		fill_buffer = true
-		envelope_frame = 0
-
-
-func on_mouse_exited():
-	if button_pulsed:
-		on_ads = false
-		release_frame = envelope_frame
-		button_pulsed = false
+		#on_ads = false
+		#release_frame = envelope_frame
+		##button_pulsed = false
 
 
 func on_button_up():

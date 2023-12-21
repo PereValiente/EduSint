@@ -289,8 +289,10 @@ size_flags_horizontal = 6
 focus_mode = 0
 theme_override_icons/grabber = ExtResource("3_px3va")
 theme_override_icons/grabber_highlight = ExtResource("3_px3va")
+min_value = 0.01
 max_value = 1.0
 step = 0.01
+value = 0.01
 script = ExtResource("6_v4q2j")
 
 [node name="Slider_decay" type="VSlider" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer"]
@@ -319,10 +321,10 @@ size_flags_horizontal = 6
 focus_mode = 0
 theme_override_icons/grabber = ExtResource("3_px3va")
 theme_override_icons/grabber_highlight = ExtResource("3_px3va")
-min_value = 0.01
+min_value = 0.05
 max_value = 1.0
 step = 0.01
-value = 0.01
+value = 0.05
 script = ExtResource("9_u5kst")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/MarginContainer2/VBoxContainer"]
