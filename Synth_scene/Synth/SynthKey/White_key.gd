@@ -3,6 +3,7 @@ extends Button
 class_name SynthKey
 
 @export var synth : Synth
+@export var graph : Graph
 @onready var audio_stream_player = $AudioStreamPlayer
 @export var frequency : float
 

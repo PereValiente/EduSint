@@ -1,3 +1,6 @@
+Timer
+Line2D
+Node2D
 Label
 TextureButton
 TextureRect
@@ -6,10 +9,6 @@ TextEdit
 MarginContainer
 GPUParticles2D
 ColorRect
-Timer
 Container
 CanvasLayer
 Node
-Button
-Panel
-VSlider

@@ -133,7 +133,17 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_qajb0")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_m37fj")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_gh40v")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_cewg3")
-text = "START"
+text = "GAME"
+
+[node name="Synthesizer_button" type="Button" parent="MainMenu/MarginContainer/MainContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_m6qmp")
+theme_override_styles/hover = SubResource("StyleBoxTexture_qajb0")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_m37fj")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_gh40v")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cewg3")
+text = "SYNTHESIZER"
 
 [node name="Option_button" type="Button" parent="MainMenu/MarginContainer/MainContainer"]
 custom_minimum_size = Vector2(0, 50)
@@ -145,7 +155,7 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_sk4n2")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_b7n50")
 text = "OPTION"
 
-[node name="Credit" type="Button" parent="MainMenu/MarginContainer/MainContainer"]
+[node name="Credit_button" type="Button" parent="MainMenu/MarginContainer/MainContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 4

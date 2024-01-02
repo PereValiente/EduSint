@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://kwr6dwirb8jd"]
+[gd_scene load_steps=17 format=3 uid="uid://kwr6dwirb8jd"]
 
 [ext_resource type="Script" path="res://Synth_scene/Synth/Synth.gd" id="1_8dr87"]
 [ext_resource type="PackedScene" uid="uid://pi7vexf72o6o" path="res://Synth_scene/Synth/SynthKey/synth_key.tscn" id="2_lqs5k"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Synth_scene/Synth/Slider_decay.gd" id="7_4qnkk"]
 [ext_resource type="Script" path="res://Synth_scene/Synth/Slider_sustain.gd" id="8_5dvic"]
 [ext_resource type="Script" path="res://Synth_scene/Synth/Slider_release.gd" id="9_u5kst"]
+[ext_resource type="Script" path="res://Synth_scene/Synth/Graph.gd" id="10_8bwu1"]
 [ext_resource type="PackedScene" uid="uid://cm4g6avx25r34" path="res://Synth_scene/Synth/SynthKey/synth_key_black.tscn" id="10_i226n"]
 
 [sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_yjr14"]
@@ -90,16 +91,17 @@ color = Color(0.137255, 0.137255, 0.137255, 1)
 
 [node name="Ballon_container" type="ColorRect" parent="ColorRect"]
 layout_mode = 0
+offset_top = 69.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 109.0
 color = Color(1, 1, 1, 0)
 
 [node name="Balloon1" type="Panel" parent="ColorRect/Ballon_container"]
 layout_mode = 2
 offset_left = 76.0
-offset_top = 68.0
+offset_top = 78.0
 offset_right = 186.0
-offset_bottom = 309.0
+offset_bottom = 281.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_a611b")
@@ -107,9 +109,9 @@ theme = SubResource("Theme_a611b")
 [node name="Balloon2" type="Panel" parent="ColorRect/Ballon_container"]
 layout_mode = 2
 offset_left = 254.0
-offset_top = 68.0
+offset_top = 78.0
 offset_right = 364.0
-offset_bottom = 309.0
+offset_bottom = 281.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_a611b")
@@ -117,12 +119,34 @@ theme = SubResource("Theme_a611b")
 [node name="Balloon3" type="Panel" parent="ColorRect/Ballon_container"]
 layout_mode = 2
 offset_left = 432.0
-offset_top = 68.0
+offset_top = 78.0
 offset_right = 1073.0
-offset_bottom = 309.0
+offset_bottom = 281.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = SubResource("Theme_a611b")
+
+[node name="Balloon4" type="Panel" parent="ColorRect/Ballon_container"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = -46.0
+offset_right = 1073.0
+offset_bottom = 53.0
+theme = SubResource("Theme_a611b")
+
+[node name="Graph" type="Node2D" parent="ColorRect/Ballon_container"]
+position = Vector2(0, -69)
+script = ExtResource("10_8bwu1")
+number_of_points = 9930
+length_multiplier = 0.1
+
+[node name="Oscilloscope" type="Line2D" parent="ColorRect/Ballon_container/Graph"]
+position = Vector2(78, 72)
+width = 3.0
+
+[node name="Timer" type="Timer" parent="ColorRect/Ballon_container/Graph"]
+wait_time = 0.2
+autostart = true
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
 layout_mode = 0
@@ -130,7 +154,7 @@ offset_top = 323.0
 offset_right = 1152.0
 offset_bottom = 648.0
 theme_override_constants/margin_left = 60
-theme_override_constants/margin_top = 15
+theme_override_constants/margin_top = 52
 theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 10
 
@@ -209,10 +233,11 @@ frequency = 493.88
 
 [node name="MarginContainer2" type="MarginContainer" parent="ColorRect"]
 layout_mode = 0
+offset_top = 35.0
 offset_right = 1152.0
-offset_bottom = 328.0
+offset_bottom = 371.0
 theme_override_constants/margin_left = 45
-theme_override_constants/margin_top = 80
+theme_override_constants/margin_top = 120
 theme_override_constants/margin_right = 45
 theme_override_constants/margin_bottom = 30
 
@@ -383,15 +408,17 @@ color = Color(0.34902, 0.258824, 0.117647, 1)
 [node name="Black_key" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
+offset_top = 37.0
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 77.0
 
 [node name="C4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_i226n")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 2.725
 anchor_top = 8.45
 anchor_right = 3.875
-anchor_bottom = 13.225
+anchor_bottom = 12.675
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
@@ -400,11 +427,12 @@ synth = NodePath("../..")
 metadata/_edit_use_anchors_ = true
 
 [node name="D4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_i226n")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 4.525
 anchor_top = 8.45
 anchor_right = 5.675
-anchor_bottom = 13.225
+anchor_bottom = 12.675
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
@@ -414,11 +442,12 @@ frequency = 155.56
 metadata/_edit_use_anchors_ = true
 
 [node name="F4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_i226n")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 8.275
 anchor_top = 8.45
 anchor_right = 9.425
-anchor_bottom = 13.225
+anchor_bottom = 12.675
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
@@ -428,11 +457,12 @@ frequency = 185.0
 metadata/_edit_use_anchors_ = true
 
 [node name="G4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_i226n")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 10.125
 anchor_top = 8.45
 anchor_right = 11.275
-anchor_bottom = 13.225
+anchor_bottom = 12.675
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
@@ -442,11 +472,12 @@ frequency = 207.65
 metadata/_edit_use_anchors_ = true
 
 [node name="A4#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_i226n")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 11.975
 anchor_top = 8.45
 anchor_right = 13.125
-anchor_bottom = 13.225
+anchor_bottom = 12.675
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
@@ -456,11 +487,12 @@ frequency = 233.08
 metadata/_edit_use_anchors_ = true
 
 [node name="C5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_i226n")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 15.675
 anchor_top = 8.45
 anchor_right = 16.825
-anchor_bottom = 13.225
+anchor_bottom = 12.675
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
@@ -470,11 +502,12 @@ frequency = 275.18
 metadata/_edit_use_anchors_ = true
 
 [node name="D5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_i226n")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 17.525
 anchor_top = 8.45
 anchor_right = 18.675
-anchor_bottom = 13.225
+anchor_bottom = 12.675
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
@@ -484,11 +517,12 @@ frequency = 311.13
 metadata/_edit_use_anchors_ = true
 
 [node name="F5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_i226n")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 21.225
 anchor_top = 8.45
 anchor_right = 22.375
-anchor_bottom = 13.225
+anchor_bottom = 12.675
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
@@ -498,11 +532,12 @@ frequency = 369.99
 metadata/_edit_use_anchors_ = true
 
 [node name="G5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_i226n")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 23.075
 anchor_top = 8.45
 anchor_right = 24.225
-anchor_bottom = 13.225
+anchor_bottom = 12.675
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
@@ -512,11 +547,12 @@ frequency = 415.3
 metadata/_edit_use_anchors_ = true
 
 [node name="A5#" parent="Black_key" node_paths=PackedStringArray("synth") instance=ExtResource("10_i226n")]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_left = 24.925
 anchor_top = 8.45
 anchor_right = 26.075
-anchor_bottom = 13.225
+anchor_bottom = 12.675
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 0.0
@@ -597,6 +633,7 @@ offset_right = 1078.0
 offset_bottom = 317.0
 color = Color(0.137255, 0.137255, 0.137255, 1)
 
+[connection signal="timeout" from="ColorRect/Ballon_container/Graph/Timer" to="ColorRect/Ballon_container/Graph" method="_on_timer_timeout"]
 [connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_wave" to="." method="_on_wave_type_value_changed"]
 [connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_filter" to="." method="_on_filter_value_changed"]
 [connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_attack" to="." method="_on_slider_attack_value_changed"]
