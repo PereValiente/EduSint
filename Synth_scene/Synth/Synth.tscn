@@ -134,19 +134,16 @@ offset_right = 1073.0
 offset_bottom = 53.0
 theme = SubResource("Theme_a611b")
 
-[node name="Graph" type="Node2D" parent="ColorRect/Ballon_container"]
+[node name="Graph" type="Node2D" parent="ColorRect/Ballon_container" node_paths=PackedStringArray("synth_key")]
 position = Vector2(0, -69)
 script = ExtResource("10_8bwu1")
+synth_key = NodePath("../../MarginContainer/HBoxContainer/B5")
 number_of_points = 9930
 length_multiplier = 0.1
 
 [node name="Oscilloscope" type="Line2D" parent="ColorRect/Ballon_container/Graph"]
 position = Vector2(78, 72)
 width = 3.0
-
-[node name="Timer" type="Timer" parent="ColorRect/Ballon_container/Graph"]
-wait_time = 0.2
-autostart = true
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
 layout_mode = 0
@@ -633,7 +630,6 @@ offset_right = 1078.0
 offset_bottom = 317.0
 color = Color(0.137255, 0.137255, 0.137255, 1)
 
-[connection signal="timeout" from="ColorRect/Ballon_container/Graph/Timer" to="ColorRect/Ballon_container/Graph" method="_on_timer_timeout"]
 [connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_wave" to="." method="_on_wave_type_value_changed"]
 [connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_filter" to="." method="_on_filter_value_changed"]
 [connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_attack" to="." method="_on_slider_attack_value_changed"]
