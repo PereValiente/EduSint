@@ -19,9 +19,10 @@ var last_envelope_value: float = 0.0
 var envelope_frame: int = 0
 var release_frame: int = 0
 var button_pulsed: bool = true
-var amplitude_graph: float = 0.0
+#var amplitude_graph: float = 0.0
 
-signal played_key(amplitude:float)
+#signal played_key(amplitude:float)
+signal played_key(envelope:float)
 
 func _ready():
 	button_down.connect(on_button_down)
@@ -54,10 +55,17 @@ func _fill_buffer():
 		
 		if on_ads:
 			envelope = get_ads_envelope(envelope_frame)
+			if to_fill % 1024 == 0:
+				played_key.emit(envelope, frequency)
 		else:
 			envelope = get_release_envelope()
-		amplitude_graph = output * envelope
-		played_key.emit(amplitude_graph)
+			if to_fill % 1024 == 0:
+				played_key.emit(envelope, frequency)
+		
+		#if to_fill % 512 == 0:
+			#amplitude_graph = output * envelope
+			#played_key.emit(amplitude_graph)
+		
 		playback.push_frame(Vector2.ONE * output * envelope * amplitude * correction_amplitude_filter)
 		phase = fmod(phase + increment, 1.0)
 		envelope_frame += 1

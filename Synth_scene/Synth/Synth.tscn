@@ -140,6 +140,7 @@ script = ExtResource("10_8bwu1")
 keys = [NodePath("../../MarginContainer/HBoxContainer/C4"), NodePath("../../MarginContainer/HBoxContainer/D4"), NodePath("../../MarginContainer/HBoxContainer/E4"), NodePath("../../MarginContainer/HBoxContainer/F4"), NodePath("../../MarginContainer/HBoxContainer/G4"), NodePath("../../MarginContainer/HBoxContainer/A4"), NodePath("../../MarginContainer/HBoxContainer/B4"), NodePath("../../MarginContainer/HBoxContainer/C5"), NodePath("../../MarginContainer/HBoxContainer/D5"), NodePath("../../MarginContainer/HBoxContainer/E5"), NodePath("../../MarginContainer/HBoxContainer/F5"), NodePath("../../MarginContainer/HBoxContainer/G5"), NodePath("../../MarginContainer/HBoxContainer/A5"), NodePath("../../MarginContainer/HBoxContainer/B5"), NodePath("../../../Black_key/C4#"), NodePath("../../../Black_key/D4#"), NodePath("../../../Black_key/F4#"), NodePath("../../../Black_key/G4#"), NodePath("../../../Black_key/A4#"), NodePath("../../../Black_key/C5#"), NodePath("../../../Black_key/D5#"), NodePath("../../../Black_key/F5#"), NodePath("../../../Black_key/G5#"), NodePath("../../../Black_key/A5#")]
 number_of_points = 9930
 length_multiplier = 0.1
+amplitude = 0.008
 
 [node name="Oscilloscope" type="Line2D" parent="ColorRect/Ballon_container/Graph"]
 position = Vector2(78, 72)
