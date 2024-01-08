@@ -43,19 +43,23 @@ func _ready():
 func on_played_key(envelope:float, frequency:float):
 	var array: Array = []
 	var y_value:float = 0.0
+	var phase:float = 0.0
 	for i in range(number_of_points):
+		y_value = sin(i * frequency / 100000) * envelope * 40
+		phase = i * frequency / 100000
 		match wave_type:
 			0:
-				y_value = sin(i * frequency / 100000) * envelope * 40
+				y_value 
 			1:
-				#if i < number_of_points / 2:
-					#y_value = envelope * 40
-				#else:
+				if y_value > 0:
+					y_value = envelope * 40
+				else:
 					y_value = -envelope * 40
 			2:
 				y_value = 0
 			3:
-				y_value = 0
+				phase = fmod(phase, TAU)
+				y_value =  (abs(phase) * envelope * 13) - 40
 				
 		array.append(Vector2(
 			 i * length_multiplier,
