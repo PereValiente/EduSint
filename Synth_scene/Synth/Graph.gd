@@ -14,7 +14,6 @@ var wave_type:int = 0
 
 func _ready():
 	for child in keys:
-		#child.played_key.connect(on_played_key)
 		child.played_key.connect(on_played_key)
 
 ##funcion operativa dinamica pero capta parte muy pequeña de la señal
@@ -45,23 +44,22 @@ func on_played_key(envelope:float, frequency:float):
 	var array: Array = []
 	var y_value:float = 0.0
 	for i in range(number_of_points):
-		#match wave_type:
-			#0:
-				#y_value = sin(i * frequency / 100000) * envelope * 40
-			#1:
-				##if i < number_of_points / 2:
-					##y_value = envelope * 40
-				##else:
-					#y_value = -envelope * 40
-			#2:
-				#y_value = 0
-			#3:
-				#y_value = 0
+		match wave_type:
+			0:
+				y_value = sin(i * frequency / 100000) * envelope * 40
+			1:
+				#if i < number_of_points / 2:
+					#y_value = envelope * 40
+				#else:
+					y_value = -envelope * 40
+			2:
+				y_value = 0
+			3:
+				y_value = 0
 				
 		array.append(Vector2(
 			 i * length_multiplier,
-			sin(i * frequency / 100000) * envelope * 40 
-			#y_value
+			y_value
 		))
 			
 	oscilloscope.points = array
