@@ -10,6 +10,8 @@ class_name Graph
 @export var length_multiplier: float = 0.01
 @export var amplitude:float = 0.003
 
+var wave_type:int = 0
+
 func _ready():
 	for child in keys:
 		#child.played_key.connect(on_played_key)
@@ -41,12 +43,40 @@ func _ready():
 
 func on_played_key(envelope:float, frequency:float):
 	var array: Array = []
-	
+	var y_value:float = 0.0
 	for i in range(number_of_points):
-			array.append(Vector2(
-				 i * length_multiplier,
-				 sin(i * frequency / 100000) * envelope * 40
-			))
-
+		#match wave_type:
+			#0:
+				#y_value = sin(i * frequency / 100000) * envelope * 40
+			#1:
+				##if i < number_of_points / 2:
+					##y_value = envelope * 40
+				##else:
+					#y_value = -envelope * 40
+			#2:
+				#y_value = 0
+			#3:
+				#y_value = 0
+				
+		array.append(Vector2(
+			 i * length_multiplier,
+			sin(i * frequency / 100000) * envelope * 40 
+			#y_value
+		))
+			
 	oscilloscope.points = array
 
+func on_no_sound():
+	var array: Array = []
+	for i in range(number_of_points):
+		array.append(Vector2(
+			 i * length_multiplier,
+			0.0
+		))
+			
+	oscilloscope.points = array
+
+
+
+func _on_slider_wave_value_changed(value):
+	wave_type = value

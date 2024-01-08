@@ -22,7 +22,7 @@ var button_pulsed: bool = true
 #var amplitude_graph: float = 0.0
 
 #signal played_key(amplitude:float)
-signal played_key(envelope:float)
+signal played_key(envelope:float, frequency:float)
 
 func _ready():
 	button_down.connect(on_button_down)
