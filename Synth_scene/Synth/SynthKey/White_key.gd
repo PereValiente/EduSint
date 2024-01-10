@@ -23,6 +23,7 @@ var amplitude_graph: float = 0.0
 
 #signal played_key(amplitude:float)
 signal played_key(envelope:float, frequency:float)
+signal no_sound()
 
 func _ready():
 	button_down.connect(on_button_down)
