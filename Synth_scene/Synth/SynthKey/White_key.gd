@@ -3,7 +3,7 @@ extends Button
 class_name SynthKey
 
 @export var synth : Synth
-@export var graph : Graph
+
 @onready var audio_stream_player = $AudioStreamPlayer
 @export var frequency : float
 
@@ -19,7 +19,7 @@ var last_envelope_value: float = 0.0
 var envelope_frame: int = 0
 var release_frame: int = 0
 var button_pulsed: bool = true
-#var amplitude_graph: float = 0.0
+var amplitude_graph: float = 0.0
 
 #signal played_key(amplitude:float)
 signal played_key(envelope:float, frequency:float)
@@ -55,14 +55,14 @@ func _fill_buffer():
 		
 		if on_ads:
 			envelope = get_ads_envelope(envelope_frame)
-			if to_fill % 1024 == 0:
-				played_key.emit(envelope, frequency)
+		
 		else:
 			envelope = get_release_envelope()
-			if to_fill % 1024 == 0:
-				played_key.emit(envelope, frequency)
 		
-		#if to_fill % 512 == 0:
+		if to_fill % 1024 == 0:
+			played_key.emit(envelope, frequency)
+			
+		#if to_fill % 1024 == 0:
 			#amplitude_graph = output * envelope
 			#played_key.emit(amplitude_graph)
 		

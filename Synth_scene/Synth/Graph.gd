@@ -3,7 +3,7 @@ extends Node2D
 class_name Graph
 
 @export var keys : Array[SynthKey]
-@export var synth_key = SynthKey
+@export var synth_key : SynthKey
 
 @onready var oscilloscope = $Oscilloscope
 @export var number_of_points: int = 99700
@@ -56,7 +56,13 @@ func on_played_key(envelope:float, frequency:float):
 				else:
 					y_value = -envelope * 40
 			2:
-				y_value = 0
+				if sin(i * frequency / 100000) < 1: 
+					y_value = (phase / 0.25) * envelope
+				elif phase < 0.75:
+					y_value = ((0.5 - phase) / 0.25) * envelope
+				else:
+					y_value = ((phase - 1) / 0.25) * envelope
+				#y_value = 0
 			3:
 				phase = fmod(phase, TAU)
 				y_value =  (abs(phase) * envelope * 13) - 40
@@ -68,6 +74,7 @@ func on_played_key(envelope:float, frequency:float):
 			
 	oscilloscope.points = array
 
+
 func on_no_sound():
 	var array: Array = []
 	for i in range(number_of_points):
@@ -78,6 +85,10 @@ func on_no_sound():
 			
 	oscilloscope.points = array
 
+
+func integrate_trapezoidal(a,b,num_intervals):
+	var h = ((b - a) / num_intervals)
+	var integral = a
 
 
 func _on_slider_wave_value_changed(value):

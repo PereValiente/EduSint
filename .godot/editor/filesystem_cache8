@@ -1,11 +1,11 @@
 3acdcc5cb6df755358dde907981ccea8
-::res://::1704294735
-default_bus_layout.tres::AudioBusLayout::1754615363380122661::1704287703::0::1::::<><>::
+::res://::1704876183
+default_bus_layout.tres::AudioBusLayout::1754615363380122661::1704875405::0::1::::<><>::
 settings.cfg::TextFile::-1::1704287672::0::1::::<><>::
-::res://Activity1_synth/::1704288809
+::res://Activity1_synth/::1704875992
 activity1.dialogue::Resource::7422544580883417010::1704287671::1704287698::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
 animation_activity_1.gd::GDScript::-1::1704287671::0::1::::Activity1<>CanvasLayer<>::
-animation_activity_1.tscn::PackedScene::93544430299075826::1704288809::0::1::::<><>::uid://diwwgake8355a::::res://Animation/Main charachter/Main_character_talk0.png<>res://Activity1_synth/animation_activity_1.gd<>uid://bdoggrc2yv4nl::::res://Animation/Main charachter/Main_character_talk1.png<>uid://cwfgcpk7nhac0::::res://Animation/Main charachter/Main_character_talk2.png<>uid://dcg1woduos7p::::res://Animation/Main charachter/Main_character_talk3.png<>uid://dvihby5h57lu1::::res://Synth_scene/Settings/Settings.tscn<>uid://bei6r11h32bi7::::res://Animation/UI Animation/Custom Button Active Arrow.png<>uid://kwr6dwirb8jd::::res://Synth_scene/Synth/Synth.tscn
+animation_activity_1.tscn::PackedScene::93544430299075826::1704875991::0::1::::<><>::uid://diwwgake8355a::::res://Animation/Main charachter/Main_character_talk0.png<>res://Activity1_synth/animation_activity_1.gd<>uid://bdoggrc2yv4nl::::res://Animation/Main charachter/Main_character_talk1.png<>uid://cwfgcpk7nhac0::::res://Animation/Main charachter/Main_character_talk2.png<>uid://dcg1woduos7p::::res://Animation/Main charachter/Main_character_talk3.png<>uid://dvihby5h57lu1::::res://Synth_scene/Settings/Settings.tscn<>uid://bei6r11h32bi7::::res://Animation/UI Animation/Custom Button Active Arrow.png<>uid://kwr6dwirb8jd::::res://Synth_scene/Synth/Synth.tscn
 ::res://addons/::1701367429
 ::res://addons/dialogue_manager/::1702128837
 constants.gd::GDScript::-1::1701367429::0::1::::<>Node<>::
@@ -62,9 +62,9 @@ main_view.gd::GDScript::-1::1701367429::0::1::::<>Control<>::
 main_view.tscn::PackedScene::4884668666408697448::1701367429::0::1::::<><>::res://addons/dialogue_manager/views/main_view.gd<>uid://civ6shmka5e8u
 settings_view.gd::GDScript::-1::1701367429::0::1::::<>TabContainer<>::
 settings_view.tscn::PackedScene::5839841081119266502::1701367429::0::1::::<><>::res://addons/dialogue_manager/views/settings_view.gd
-::res://Animation/::1704288809
+::res://Animation/::1704875991
 Animation.gd::GDScript::-1::1704287671::0::1::::<>CanvasLayer<>::
-Animation.tscn::PackedScene::8909147957961245321::1704288809::0::1::::<><>::res://Animation/Background/ParallaxBackground.gd<>res://Animation/Animation.gd<>uid://dn2f7wl4kqanq::::res://Animation/Background/Background.jpg<>uid://blkwssqojb7g::::res://Activity1_synth/animation_activity_1.tscn<>uid://dppuratph8lmk::::res://Main_menu/particle.png<>uid://beivhbkdnc76r::::res://Animation/Main charachter/Face_normal.png<>uid://b6ly637l25tah::::res://Animation/Main charachter/Face_talk_1.png<>uid://cannm7oclrdk::::res://Animation/Main charachter/Face_talk_2.png<>uid://cox0pwn8ry6wm::::res://Animation/Main charachter/Face_talk_3.png<>uid://diwwgake8355a::::res://Animation/Main charachter/Main_character_talk0.png<>uid://bdoggrc2yv4nl::::res://Animation/Main charachter/Main_character_talk1.png<>uid://cwfgcpk7nhac0::::res://Animation/Main charachter/Main_character_talk2.png<>uid://dcg1woduos7p::::res://Animation/Main charachter/Main_character_talk3.png<>uid://bt3ud4wtwwmpa::::res://Animation/UI Animation/exclamation_button_yellow.png<>uid://bo5lhvaqrqn0d::::res://Animation/UI Animation/Synth.PNG<>uid://bei6r11h32bi7::::res://Animation/UI Animation/Custom Button Active Arrow.png
+Animation.tscn::PackedScene::8909147957961245321::1704875991::0::1::::<><>::res://Animation/Background/ParallaxBackground.gd<>res://Animation/Animation.gd<>uid://dn2f7wl4kqanq::::res://Animation/Background/Background.jpg<>uid://blkwssqojb7g::::res://Activity1_synth/animation_activity_1.tscn<>uid://dppuratph8lmk::::res://Main_menu/particle.png<>uid://beivhbkdnc76r::::res://Animation/Main charachter/Face_normal.png<>uid://b6ly637l25tah::::res://Animation/Main charachter/Face_talk_1.png<>uid://cannm7oclrdk::::res://Animation/Main charachter/Face_talk_2.png<>uid://cox0pwn8ry6wm::::res://Animation/Main charachter/Face_talk_3.png<>uid://diwwgake8355a::::res://Animation/Main charachter/Main_character_talk0.png<>uid://bdoggrc2yv4nl::::res://Animation/Main charachter/Main_character_talk1.png<>uid://cwfgcpk7nhac0::::res://Animation/Main charachter/Main_character_talk2.png<>uid://dcg1woduos7p::::res://Animation/Main charachter/Main_character_talk3.png<>uid://bt3ud4wtwwmpa::::res://Animation/UI Animation/exclamation_button_yellow.png<>uid://bo5lhvaqrqn0d::::res://Animation/UI Animation/Synth.PNG<>uid://bei6r11h32bi7::::res://Animation/UI Animation/Custom Button Active Arrow.png
 first_mision.dialogue::Resource::8352746523224134920::1704287671::1702580276::1::::<><>::
 introduction.dialogue::Resource::5197112982609545184::1701458887::1701458887::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
 ::res://Animation/Background/::1704287671
@@ -110,13 +110,13 @@ eye_character.png::CompressedTexture2D::6274938557564039250::1701375612::1701375
 small_balloon.tscn::PackedScene::1883859960814163368::1704287671::0::1::::<><>::res://Dialogues/balloon.gd<>uid://ckvgyvclnwggo
 typewrite_sound.mp3::AudioStreamMP3::5372398846429739677::1701369150::1701369150::1::::<><>::
 voice_character.ogg::AudioStreamOggVorbis::2045247016174863353::1701456198::1701456203::1::::<><>::
-::res://Game/::1704288809
+::res://Game/::1704875991
 game.gd::GDScript::-1::1700823692::0::1::::<>RefCounted<>::
-game.tscn::PackedScene::2667503017817265585::1704288809::0::1::::<><>::uid://blkwssqojb7g::::res://Activity1_synth/animation_activity_1.tscn<>uid://dy6wmog2cla22::::res://Animation/Animation.tscn<>uid://biyyejk3jgomd::::res://Main_menu/main.tscn
-::res://Main_menu/::1704288809
+game.tscn::PackedScene::2667503017817265585::1704875991::0::1::::<><>::uid://blkwssqojb7g::::res://Activity1_synth/animation_activity_1.tscn<>uid://dy6wmog2cla22::::res://Animation/Animation.tscn<>uid://biyyejk3jgomd::::res://Main_menu/main.tscn
+::res://Main_menu/::1704875962
 font.res::LabelSettings::1855310764363026689::1700823685::0::1::::<><>::
 main.gd::GDScript::-1::1700824245::0::1::::<>CanvasLayer<>::
-main.tscn::PackedScene::2998941339339476243::1704288809::0::1::::<><>::res://Main_menu/src/menu_controller.gd<>uid://dy6wmog2cla22::::res://Animation/Animation.tscn<>uid://f42fe8btugkt::::res://Main_menu/menu.jpg<>uid://b38gx5fc4wb4c::::res://Animation/UI Animation/Standart Button Active 2.png<>uid://dppuratph8lmk::::res://Main_menu/particle.png<>res://Synth_scene/Settings/Sound_slider.gd<>uid://cumi7i83gmy5i::::res://Synth_scene/Settings/transparentLight41.png<>uid://ciojclcw8mp4w::::res://Animation/UI Animation/Standart Button Disable 2.png<>uid://b150c8hse1c3a::::res://Main_menu/Música Menú.mp3
+main.tscn::PackedScene::2998941339339476243::1704875962::0::1::::<><>::res://Main_menu/src/menu_controller.gd<>uid://dy6wmog2cla22::::res://Animation/Animation.tscn<>uid://f42fe8btugkt::::res://Main_menu/menu.jpg<>uid://b38gx5fc4wb4c::::res://Animation/UI Animation/Standart Button Active 2.png<>uid://dppuratph8lmk::::res://Main_menu/particle.png<>res://Synth_scene/Settings/Sound_slider.gd<>uid://cumi7i83gmy5i::::res://Synth_scene/Settings/transparentLight41.png<>uid://ciojclcw8mp4w::::res://Animation/UI Animation/Standart Button Disable 2.png<>uid://b150c8hse1c3a::::res://Main_menu/Música Menú.mp3
 menu.jpg::CompressedTexture2D::412459721975679919::1704287671::1704287702::1::::<><>::
 Música Menú.mp3::AudioStreamMP3::4274785192219101520::1704287671::1704287698::1::::<><>::
 particle.png::CompressedTexture2D::8244305100355877862::1704287671::1704287698::1::::<><>::
@@ -131,19 +131,19 @@ Settings.gd::GDScript::-1::1704287671::0::1::::<>CanvasLayer<>::
 Settings.tscn::PackedScene::8650170901517676718::1704287671::0::1::::<><>::res://Synth_scene/Settings/Settings.gd<>res://Synth_scene/Settings/Sound_slider.gd<>uid://cumi7i83gmy5i
 Sound_slider.gd::GDScript::-1::1704287671::0::1::::<>HSlider<>::
 transparentLight41.png::CompressedTexture2D::6201934126988712676::1704287671::1704287698::1::::<><>::
-::res://Synth_scene/Synth/::1704288809
-Graph.gd::GDScript::-1::1704288784::0::1::::Graph<>Node2D<>::
+::res://Synth_scene/Synth/::1704875930
+Graph.gd::GDScript::-1::1704875619::0::1::::Graph<>Node2D<>::
 Slider_attack.gd::GDScript::-1::1704287671::0::1::::<>VSlider<>::
 Slider_decay.gd::GDScript::-1::1704287671::0::1::::<>VSlider<>::
 Slider_filter.gd::GDScript::-1::1704287671::0::1::::<>VSlider<>::
 Slider_release.gd::GDScript::-1::1704287671::0::1::::<>VSlider<>::
 Slider_sustain.gd::GDScript::-1::1704287671::0::1::::<>VSlider<>::
-Synth.gd::GDScript::-1::1704287671::0::1::::Synth<>Node<>::
-Synth.tscn::PackedScene::748392487399747025::1704288809::0::1::::<><>::res://Synth_scene/Synth/Synth.gd<>uid://pi7vexf72o6o::::res://Synth_scene/Synth/SynthKey/synth_key.tscn<>uid://bvp0ebffdw5cb::::res://Synth_scene/Synth/UI/grabber.png<>res://Synth_scene/Synth/Slider_filter.gd<>res://Synth_scene/Synth/Slider_attack.gd<>res://Synth_scene/Synth/Slider_decay.gd<>res://Synth_scene/Synth/Slider_sustain.gd<>res://Synth_scene/Synth/Slider_release.gd<>res://Synth_scene/Synth/Graph.gd<>uid://cm4g6avx25r34::::res://Synth_scene/Synth/SynthKey/synth_key_black.tscn
-::res://Synth_scene/Synth/SynthKey/::1704288809
-synth_key.tscn::PackedScene::1071328367938414108::1704288809::0::1::::<><>::res://Synth_scene/Synth/SynthKey/White_key.gd
-synth_key_black.tscn::PackedScene::5675394141001163097::1704288809::0::1::::<><>::res://Synth_scene/Synth/SynthKey/White_key.gd
-White_key.gd::GDScript::-1::1704288758::0::1::::SynthKey<>Button<>::
+Synth.gd::GDScript::-1::1704716730::0::1::::Synth<>Node<>::
+Synth.tscn::PackedScene::748392487399747025::1704875896::0::1::::<><>::res://Synth_scene/Synth/Synth.gd<>uid://pi7vexf72o6o::::res://Synth_scene/Synth/SynthKey/synth_key.tscn<>uid://bvp0ebffdw5cb::::res://Synth_scene/Synth/UI/grabber.png<>res://Synth_scene/Synth/Slider_filter.gd<>res://Synth_scene/Synth/Slider_attack.gd<>res://Synth_scene/Synth/Slider_decay.gd<>res://Synth_scene/Synth/Slider_sustain.gd<>res://Synth_scene/Synth/Slider_release.gd<>res://Synth_scene/Synth/Graph.gd<>uid://cm4g6avx25r34::::res://Synth_scene/Synth/SynthKey/synth_key_black.tscn
+::res://Synth_scene/Synth/SynthKey/::1704875962
+synth_key.tscn::PackedScene::1071328367938414108::1704875962::0::1::::<><>::res://Synth_scene/Synth/SynthKey/White_key.gd
+synth_key_black.tscn::PackedScene::5675394141001163097::1704875962::0::1::::<><>::res://Synth_scene/Synth/SynthKey/White_key.gd
+White_key.gd::GDScript::-1::1704875930::0::1::::SynthKey<>Button<>::
 ::res://Synth_scene/Synth/UI/::1704287698
 audioknobs-all.png::CompressedTexture2D::4557601612425910526::1704287671::1704287698::1::::<><>::
 Button.tres::Theme::6334379555121349354::1704287671::0::1::::<><>::
