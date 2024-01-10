@@ -7,47 +7,37 @@ class_name Graph
 @export var synth : Synth
 
 @onready var oscilloscope = $Oscilloscope
+@onready var timer = $Timer
 @export var number_of_points: int = 99700
 @export var length_multiplier: float = 0.01
 @export var amplitude:float = 0.003
 
 var wave_type:int = 0
 var phase:float = 0.0
+var time_without_acces: float = 0.0
+var limit_time: float = 0.2
+
+#Tras 0.2 segundos sin estar activa la función on_played_key, activa función on_no_sound
+func _process(delta):
+	time_without_acces += delta
+	
+	if time_without_acces >= limit_time:
+		on_no_sound()
+		time_without_acces = 0.0
+
 
 func _ready():
 	for child in keys:
 		child.played_key.connect(on_played_key)
-
-##funcion operativa dinamica pero capta parte muy pequeña de la señal
-#func on_played_key(amplitude:float):
-	#var array: Array = []
-	#for i in range(number_of_points):
-		#array.append(Vector2(
-			 #i * length_multiplier,
-			 #i * amplitude * 0.008 
-		#))
-	#oscilloscope.points = array
-	
-
-
-#func _process(_delta: float) -> void:
-	#var array: Array = []
-	#
-	#for i in range(number_of_points):
-			#array.append(Vector2(
-				 #i * length_multiplier,
-				 #sin(i * 0.00003 * synth_key.frequency) * amplitude
-			#))
-#
-	#oscilloscope.points = array
+		child.no_sound.connect(on_no_sound)
 
 
 func on_played_key(envelope:float, frequency:float):
 	var array: Array = []
-	var increment = frequency / synth.sample_rate
+	var increment = frequency / (synth.sample_rate*15)
 	var output: float = 0.0
-
 	for i in range(number_of_points):
+
 		output = synth.generate_wave_form(phase)
 		
 		phase = fmod(phase + increment, 1.0)
@@ -57,6 +47,8 @@ func on_played_key(envelope:float, frequency:float):
 		))
 
 	oscilloscope.points = array
+	time_without_acces = 0.0
+	
 
 #func on_played_key(envelope:float, frequency:float):
 	#var array: Array = []
@@ -102,11 +94,6 @@ func on_no_sound():
 		))
 			
 	oscilloscope.points = array
-
-
-func integrate_trapezoidal(a,b,num_intervals):
-	var h = ((b - a) / num_intervals)
-	var integral = a
 
 
 func _on_slider_wave_value_changed(value):
