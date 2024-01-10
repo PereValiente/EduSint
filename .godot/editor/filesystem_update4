@@ -1,10 +1,10 @@
 res://default_bus_layout.tres
-res://Synth_scene/Synth/Synth.tscn
 res://Synth_scene/Synth/SynthKey/synth_key.tscn
+res://Synth_scene/Synth/SynthKey/White_key.gd
+res://Synth_scene/Synth/Synth.tscn
 res://Synth_scene/Synth/SynthKey/synth_key_black.tscn
 res://Main_menu/main.tscn
 res://Game/game.tscn
 res://Animation/Animation.tscn
 res://Activity1_synth/animation_activity_1.tscn
 res://Synth_scene/Synth/Graph.gd
-res://Synth_scene/Synth/SynthKey/White_key.gd

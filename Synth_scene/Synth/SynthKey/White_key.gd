@@ -50,6 +50,7 @@ func _fill_buffer():
 
 	while to_fill > 0:
 		output = synth.generate_wave_form(phase)
+		
 		if synth.wave_type == 3: #DPW algorythm for sawtooth
 			output = dpw_algorithm(output)
 		
@@ -65,7 +66,6 @@ func _fill_buffer():
 		#if to_fill % 1024 == 0:
 			#amplitude_graph = output * envelope
 			#played_key.emit(amplitude_graph)
-		
 		playback.push_frame(Vector2.ONE * output * envelope * amplitude * correction_amplitude_filter)
 		phase = fmod(phase + increment, 1.0)
 		envelope_frame += 1
