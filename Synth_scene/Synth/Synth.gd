@@ -90,7 +90,9 @@ func _on_wave_type_value_changed(value):
 func _on_filter_value_changed(value):
 	filter_value = value
 	var effect:AudioEffectLowPassFilter = AudioServer.get_bus_effect(AudioServer.get_bus_index("Synth"),0)
+	var effect_graph:AudioEffectLowPassFilter = AudioServer.get_bus_effect(AudioServer.get_bus_index("Filter_Graph"),0)
 	effect.set_cutoff(filter_value)
+	effect_graph.set_cutoff(filter_value)
 
 
 # FUNCIONES PARA LA ACTIVIDAD 1

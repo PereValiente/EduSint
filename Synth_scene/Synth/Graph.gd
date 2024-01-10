@@ -7,11 +7,12 @@ class_name Graph
 @export var synth : Synth
 
 @onready var oscilloscope = $Oscilloscope
-@onready var timer = $Timer
+@onready var audio_filter = $AudioFilter
 @export var number_of_points: int = 99700
 @export var length_multiplier: float = 0.01
 @export var amplitude:float = 0.003
 
+var filter_playback: AudioStreamGeneratorPlayback = null
 var wave_type:int = 0
 var phase:float = 0.0
 var time_without_acces: float = 0.0
@@ -27,9 +28,10 @@ func _process(delta):
 
 
 func _ready():
+	audio_filter.play()
+	filter_playback = audio_filter.get_stream_playback()
 	for child in keys:
 		child.played_key.connect(on_played_key)
-		child.no_sound.connect(on_no_sound)
 
 
 func on_played_key(envelope:float, frequency:float):
@@ -37,9 +39,8 @@ func on_played_key(envelope:float, frequency:float):
 	var increment = frequency / (synth.sample_rate*15)
 	var output: float = 0.0
 	for i in range(number_of_points):
-
 		output = synth.generate_wave_form(phase)
-		
+		filter_playback.push_frame(Vector2.ONE * output)
 		phase = fmod(phase + increment, 1.0)
 		array.append(Vector2(
 			 i * length_multiplier,
@@ -96,5 +97,5 @@ func on_no_sound():
 	oscilloscope.points = array
 
 
-func _on_slider_wave_value_changed(value):
-	wave_type = value
+#func _on_slider_wave_value_changed(value):
+	#wave_type = value

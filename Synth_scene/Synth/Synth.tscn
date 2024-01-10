@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://kwr6dwirb8jd"]
+[gd_scene load_steps=18 format=3 uid="uid://kwr6dwirb8jd"]
 
 [ext_resource type="Script" path="res://Synth_scene/Synth/Synth.gd" id="1_8dr87"]
 [ext_resource type="PackedScene" uid="uid://pi7vexf72o6o" path="res://Synth_scene/Synth/SynthKey/synth_key.tscn" id="2_lqs5k"]
@@ -74,6 +74,8 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 Panel/styles/panel = SubResource("StyleBoxFlat_jeija")
 
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_qkjqs"]
+
 [node name="Synth" type="CanvasLayer"]
 script = ExtResource("1_8dr87")
 
@@ -146,6 +148,11 @@ amplitude = 0.008
 [node name="Oscilloscope" type="Line2D" parent="ColorRect/Ballon_container/Graph"]
 position = Vector2(78, 72)
 width = 3.0
+
+[node name="AudioFilter" type="AudioStreamPlayer" parent="ColorRect/Ballon_container/Graph"]
+stream = SubResource("AudioStreamGenerator_qkjqs")
+volume_db = -80.0
+bus = &"Filter_Graph"
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
 layout_mode = 0
