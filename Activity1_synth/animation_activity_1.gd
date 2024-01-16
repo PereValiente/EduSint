@@ -17,17 +17,21 @@ func _ready():
 	DialogueManager.show_dialogue_balloon(load("res://Activity1_synth/activity1.dialogue"),"intro_activity1")
 	character_talk.play("Character_talk")
 
+
 func sint_talk():
 	character_talk.visible = !character_talk.visible
 
+
 func show_button():
 	activity_1.visible = !activity_1.visible
+
 
 func show_button_and_sint():
 	activity_1.visible = !activity_1.visible
 	character_talk.visible = !character_talk.visible
 
 
+#Ejecución lógica preguntas conocimiento del sintetizador
 func _on_activity_1_pressed():
 	pressed_counter += 1
 	
@@ -60,7 +64,6 @@ func _on_activity_1_pressed():
 		
 	elif pressed_counter == 7:
 		DialogueManager.show_dialogue_balloon(load("res://Activity1_synth/activity1.dialogue"),"question_release_activity1")
-
 
 
 func minus_pressed_counter():

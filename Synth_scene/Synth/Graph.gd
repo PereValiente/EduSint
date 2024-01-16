@@ -18,7 +18,8 @@ var phase:float = 0.0
 var time_without_acces: float = 0.0
 var limit_time: float = 0.2
 
-#Tras 0.2 segundos sin estar activa la función on_played_key, activa función on_no_sound
+#Tras limit_time segundos sin estar activa la función on_played_key, 
+#activa función on_no_sound
 func _process(delta):
 	time_without_acces += delta
 	
@@ -34,6 +35,7 @@ func _ready():
 		child.played_key.connect(on_played_key)
 
 
+#Imprime señal osciloscopio 
 func on_played_key(envelope:float, frequency:float):
 	var array: Array = []
 	var increment = frequency / (synth.sample_rate*15)
@@ -49,7 +51,19 @@ func on_played_key(envelope:float, frequency:float):
 
 	oscilloscope.points = array
 	time_without_acces = 0.0
-	
+
+
+#Imprime linea horizontal en el osciloscopio
+func on_no_sound():
+	var array: Array = []
+	for i in range(number_of_points):
+		array.append(Vector2(
+			 i * length_multiplier,
+			0.0
+		))
+			
+	oscilloscope.points = array
+
 
 #func on_played_key(envelope:float, frequency:float):
 	#var array: Array = []
@@ -84,17 +98,6 @@ func on_played_key(envelope:float, frequency:float):
 		#))
 #
 	#oscilloscope.points = array
-
-
-func on_no_sound():
-	var array: Array = []
-	for i in range(number_of_points):
-		array.append(Vector2(
-			 i * length_multiplier,
-			0.0
-		))
-			
-	oscilloscope.points = array
 
 
 #func _on_slider_wave_value_changed(value):

@@ -31,11 +31,13 @@ func _ready():
 	#mouse_exited.connect(on_mouse_exited)
 
 
+#Bucle infinito ejecución buffer de audio generado en fill_buffer
 func _process(_delta):
 	if fill_buffer:
 		_fill_buffer()
 
 
+#Llenado del buffer con el audio generado
 func _fill_buffer():
 	var increment = frequency / synth.sample_rate
 	var output: float = 0.0
@@ -72,6 +74,7 @@ func _fill_buffer():
 		to_fill -= 1
 
 
+#Ejecución logica cuando tecla teclado se encuentra pulsada
 func on_button_down():
 	audio_stream_player.play()
 	playback = audio_stream_player.get_stream_playback()
@@ -97,12 +100,14 @@ func on_button_down():
 		##button_pulsed = false
 
 
+#Ejecución logica cuando tecla teclado no se encuentra pulsada
 func on_button_up():
 	on_ads = false
 	release_frame = envelope_frame
 	button_pulsed = false
 
 
+#Generación envolvente ads en función configuración sliders
 func get_ads_envelope(frame):
 	var attack_frames = synth.adsr_attack * synth.sample_rate
 	var decay_frames = synth.adsr_decay * synth.sample_rate
@@ -115,6 +120,7 @@ func get_ads_envelope(frame):
 		return synth.adsr_sustain
 
 
+#Generación envolvente release en función configuración slider
 func get_release_envelope():
 	var last_envelope = get_ads_envelope(release_frame)
 	var release_frame_count = synth.adsr_release * synth.sample_rate
@@ -124,6 +130,7 @@ func get_release_envelope():
 	return envelope
 
 
+#Algoritmo para reducir artefactos en la onda diente de sierra
 func dpw_algorithm(input_sample):
 	input_sample *= input_sample
 	input_sample = difference_filter(input_sample)
@@ -131,6 +138,7 @@ func dpw_algorithm(input_sample):
 	return input_sample
 
 
+#Parte del algoritmo dpw_algorithm
 func difference_filter(input_sample): #H(z)=1-z^-1 filtro de retardo unitario discreto (DUR)
 	var previous_sample_aux = previous_sample
 	previous_sample = input_sample
