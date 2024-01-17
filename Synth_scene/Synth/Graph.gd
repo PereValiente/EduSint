@@ -17,6 +17,8 @@ var wave_type:int = 0
 var phase:float = 0.0
 var time_without_acces: float = 0.0
 var limit_time: float = 0.2
+var spectrum: AudioEffectSpectrumAnalyzerInstance
+var volume: float = 0.0
 
 #Tras limit_time segundos sin estar activa la función on_played_key, 
 #activa función on_no_sound
@@ -29,6 +31,7 @@ func _process(delta):
 
 
 func _ready():
+	spectrum = AudioServer.get_bus_effect_instance(4, 1)
 	audio_filter.play()
 	filter_playback = audio_filter.get_stream_playback()
 	for child in keys:
@@ -42,13 +45,14 @@ func on_played_key(envelope:float, frequency:float):
 	var output: float = 0.0
 	for i in range(number_of_points):
 		output = synth.generate_wave_form(phase)
-		filter_playback.push_frame(Vector2.ONE * output)
+		#filter_playback.push_frame(Vector2.ONE * output)
+		volume = spectrum.get_magnitude_for_frequency_range(0, 10000).length()
 		phase = fmod(phase + increment, 1.0)
 		array.append(Vector2(
 			 i * length_multiplier,
-			output * envelope * 40
+			volume * envelope * 100000
+			#output * envelope * 40
 		))
-
 	oscilloscope.points = array
 	time_without_acces = 0.0
 

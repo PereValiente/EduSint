@@ -5,9 +5,6 @@ res://Main_menu/main.tscn
 res://Game/game.tscn
 res://Animation/Animation.tscn
 res://Activity1_synth/animation_activity_1.tscn
-res://Animation/Animation.gd
-res://Activity1_synth/animation_activity_1.gd
 res://Synth_scene/Synth/Graph.gd
-res://Animation/Background/ParallaxBackground.gd
+res://default_bus_layout.tres
 res://Synth_scene/Synth/Synth.gd
-res://Synth_scene/Synth/SynthKey/White_key.gd

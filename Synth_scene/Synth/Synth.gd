@@ -3,9 +3,6 @@ extends Node
 class_name Synth
 
 
-var playback : AudioStreamGeneratorPlayback # Will hold the AudioStreamGeneratorPlayback.
-@onready var sample_rate = $Synth_audio_1.stream.mix_rate #muestras por segundo (44100)
-@onready var synth_audio_1 = $Synth_audio_1
 @onready var label_type_wave = $ColorRect/MarginContainer2/VBoxContainer/HBoxContainer3/Label_type_wave
 @onready var hide_wave = $Hide_wave
 @onready var hide_filter = $Hide_filter
@@ -16,9 +13,11 @@ var playback : AudioStreamGeneratorPlayback # Will hold the AudioStreamGenerator
 @onready var hide_adsr = $Hide_adsr
 
 
+var effect:AudioEffectLowPassFilter = AudioServer.get_bus_effect(AudioServer.get_bus_index("Synth"),0)
+var effect_graph:AudioEffectLowPassFilter = AudioServer.get_bus_effect(AudioServer.get_bus_index("Filter_Graph"),0)
+var sample_rate = 44100
 var sample_wave = 4096 
 var filter_value = 0.0
-var cubic_interpolation_sample = 0.0
 var adsr_attack = 0.1
 var adsr_decay = 0.2
 var adsr_sustain = 0.5
@@ -97,8 +96,6 @@ func _on_wave_type_value_changed(value):
 #Inicialización efecto filtro paso bajo (creado ya dentro de Godot)
 func _on_filter_value_changed(value):
 	filter_value = value
-	var effect:AudioEffectLowPassFilter = AudioServer.get_bus_effect(AudioServer.get_bus_index("Synth"),0)
-	var effect_graph:AudioEffectLowPassFilter = AudioServer.get_bus_effect(AudioServer.get_bus_index("Filter_Graph"),0)
 	effect.set_cutoff(filter_value)
 	effect_graph.set_cutoff(filter_value)
 
@@ -108,7 +105,6 @@ func _on_filter_value_changed(value):
 func show_wave():
 	hide_filter.visible = !hide_filter.visible
 	hide_adsr.visible = !hide_adsr.visible
-
 
 func show_filter():
 	hide_filter.visible = !hide_filter.visible

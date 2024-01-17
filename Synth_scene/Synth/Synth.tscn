@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://kwr6dwirb8jd"]
+[gd_scene load_steps=17 format=3 uid="uid://kwr6dwirb8jd"]
 
 [ext_resource type="Script" path="res://Synth_scene/Synth/Synth.gd" id="1_8dr87"]
 [ext_resource type="PackedScene" uid="uid://pi7vexf72o6o" path="res://Synth_scene/Synth/SynthKey/synth_key.tscn" id="2_lqs5k"]
@@ -10,9 +10,6 @@
 [ext_resource type="Script" path="res://Synth_scene/Synth/Slider_release.gd" id="9_u5kst"]
 [ext_resource type="Script" path="res://Synth_scene/Synth/Graph.gd" id="10_8bwu1"]
 [ext_resource type="PackedScene" uid="uid://cm4g6avx25r34" path="res://Synth_scene/Synth/SynthKey/synth_key_black.tscn" id="10_i226n"]
-
-[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_yjr14"]
-buffer_length = 0.05
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vmwb6"]
 bg_color = Color(0, 0, 0, 1)
@@ -78,10 +75,6 @@ Panel/styles/panel = SubResource("StyleBoxFlat_jeija")
 
 [node name="Synth" type="CanvasLayer"]
 script = ExtResource("1_8dr87")
-
-[node name="Synth_audio_1" type="AudioStreamPlayer" parent="."]
-stream = SubResource("AudioStreamGenerator_yjr14")
-bus = &"Synth"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -151,7 +144,6 @@ width = 3.0
 
 [node name="AudioFilter" type="AudioStreamPlayer" parent="ColorRect/Ballon_container/Graph"]
 stream = SubResource("AudioStreamGenerator_qkjqs")
-volume_db = -80.0
 bus = &"Filter_Graph"
 
 [node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
@@ -578,7 +570,7 @@ color = Color(0.137255, 0.137255, 0.137255, 1)
 [node name="Hide_filter" type="ColorRect" parent="."]
 visible = false
 offset_left = 236.0
-offset_top = 147.0
+offset_top = 144.0
 offset_right = 367.0
 offset_bottom = 356.0
 color = Color(0.137255, 0.137255, 0.137255, 1)
