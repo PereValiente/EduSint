@@ -484,8 +484,8 @@ offset_left = 53.0
 offset_top = 122.0
 offset_right = 432.0
 offset_bottom = 200.0
-theme_override_constants/margin_left = 70
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_left = 55
+theme_override_constants/margin_right = 40
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/MarginContainer4"]
 layout_mode = 2

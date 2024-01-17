@@ -35,7 +35,7 @@ func _ready():
 
 #Imprime señal osciloscopio 
 func on_played_key(envelope:float, frequency:float):
-	synth.value_frequency.text = str(frequency)
+	synth.value_frequency.text = str(int(frequency)) + " " + "Hz"
 	var phase:float = 0.0
 	var array: Array = []
 	var increment = frequency / (synth.sample_rate*15)
