@@ -3,11 +3,11 @@
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_myo21"]
 resource_name = "LowPassFilter"
 
+[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_umupg"]
+resource_name = "SpectrumAnalyzer"
+
 [sub_resource type="AudioEffectLowPassFilter" id="AudioEffectLowPassFilter_brehr"]
 resource_name = "LowPassFilter"
-
-[sub_resource type="AudioEffectSpectrumAnalyzer" id="AudioEffectSpectrumAnalyzer_63tls"]
-resource_name = "SpectrumAnalyzer"
 
 [resource]
 bus/1/name = &"Music"
@@ -30,6 +30,8 @@ bus/3/volume_db = 0.0
 bus/3/send = &"Master"
 bus/3/effect/0/effect = SubResource("AudioEffectLowPassFilter_myo21")
 bus/3/effect/0/enabled = true
+bus/3/effect/1/effect = SubResource("AudioEffectSpectrumAnalyzer_umupg")
+bus/3/effect/1/enabled = true
 bus/4/name = &"Filter_Graph"
 bus/4/solo = false
 bus/4/mute = false
@@ -38,5 +40,3 @@ bus/4/volume_db = 0.0672607
 bus/4/send = &"Master"
 bus/4/effect/0/effect = SubResource("AudioEffectLowPassFilter_brehr")
 bus/4/effect/0/enabled = true
-bus/4/effect/1/effect = SubResource("AudioEffectSpectrumAnalyzer_63tls")
-bus/4/effect/1/enabled = true

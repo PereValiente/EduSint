@@ -8,3 +8,4 @@ res://Activity1_synth/animation_activity_1.tscn
 res://Synth_scene/Synth/Graph.gd
 res://default_bus_layout.tres
 res://Synth_scene/Synth/Synth.gd
+res://Synth_scene/Synth/SynthKey/White_key.gd
