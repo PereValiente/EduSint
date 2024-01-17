@@ -2,8 +2,8 @@ extends Node
 
 class_name Synth
 
-
-@onready var label_type_wave = $ColorRect/MarginContainer2/VBoxContainer/HBoxContainer3/Label_type_wave
+@onready var label_type_wave = $ColorRect/MarginContainer3/VBoxContainer/HBoxContainer3/Label_type_wave
+@onready var value_frequency = $ColorRect/MarginContainer4/HBoxContainer/Value_frequency
 @onready var hide_wave = $Hide_wave
 @onready var hide_filter = $Hide_filter
 @onready var hide_dsr = $Hide_dsr
@@ -11,6 +11,8 @@ class_name Synth
 @onready var hide_adr = $Hide_adr
 @onready var hide_ads = $Hide_ads
 @onready var hide_adsr = $Hide_adsr
+@onready var hide_osciloscope = $Hide_osciloscope
+
 
 
 var effect:AudioEffectLowPassFilter = AudioServer.get_bus_effect(AudioServer.get_bus_index("Synth"),0)
@@ -107,11 +109,13 @@ func show_wave():
 func show_filter():
 	hide_filter.visible = !hide_filter.visible
 	hide_wave.visible = !hide_wave.visible
+	hide_osciloscope.visible = !hide_osciloscope.visible
 
 func show_attack(): 
 	hide_adsr.visible = !hide_adsr.visible
 	hide_dsr.visible = !hide_dsr.visible
 	hide_filter.visible = !hide_filter.visible
+	hide_osciloscope.visible = !hide_osciloscope.visible
 
 func show_decay():
 	hide_dsr.visible = !hide_dsr.visible
