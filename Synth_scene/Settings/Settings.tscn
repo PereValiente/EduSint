@@ -1,9 +1,28 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvihby5h57lu1"]
+[gd_scene load_steps=14 format=3 uid="uid://dvihby5h57lu1"]
 
 [ext_resource type="Script" path="res://Synth_scene/Settings/Settings.gd" id="1_nj8ct"]
 [ext_resource type="Script" path="res://Synth_scene/Settings/Sound_slider.gd" id="2_4ncgg"]
-[ext_resource type="Texture2D" uid="uid://cumi7i83gmy5i" path="res://Synth_scene/Settings/transparentLight41.png" id="3_dqaj1"]
+[ext_resource type="PackedScene" uid="uid://biyyejk3jgomd" path="res://Main_menu/main.tscn" id="2_bx44e"]
 [ext_resource type="Texture2D" uid="uid://bkw208nsll0on" path="res://Synth_scene/Synth/UI/transparentLight29.png" id="3_hiqwn"]
+[ext_resource type="Texture2D" uid="uid://b38gx5fc4wb4c" path="res://Animation/UI Animation/Standart Button Active 2.png" id="3_lis1p"]
+[ext_resource type="Texture2D" uid="uid://ciojclcw8mp4w" path="res://Animation/UI Animation/Standart Button Disable 2.png" id="4_e44yv"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sy4de"]
+texture = ExtResource("3_lis1p")
+modulate_color = Color(0.835294, 0.254902, 0.968627, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lt10n"]
+texture = ExtResource("3_lis1p")
+modulate_color = Color(0, 0.72549, 0.85098, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gmj26"]
+texture = ExtResource("3_lis1p")
+modulate_color = Color(0.478431, 0.270588, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k2fv6"]
+texture = ExtResource("4_e44yv")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pntnn"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yfuoo"]
 texture = ExtResource("3_hiqwn")
@@ -14,6 +33,7 @@ modulate_color = Color(0.603922, 0.603922, 0.603922, 1)
 
 [node name="Settings" type="CanvasLayer"]
 script = ExtResource("1_nj8ct")
+menu_animation = ExtResource("2_bx44e")
 
 [node name="Panel_Settings" type="Panel" parent="."]
 visible = false
@@ -108,9 +128,30 @@ layout_mode = 2
 size_flags_horizontal = 4
 alignment = 1
 
-[node name="Select" type="Button" parent="Panel_Settings/MarginContainer/VBoxContainer/Container"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel_Settings/MarginContainer/VBoxContainer/Container"]
+custom_minimum_size = Vector2(0, 130)
 layout_mode = 2
-icon = ExtResource("3_dqaj1")
+theme_override_constants/separation = 16
+
+[node name="Select" type="Button" parent="Panel_Settings/MarginContainer/VBoxContainer/Container/VBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_sy4de")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lt10n")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gmj26")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_k2fv6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pntnn")
+text = "SELECT"
+
+[node name="Menu" type="Button" parent="Panel_Settings/MarginContainer/VBoxContainer/Container/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_sy4de")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lt10n")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_gmj26")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_k2fv6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pntnn")
+text = "MENU"
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 anchors_preset = 10
@@ -132,5 +173,6 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_b60il")
 [connection signal="value_changed" from="Panel_Settings/MarginContainer/VBoxContainer/GridContainer/Music_slider" to="Panel_Settings/MarginContainer/VBoxContainer/GridContainer/Music_slider" method="_on_value_changed"]
 [connection signal="value_changed" from="Panel_Settings/MarginContainer/VBoxContainer/GridContainer/Synth_slider" to="." method="_on_synth_slider_value_changed"]
 [connection signal="value_changed" from="Panel_Settings/MarginContainer/VBoxContainer/GridContainer/SFX_slider" to="Panel_Settings/MarginContainer/VBoxContainer/GridContainer/SFX_slider" method="_on_value_changed"]
-[connection signal="pressed" from="Panel_Settings/MarginContainer/VBoxContainer/Container/Select" to="." method="_on_select_pressed"]
+[connection signal="pressed" from="Panel_Settings/MarginContainer/VBoxContainer/Container/VBoxContainer/Select" to="." method="_on_select_pressed"]
+[connection signal="pressed" from="Panel_Settings/MarginContainer/VBoxContainer/Container/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="MarginContainer2/Settings" to="." method="_on_settings_pressed"]

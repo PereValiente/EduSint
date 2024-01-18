@@ -14,7 +14,6 @@ class_name Synth
 @onready var hide_osciloscope = $Hide_osciloscope
 
 
-
 var effect:AudioEffectLowPassFilter = AudioServer.get_bus_effect(AudioServer.get_bus_index("Synth"),0)
 var sample_rate = 44100
 var sample_wave = 4096 

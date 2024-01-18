@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dphjip5hln0nc"]
+
+[ext_resource type="PackedScene" uid="uid://kwr6dwirb8jd" path="res://Synth_scene/Synth/Synth.tscn" id="1_yow28"]
+[ext_resource type="PackedScene" uid="uid://dvihby5h57lu1" path="res://Synth_scene/Settings/Settings.tscn" id="2_e6pcg"]
+
+[node name="Synth_and_settings" type="Node"]
+
+[node name="Synth" parent="." instance=ExtResource("1_yow28")]
+
+[node name="Settings" parent="." instance=ExtResource("2_e6pcg")]

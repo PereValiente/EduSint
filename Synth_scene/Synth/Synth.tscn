@@ -660,7 +660,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Hide_wave" type="ColorRect" parent="."]
 visible = false
 offset_left = 67.0
-offset_top = 142.0
+offset_top = 194.0
 offset_right = 198.0
 offset_bottom = 358.0
 color = Color(0.137255, 0.137255, 0.137255, 1)
@@ -668,7 +668,7 @@ color = Color(0.137255, 0.137255, 0.137255, 1)
 [node name="Hide_filter" type="ColorRect" parent="."]
 visible = false
 offset_left = 236.0
-offset_top = 144.0
+offset_top = 197.0
 offset_right = 367.0
 offset_bottom = 356.0
 color = Color(0.137255, 0.137255, 0.137255, 1)
