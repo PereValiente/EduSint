@@ -6,7 +6,6 @@ class_name Menu
 @export var settings : Settings
 @export var scene_animation : PackedScene
 @export var synth_and_settings_scene : PackedScene
-@onready var panel_settings = $"../Panel_Settings"
 
 
 func _ready():

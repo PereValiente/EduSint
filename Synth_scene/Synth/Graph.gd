@@ -7,7 +7,6 @@ class_name Graph
 @export var synth : Synth
 
 @onready var oscilloscope = $Oscilloscope
-@onready var audio_filter = $AudioFilter
 @export var number_of_points: int = 99700
 @export var length_multiplier: float = 0.01
 @export var amplitude:float = 0.003
