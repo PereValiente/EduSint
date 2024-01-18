@@ -1,7 +1,1 @@
 res://default_bus_layout.tres
-res://Main_menu/main.tscn
-res://Synth_scene/Synth/Synth.tscn
-res://Synth_scene/Synth/SynthKey/synth_key.tscn
-res://Main_menu/src/menu_controller.gd
-res://Synth_scene/Settings/Settings.tscn
-res://Synth_scene/Settings/Settings.gd
