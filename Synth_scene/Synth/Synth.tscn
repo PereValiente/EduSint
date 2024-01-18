@@ -666,6 +666,7 @@ offset_bottom = 358.0
 color = Color(0.137255, 0.137255, 0.137255, 1)
 
 [node name="Hide_filter" type="ColorRect" parent="."]
+visible = false
 offset_left = 236.0
 offset_top = 196.0
 offset_right = 367.0

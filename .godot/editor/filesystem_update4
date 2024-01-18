@@ -5,3 +5,4 @@ res://Synth_scene/Synth/SynthKey/synth_key.tscn
 res://Synth_scene/Settings/Settings.tscn
 res://Synth_scene/synth_activity_scene.tscn
 res://Synth_scene/synth_and_settings_scene.tscn
+res://Synth_scene/Synth/Graph.gd

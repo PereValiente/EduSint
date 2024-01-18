@@ -14,7 +14,7 @@ class_name Graph
 
 var wave_type:int = 0
 var time_without_acces: float = 0.0
-var limit_time: float = 0.19
+var limit_time: float = 0.2
 
 
 #Tras limit_time segundos sin estar activa la función on_played_key, 
