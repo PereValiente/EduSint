@@ -11,14 +11,16 @@ class_name Menu
 
 func _ready():
 	settings.button_settings.visible = !settings.button_settings.visible
-
+	settings.menu_button.visible = !settings.menu_button.visible
 
 func _on_start_button_pressed():
 	get_tree().change_scene_to_packed(scene_animation)
+	settings.menu_button.visible = !settings.menu_button.visible
 
 
 func _on_synthesizer_button_pressed():
 	get_tree().change_scene_to_packed(synth_and_settings_scene)
+	settings.menu_button.visible = !settings.menu_button.visible
 
 
 func _on_option_button_pressed():
