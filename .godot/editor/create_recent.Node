@@ -1,6 +1,6 @@
+Node
 Button
 VBoxContainer
-Node
 Label
 HBoxContainer
 MarginContainer
@@ -12,4 +12,3 @@ TextureButton
 TextureRect
 RichTextLabel
 TextEdit
-GPUParticles2D

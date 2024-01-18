@@ -1,8 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://biyyejk3jgomd"]
+[gd_scene load_steps=28 format=3 uid="uid://biyyejk3jgomd"]
 
 [ext_resource type="Script" path="res://Main_menu/src/menu_controller.gd" id="1_7x6vp"]
 [ext_resource type="PackedScene" uid="uid://dy6wmog2cla22" path="res://Animation/Animation.tscn" id="2_1ftrh"]
 [ext_resource type="Texture2D" uid="uid://f42fe8btugkt" path="res://Main_menu/menu.jpg" id="3_pt7cx"]
+[ext_resource type="PackedScene" uid="uid://dcrkk4hsbcy6c" path="res://Synth_scene/synth_and_settings_scene.tscn" id="3_w2jca"]
 [ext_resource type="Texture2D" uid="uid://b38gx5fc4wb4c" path="res://Animation/UI Animation/Standart Button Active 2.png" id="4_8mui7"]
 [ext_resource type="Texture2D" uid="uid://dppuratph8lmk" path="res://Main_menu/particle.png" id="4_vu8b2"]
 [ext_resource type="Texture2D" uid="uid://ciojclcw8mp4w" path="res://Animation/UI Animation/Standart Button Disable 2.png" id="6_v750j"]
@@ -94,6 +95,7 @@ size_flags_horizontal = 4
 script = ExtResource("1_7x6vp")
 settings = NodePath("Settings")
 scene_animation = ExtResource("2_1ftrh")
+synth_and_settings_scene = ExtResource("3_w2jca")
 
 [node name="Bg" type="Sprite2D" parent="MainMenu"]
 position = Vector2(509, 325)
@@ -188,5 +190,6 @@ autoplay = true
 bus = &"Music"
 
 [connection signal="pressed" from="MainMenu/MarginContainer/MainContainer/Start_button" to="MainMenu" method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/MainContainer/Synthesizer_button" to="MainMenu" method="_on_synthesizer_button_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/MainContainer/Option_button" to="MainMenu" method="_on_option_button_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/MainContainer/Exit_button" to="MainMenu" method="_on_exit_button_pressed"]
