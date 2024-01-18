@@ -1,6 +1,6 @@
 3acdcc5cb6df755358dde907981ccea8
-::res://::1705573641
-default_bus_layout.tres::AudioBusLayout::1754615363380122661::1705573641::0::1::::<><>::
+::res://::1705577960
+default_bus_layout.tres::AudioBusLayout::1754615363380122661::1705577565::0::1::::<><>::
 settings.cfg::TextFile::-1::1704287672::0::1::::<><>::
 ::res://Activity1_synth/::1705571838
 activity1.dialogue::Resource::7422544580883417010::1704287671::1704287698::1::::<><>::res://addons/dialogue_manager/dialogue_resource.gd
@@ -101,24 +101,25 @@ voice_character.ogg::AudioStreamOggVorbis::2045247016174863353::1701456198::1701
 ::res://Game/::1705571260
 game.gd::GDScript::-1::1700823692::0::1::::<>RefCounted<>::
 game.tscn::PackedScene::2667503017817265585::1705571260::0::1::::<><>::uid://blkwssqojb7g
-::res://Main_menu/::1705574736
+::res://Main_menu/::1705576323
 font.res::LabelSettings::1855310764363026689::1700823685::0::1::::<><>::
 main.gd::GDScript::-1::1700824245::0::1::::<>CanvasLayer<>::
-main.tscn::PackedScene::2998941339339476243::1705574736::0::1::::<><>::res://Main_menu/src/menu_controller.gd<>uid://dy6wmog2cla22::::res://Animation/Animation.tscn<>uid://f42fe8btugkt::::res://Main_menu/menu.jpg<>uid://b38gx5fc4wb4c::::res://Animation/UI Animation/Standart Button Active 2.png<>uid://dppuratph8lmk::::res://Main_menu/particle.png<>uid://ciojclcw8mp4w::::res://Animation/UI Animation/Standart Button Disable 2.png<>uid://dvihby5h57lu1::::res://Synth_scene/Settings/Settings.tscn<>uid://b150c8hse1c3a::::res://Main_menu/Música Menú.mp3
+main.tscn::PackedScene::2998941339339476243::1705576323::0::1::::<><>::res://Main_menu/src/menu_controller.gd<>uid://dy6wmog2cla22::::res://Animation/Animation.tscn<>uid://f42fe8btugkt::::res://Main_menu/menu.jpg<>uid://dcrkk4hsbcy6c::::res://Synth_scene/synth_and_settings_scene.tscn<>uid://b38gx5fc4wb4c::::res://Animation/UI Animation/Standart Button Active 2.png<>uid://dppuratph8lmk::::res://Main_menu/particle.png<>uid://ciojclcw8mp4w::::res://Animation/UI Animation/Standart Button Disable 2.png<>uid://dvihby5h57lu1::::res://Synth_scene/Settings/Settings.tscn<>uid://b150c8hse1c3a::::res://Main_menu/Música Menú.mp3
 menu.jpg::CompressedTexture2D::412459721975679919::1704287671::1704287702::1::::<><>::
 Música Menú.mp3::AudioStreamMP3::4274785192219101520::1704287671::1704287698::1::::<><>::
 particle.png::CompressedTexture2D::8244305100355877862::1704287671::1704287698::1::::<><>::
 settings.cfg::TextFile::-1::1700823685::0::1::::<><>::
-::res://Main_menu/src/::1705574735
-menu_controller.gd::GDScript::-1::1705574735::0::1::::Menu<>Control<>::
+::res://Main_menu/src/::1705577945
+menu_controller.gd::GDScript::-1::1705577945::0::1::::Menu<>Control<>::
 Scroll_Label.gd::GDScript::-1::1702030657::0::1::::<>Label<>::
-::res://Synth_scene/::1705572296
-synth_scene.tscn::PackedScene::4472766655544469906::1705572296::0::1::::<><>::uid://kwr6dwirb8jd
-::res://Synth_scene/Settings/::1705574775
-Settings.gd::GDScript::-1::1705574540::0::1::::Settings<>CanvasLayer<>::
-Settings.tscn::PackedScene::8650170901517676718::1705574736::0::1::::<><>::res://Synth_scene/Settings/Settings.gd<>res://Synth_scene/Settings/Sound_slider.gd<>uid://bkw208nsll0on::::res://Synth_scene/Synth/UI/transparentLight29.png<>uid://b38gx5fc4wb4c::::res://Animation/UI Animation/Standart Button Active 2.png<>uid://ciojclcw8mp4w::::res://Animation/UI Animation/Standart Button Disable 2.png
+::res://Synth_scene/::1705575198
+synth_activity_scene.tscn::PackedScene::4472766655544469906::1705575198::0::1::::<><>::uid://kwr6dwirb8jd::::res://Synth_scene/Synth/Synth.tscn<>uid://blkwssqojb7g::::res://Activity1_synth/animation_activity_1.tscn<>uid://dvihby5h57lu1::::res://Synth_scene/Settings/Settings.tscn
+synth_and_settings_scene.tscn::PackedScene::7335360722851164192::1705575198::0::1::::<><>::uid://kwr6dwirb8jd::::res://Synth_scene/Synth/Synth.tscn<>uid://dvihby5h57lu1::::res://Synth_scene/Settings/Settings.tscn
+::res://Synth_scene/Settings/::1705577945
+Settings.gd::GDScript::-1::1705577945::0::1::::Settings<>CanvasLayer<>::
+Settings.tscn::PackedScene::8650170901517676718::1705577945::0::1::::<><>::res://Synth_scene/Settings/Settings.gd<>res://Synth_scene/Settings/Sound_slider.gd<>uid://bkw208nsll0on::::res://Synth_scene/Synth/UI/transparentLight29.png<>uid://b38gx5fc4wb4c::::res://Animation/UI Animation/Standart Button Active 2.png<>uid://ciojclcw8mp4w::::res://Animation/UI Animation/Standart Button Disable 2.png
 Sound_slider.gd::GDScript::-1::1704287671::0::1::::<>HSlider<>::
-::res://Synth_scene/Synth/::1705574736
+::res://Synth_scene/Synth/::1705576323
 Graph.gd::GDScript::-1::1705513876::0::1::::Graph<>Node2D<>::
 Slider_attack.gd::GDScript::-1::1704287671::0::1::::<>VSlider<>::
 Slider_decay.gd::GDScript::-1::1704287671::0::1::::<>VSlider<>::
@@ -126,9 +127,9 @@ Slider_filter.gd::GDScript::-1::1704287671::0::1::::<>VSlider<>::
 Slider_release.gd::GDScript::-1::1704287671::0::1::::<>VSlider<>::
 Slider_sustain.gd::GDScript::-1::1704287671::0::1::::<>VSlider<>::
 Synth.gd::GDScript::-1::1705572296::0::1::::Synth<>Node<>::
-Synth.tscn::PackedScene::748392487399747025::1705574735::0::1::::<><>::res://Synth_scene/Synth/Synth.gd<>uid://pi7vexf72o6o::::res://Synth_scene/Synth/SynthKey/synth_key.tscn<>uid://bvp0ebffdw5cb::::res://Synth_scene/Synth/UI/grabber.png<>res://Synth_scene/Synth/Slider_filter.gd<>res://Synth_scene/Synth/Slider_attack.gd<>res://Synth_scene/Synth/Slider_decay.gd<>res://Synth_scene/Synth/Slider_sustain.gd<>res://Synth_scene/Synth/Slider_release.gd<>res://Synth_scene/Synth/Graph.gd<>uid://cm4g6avx25r34::::res://Synth_scene/Synth/SynthKey/synth_key_black.tscn
-::res://Synth_scene/Synth/SynthKey/::1705574736
-synth_key.tscn::PackedScene::1071328367938414108::1705574736::0::1::::<><>::res://Synth_scene/Synth/SynthKey/White_key.gd
+Synth.tscn::PackedScene::748392487399747025::1705576323::0::1::::<><>::res://Synth_scene/Synth/Synth.gd<>uid://pi7vexf72o6o::::res://Synth_scene/Synth/SynthKey/synth_key.tscn<>uid://bvp0ebffdw5cb::::res://Synth_scene/Synth/UI/grabber.png<>res://Synth_scene/Synth/Slider_filter.gd<>res://Synth_scene/Synth/Slider_attack.gd<>res://Synth_scene/Synth/Slider_decay.gd<>res://Synth_scene/Synth/Slider_sustain.gd<>res://Synth_scene/Synth/Slider_release.gd<>res://Synth_scene/Synth/Graph.gd<>uid://cm4g6avx25r34::::res://Synth_scene/Synth/SynthKey/synth_key_black.tscn
+::res://Synth_scene/Synth/SynthKey/::1705576323
+synth_key.tscn::PackedScene::1071328367938414108::1705576323::0::1::::<><>::res://Synth_scene/Synth/SynthKey/White_key.gd
 synth_key_black.tscn::PackedScene::5675394141001163097::1705570506::0::1::::<><>::res://Synth_scene/Synth/SynthKey/White_key.gd
 White_key.gd::GDScript::-1::1705496410::0::1::::SynthKey<>Button<>::
 ::res://Synth_scene/Synth/UI/::1704287698
