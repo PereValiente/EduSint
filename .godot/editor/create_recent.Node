@@ -1,3 +1,6 @@
+Button
+VBoxContainer
+Node
 Label
 HBoxContainer
 MarginContainer
@@ -10,5 +13,3 @@ TextureRect
 RichTextLabel
 TextEdit
 GPUParticles2D
-ColorRect
-Container
