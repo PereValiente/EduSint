@@ -1,9 +1,27 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvihby5h57lu1"]
+[gd_scene load_steps=13 format=3 uid="uid://dvihby5h57lu1"]
 
 [ext_resource type="Script" path="res://Synth_scene/Settings/Settings.gd" id="1_nj8ct"]
 [ext_resource type="Script" path="res://Synth_scene/Settings/Sound_slider.gd" id="2_4ncgg"]
-[ext_resource type="Texture2D" uid="uid://cumi7i83gmy5i" path="res://Synth_scene/Settings/transparentLight41.png" id="3_dqaj1"]
 [ext_resource type="Texture2D" uid="uid://bkw208nsll0on" path="res://Synth_scene/Synth/UI/transparentLight29.png" id="3_hiqwn"]
+[ext_resource type="Texture2D" uid="uid://b38gx5fc4wb4c" path="res://Animation/UI Animation/Standart Button Active 2.png" id="4_8tgc1"]
+[ext_resource type="Texture2D" uid="uid://ciojclcw8mp4w" path="res://Animation/UI Animation/Standart Button Disable 2.png" id="5_p587k"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vx0hn"]
+texture = ExtResource("4_8tgc1")
+modulate_color = Color(0.835294, 0.254902, 0.968627, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gs0vp"]
+texture = ExtResource("4_8tgc1")
+modulate_color = Color(0, 0.72549, 0.85098, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ljdm2"]
+texture = ExtResource("4_8tgc1")
+modulate_color = Color(0.478431, 0.270588, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6gvdj"]
+texture = ExtResource("5_p587k")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dqoi3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yfuoo"]
 texture = ExtResource("3_hiqwn")
@@ -109,8 +127,14 @@ size_flags_horizontal = 4
 alignment = 1
 
 [node name="Select" type="Button" parent="Panel_Settings/MarginContainer/VBoxContainer/Container"]
+custom_minimum_size = Vector2(150, 50)
 layout_mode = 2
-icon = ExtResource("3_dqaj1")
+theme_override_styles/normal = SubResource("StyleBoxTexture_vx0hn")
+theme_override_styles/hover = SubResource("StyleBoxTexture_gs0vp")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ljdm2")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_6gvdj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_dqoi3")
+text = "SELECT"
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 anchors_preset = 10
