@@ -249,19 +249,6 @@ theme_override_constants/separation = 20
 [node name="HBoxContainer3" type="HBoxContainer" parent="ColorRect/MarginContainer2/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label_type_wave" type="Label" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer3"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 1
-
-[node name="Label_valule_filter" type="Label" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer3"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 1
-text = "0%"
-
 [node name="Label_value_attack" type="Label" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 6
@@ -290,28 +277,6 @@ text = "0%"
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 3
-
-[node name="Slider_wave" type="VSlider" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 6
-focus_mode = 0
-theme_override_icons/grabber = ExtResource("3_px3va")
-theme_override_icons/grabber_highlight = ExtResource("3_px3va")
-max_value = 3.0
-
-[node name="Slider_filter" type="VSlider" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 6
-focus_mode = 0
-theme_override_icons/grabber = ExtResource("3_px3va")
-theme_override_icons/grabber_highlight = ExtResource("3_px3va")
-min_value = 100.0
-max_value = 10000.0
-step = 100.0
-value = 500.0
-script = ExtResource("4_ykmb3")
 
 [node name="Slider_attack" type="VSlider" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -359,21 +324,6 @@ script = ExtResource("9_u5kst")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/MarginContainer2/VBoxContainer"]
 layout_mode = 2
-
-[node name="Label_wave" type="Label" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer2"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 1
-text = "Wave
-"
-
-[node name="Label_filter" type="Label" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer2"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 1
-text = "Filter"
 
 [node name="Label_attack" type="Label" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
@@ -737,13 +687,6 @@ offset_right = 1079.0
 offset_bottom = 127.0
 color = Color(0.137255, 0.137255, 0.137255, 1)
 
-[connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_wave" to="." method="_on_wave_type_value_changed"]
-[connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_wave" to="ColorRect/Ballon_container/Graph" method="_on_slider_wave_value_changed"]
-[connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_filter" to="." method="_on_filter_value_changed"]
-[connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_attack" to="." method="_on_slider_attack_value_changed"]
-[connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_decay" to="." method="_on_slider_decay_value_changed"]
-[connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_sustain" to="." method="_on_slider_sustain_value_changed"]
-[connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_release" to="." method="_on_slider_release_value_changed"]
 [connection signal="value_changed" from="ColorRect/MarginContainer3/VBoxContainer/HBoxContainer/Slider_wave" to="." method="_on_wave_type_value_changed"]
 [connection signal="value_changed" from="ColorRect/MarginContainer3/VBoxContainer/HBoxContainer/Slider_wave" to="ColorRect/Ballon_container/Graph" method="_on_slider_wave_value_changed"]
 [connection signal="value_changed" from="ColorRect/MarginContainer3/VBoxContainer/HBoxContainer/Slider_filter" to="." method="_on_filter_value_changed"]
