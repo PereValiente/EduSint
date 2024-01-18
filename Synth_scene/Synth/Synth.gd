@@ -66,20 +66,6 @@ func saw_tooth_wave(phase):
 	return (-0.5 + phase) / 0.5
 
 
-#Señales de control del valor de los sliders
-func _on_slider_attack_value_changed(value):
-	adsr_attack = value
-
-func _on_slider_sustain_value_changed(value):
-	adsr_sustain = value
-
-func _on_slider_decay_value_changed(value):
-	adsr_decay = value
-
-func _on_slider_release_value_changed(value):
-	adsr_release = value
-
-
 #Lógica para aparecer en UI texto informativo de la forma de onda
 func _on_wave_type_value_changed(value):
 	wave_type = value
@@ -92,12 +78,6 @@ func _on_wave_type_value_changed(value):
 		label_type_wave.text = "Triangle"
 	elif value == 3:
 		label_type_wave.text = "Saw tooth"
-
-
-#Inicialización efecto filtro paso bajo (creado ya dentro de Godot)
-func _on_filter_value_changed(value):
-	filter_value = value
-	effect.set_cutoff(filter_value)
 
 
 # FUNCIONES PARA LA ACTIVIDAD 1

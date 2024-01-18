@@ -1,3 +1,4 @@
+AnimationPlayer
 VBoxContainer
 Node
 Button
@@ -11,4 +12,3 @@ Node2D
 TextureButton
 TextureRect
 RichTextLabel
-TextEdit

@@ -6,12 +6,3 @@ res://Synth_scene/synth_activity_scene.tscn
 res://Synth_scene/synth_and_settings_scene.tscn
 res://Activity1_synth/animation_activity_1.tscn
 res://Animation/Animation.tscn
-res://Synth_scene/Synth/SynthKey/White_key.gd
-res://Synth_scene/Synth/Slider_attack.gd
-res://Synth_scene/Synth/Slider_decay.gd
-res://Synth_scene/Synth/Slider_filter.gd
-res://Synth_scene/Synth/Slider_release.gd
-res://Synth_scene/Synth/Slider_sustain.gd
-res://Synth_scene/Settings/Sound_slider_music.gd
-res://Synth_scene/Settings/Sound_slider_sfx.gd
-res://Synth_scene/Settings/Sound_slider_synth.gd

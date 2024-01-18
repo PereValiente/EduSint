@@ -278,7 +278,7 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Slider_attack" type="VSlider" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Slider_attack" type="VSlider" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("synth")]
 layout_mode = 2
 size_flags_horizontal = 6
 focus_mode = 0
@@ -289,28 +289,35 @@ max_value = 1.0
 step = 0.01
 value = 0.01
 script = ExtResource("6_v4q2j")
+synth = NodePath("../../../../..")
 
-[node name="Slider_decay" type="VSlider" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Slider_decay" type="VSlider" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("synth")]
 layout_mode = 2
 size_flags_horizontal = 6
 focus_mode = 0
 theme_override_icons/grabber = ExtResource("3_px3va")
 theme_override_icons/grabber_highlight = ExtResource("3_px3va")
+min_value = 0.01
 max_value = 1.0
 step = 0.01
+value = 1.0
 script = ExtResource("7_4qnkk")
+synth = NodePath("../../../../..")
 
-[node name="Slider_sustain" type="VSlider" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Slider_sustain" type="VSlider" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("synth")]
 layout_mode = 2
 size_flags_horizontal = 6
 focus_mode = 0
 theme_override_icons/grabber = ExtResource("3_px3va")
 theme_override_icons/grabber_highlight = ExtResource("3_px3va")
+min_value = 0.01
 max_value = 1.0
 step = 0.01
+value = 1.0
 script = ExtResource("8_5dvic")
+synth = NodePath("../../../../..")
 
-[node name="Slider_release" type="VSlider" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer"]
+[node name="Slider_release" type="VSlider" parent="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("synth")]
 layout_mode = 2
 size_flags_horizontal = 6
 focus_mode = 0
@@ -321,6 +328,7 @@ max_value = 1.0
 step = 0.01
 value = 0.05
 script = ExtResource("9_u5kst")
+synth = NodePath("../../../../..")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/MarginContainer2/VBoxContainer"]
 layout_mode = 2
@@ -400,7 +408,7 @@ theme_override_icons/grabber = ExtResource("3_px3va")
 theme_override_icons/grabber_highlight = ExtResource("3_px3va")
 max_value = 3.0
 
-[node name="Slider_filter" type="VSlider" parent="ColorRect/MarginContainer3/VBoxContainer/HBoxContainer"]
+[node name="Slider_filter" type="VSlider" parent="ColorRect/MarginContainer3/VBoxContainer/HBoxContainer" node_paths=PackedStringArray("synth")]
 layout_mode = 2
 size_flags_horizontal = 6
 focus_mode = 0
@@ -411,6 +419,7 @@ max_value = 10000.0
 step = 100.0
 value = 500.0
 script = ExtResource("4_ykmb3")
+synth = NodePath("../../../../..")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="ColorRect/MarginContainer3/VBoxContainer"]
 layout_mode = 2
@@ -687,6 +696,11 @@ offset_right = 1079.0
 offset_bottom = 127.0
 color = Color(0.137255, 0.137255, 0.137255, 1)
 
+[connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_attack" to="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_attack" method="_on_value_changed_attack"]
+[connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_decay" to="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_decay" method="_on_value_changed"]
+[connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_sustain" to="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_sustain" method="_on_value_changed"]
+[connection signal="value_changed" from="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_release" to="ColorRect/MarginContainer2/VBoxContainer/HBoxContainer/Slider_release" method="_on_value_changed"]
 [connection signal="value_changed" from="ColorRect/MarginContainer3/VBoxContainer/HBoxContainer/Slider_wave" to="." method="_on_wave_type_value_changed"]
 [connection signal="value_changed" from="ColorRect/MarginContainer3/VBoxContainer/HBoxContainer/Slider_wave" to="ColorRect/Ballon_container/Graph" method="_on_slider_wave_value_changed"]
 [connection signal="value_changed" from="ColorRect/MarginContainer3/VBoxContainer/HBoxContainer/Slider_filter" to="." method="_on_filter_value_changed"]
+[connection signal="value_changed" from="ColorRect/MarginContainer3/VBoxContainer/HBoxContainer/Slider_filter" to="ColorRect/MarginContainer3/VBoxContainer/HBoxContainer/Slider_filter" method="_on_value_changed"]
