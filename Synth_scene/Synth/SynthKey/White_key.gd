@@ -57,7 +57,7 @@ func _fill_buffer():
 			output = dpw_algorithm(output)
 		
 		if on_ads:
-			envelope = get_ads_envelope(envelope_frame)
+			envelope = get_ads_envelope()
 		
 		else:
 			envelope = get_release_envelope()
@@ -105,7 +105,7 @@ func on_button_up():
 
 
 #Generación envolvente ads en función configuración sliders
-func get_ads_envelope(frame):
+func get_ads_envelope():
 	var attack_frames = synth.adsr_attack * synth.sample_rate
 	var decay_frames = synth.adsr_decay * synth.sample_rate
 
@@ -119,7 +119,7 @@ func get_ads_envelope(frame):
 
 #Generación envolvente release en función configuración slider
 func get_release_envelope():
-	var last_envelope = get_ads_envelope(release_frame)
+	var last_envelope = get_ads_envelope()
 	var release_frame_count = synth.adsr_release * synth.sample_rate
 	var envelope = last_envelope * (release_frame_count - (envelope_frame - release_frame)) / release_frame_count 
 	if envelope < 0:
