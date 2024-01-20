@@ -19,6 +19,7 @@ var envelope_frame: int = 0
 var release_frame: int = 0
 var button_pulsed: bool = true
 var amplitude_graph: float = 0.0
+var amplitude_square: float = 0.5
 
 #signal played_key(amplitude:float)
 signal played_key(envelope:float, frequency:float)
@@ -51,7 +52,7 @@ func _fill_buffer():
 			correction_amplitude_filter = 15
 
 	while to_fill > 0:
-		output = synth.generate_wave_form(phase)
+		output = synth.generate_wave_form(phase, amplitude_square)
 		
 		if synth.wave_type == 3: #DPW algorythm for sawtooth
 			output = dpw_algorithm(output)

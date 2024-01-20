@@ -1,10 +1,8 @@
-res://default_bus_layout.tres
-res://Main_menu/main.tscn
+res://Activity1_synth/animation_activity_1.tscn
 res://Synth_scene/Synth/Synth.tscn
+res://Main_menu/main.tscn
 res://Synth_scene/Settings/Settings.tscn
 res://Synth_scene/synth_activity_scene.tscn
 res://Synth_scene/synth_and_settings_scene.tscn
-res://Activity1_synth/animation_activity_1.tscn
 res://Animation/Animation.tscn
 res://Activity1_synth/animation_activity_1.gd
-res://Animation/Animation.gd

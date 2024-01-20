@@ -11,6 +11,7 @@ class_name Graph
 @export var length_multiplier: float = 0.01
 @export var amplitude:float = 0.003
 
+var amplitude_square: float = 1.0
 var wave_type:int = 0
 var time_without_acces: float = 0.0
 var limit_time: float = 0.2
@@ -40,7 +41,7 @@ func on_played_key(envelope:float, frequency:float):
 	var increment = frequency / (synth.sample_rate*15)
 	var output: float = 0.0
 	for i in range(number_of_points):
-		output = synth.generate_wave_form(phase)
+		output = synth.generate_wave_form(phase, amplitude_square)
 		phase = fmod(phase + increment, 1.0)
 		array.append(Vector2(
 			 i * length_multiplier,

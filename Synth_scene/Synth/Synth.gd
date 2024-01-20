@@ -31,12 +31,12 @@ func _ready():
 
 
 #Generación de los 4 tipos de forma de onda
-func generate_wave_form(phase):
+func generate_wave_form(phase, amplitude_square):
 	match wave_type:
 		0:
 			return sin(phase * TAU)
 		1:
-			return square_wave(phase) * 0.5
+			return square_wave(phase) * amplitude_square
 		2:
 			return triangle_wave(phase)
 		3:

@@ -54,17 +54,23 @@ func _on_activity_1_pressed():
 		DialogueManager.show_dialogue_balloon(load("res://Activity1_synth/activity1.dialogue"),"question_filter_activity1")
 		
 	elif pressed_counter == 4:
+		synth.adsr_attack = 0.1
+		synth.adsr_sustain = 0.1
 		DialogueManager.show_dialogue_balloon(load("res://Activity1_synth/activity1.dialogue"),"question_attack_activity1")
 		
 	elif pressed_counter == 5:
+		synth.adsr_decay = 0.02
 		DialogueManager.show_dialogue_balloon(load("res://Activity1_synth/activity1.dialogue"),"question_decay_activity1")
 		
 	elif pressed_counter == 6:
+		synth.adsr_sustain = 1.0
 		DialogueManager.show_dialogue_balloon(load("res://Activity1_synth/activity1.dialogue"),"question_sustain_activity1")
 		
 	elif pressed_counter == 7:
 		DialogueManager.show_dialogue_balloon(load("res://Activity1_synth/activity1.dialogue"),"question_release_activity1")
 
+func end_game():
+	pass
 
 func minus_pressed_counter():
 	pressed_counter -= 1

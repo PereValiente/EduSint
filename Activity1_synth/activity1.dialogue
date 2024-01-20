@@ -25,11 +25,16 @@ do show_button_and_sint()
 
 set select_sound = 1
 do sint_talk()
-Sint: Wave activity
-- True
-	Sitn: Exacto. 
-	=> filter_activity1 
-- False
+Sint: ¿Qué sucede al pulsar las teclas cuando varias el deslizador?
+- Solo varía la forma de la onda.
+	Sint: Exacto.
+	do show_filter()
+	Sint: ¿Qué repercusión tendrá el segundo deslizador sobre el primero?
+	do show_button_and_sint()
+	=> END
+	
+- Varía la forma de la onda y su amplitud.
+- Varía la forma de la onda y su frecuencia.
 if has_made_mistake == false
 	Sint: No exactamente. Revisa el funcionamiento.
 	do minus_pressed_counter()
@@ -38,34 +43,28 @@ else
 	Sint: No exactamente. Vuelve a revisar el funcionamiento.
 	do minus_pressed_counter()
 do show_button_and_sint() 
-=> END
-
-~ filter_activity1
-
-set select_sound = 1
-do show_filter()
-Sint: ¿Qué repercusión tendrá el segundo deslizador sobre el primero?
-do show_button_and_sint()
 => END
 
 ~ question_filter_activity1
 
 set select_sound = 1
 do sint_talk()
-Sint: Filter activity
-- True
-	Sitn: Exacto. 
+Sint: ¿Con el filtro a máximo nivel, detectas por el sonido que forma de onda es?
+- Saw tooth
+	Sint: Exacto. 
 	do show_button() 
 	=> attack_activity1 
-- False
+- Triangle
+- Square
+- Sin
 if has_made_mistake == false
-	Sint: No exactamente. Revisa el funcionamiento.
+	Sint: No exactamente. Presta atención al sonido.
 	do minus_pressed_counter()
 	set has_made_mistake = true
 else
-	Sint: No exactamente. Vuelve a revisar el funcionamiento.
+	Sint: No exactamente. Eschucha con detenimiento el sonido.
 	do minus_pressed_counter()
-do show_button_and_sint() 
+do sint_talk() 
 => END
 
 ~ attack_activity1
@@ -79,21 +78,34 @@ do show_button_and_sint()
 
 set select_sound = 1
 do sint_talk()
-Sint: Attack activity
-- True
-	Sitn: Exacto.
+Sint: ¿Qué sucede cuando aumenta el ataque?
+
+- Aumenta el volumen del sonido.
+	if has_made_mistake == false
+		Sint: No exactamente. Revisa el funcionamiento.
+		do minus_pressed_counter()
+		set has_made_mistake = true
+	else
+		Sint: No exactamente. Vuelve a revisar el funcionamiento.
+		do minus_pressed_counter()
+	do sint_talk()
+	=> END
+- Aumenta la frecuencia de la onda.
+	if has_made_mistake == false
+		Sint: No exactamente. Revisa el funcionamiento.
+		do minus_pressed_counter()
+		set has_made_mistake = true
+	else
+		Sint: No exactamente. Vuelve a revisar el funcionamiento.
+		do minus_pressed_counter()
+	do sint_talk()
+	=> END
+
+- Aumenta el tiempo que tarda en llegar a la amplitud máxima
+	Sint: Exacto.
 	do show_button() 
 	=> decay_activity1 
-- False
-if has_made_mistake == false
-	Sint: No exactamente. Revisa el funcionamiento.
-	do minus_pressed_counter()
-	set has_made_mistake = true
-else
-	Sint: No exactamente. Vuelve a revisar el funcionamiento.
-	do minus_pressed_counter()
-do show_button_and_sint() 
-=> END
+
 
 ~ decay_activity1
 set select_sound = 1
@@ -106,12 +118,13 @@ do show_button_and_sint()
 
 set select_sound = 1
 do sint_talk()
-Sint: Decay activity
-- True
-	Sitn: Exacto. 
+Sint: ¿Qué función tiene el deslizador de decay?
+- Varía el tiempo que tarda el sonido en decrementar hasta un cierto valor.
+	Sint: Perfecto.
 	do show_button() 
 	=> sustain_activity1 
-- False
+- Varía el tiempo que tarda el sonido en decrementar hasta cero.
+- Varía el tiempo que tarda el sonido en incrementar hasta la amplitud máxima.
 if has_made_mistake == false
 	Sint: No exactamente. Revisa el funcionamiento.
 	do minus_pressed_counter()
@@ -119,7 +132,7 @@ if has_made_mistake == false
 else
 	Sint: No exactamente. Vuelve a revisar el funcionamiento.
 	do minus_pressed_counter()
-do show_button_and_sint() 
+do sint_talk()
 => END
 
 ~ sustain_activity1
@@ -133,21 +146,34 @@ do show_button_and_sint()
 
 set select_sound = 1
 do sint_talk()
-Sint: Sustain activity
-- True
-	Sitn: Exacto. 
+Sint: ¿Qué sucede cuando disminuye el sustain?
+
+- Aumenta la amplitud a la que se sostiene el sonido mientras se pulsa la tecla.
+	if has_made_mistake == false
+		Sint: No exactamente. Revisa el funcionamiento.
+		do minus_pressed_counter()
+		set has_made_mistake = true
+	else
+		Sint: No exactamente. Vuelve a revisar el funcionamiento.
+		do minus_pressed_counter()
+	do sint_talk()
+	=> END
+
+- Disminuye la amplitud a la que se sostiene el sonido mientras se pulsa la tecla.
+	Sint: Eso es! 
 	do show_button() 
 	=> release_activity1 
-- False
-if has_made_mistake == false
-	Sint: No exactamente. Revisa el funcionamiento.
-	do minus_pressed_counter()
-	set has_made_mistake = true
-else
-	Sint: No exactamente. Vuelve a revisar el funcionamiento.
-	do minus_pressed_counter()
-do show_button_and_sint() 
-=> END
+
+- Aumenta la frecuencia a medida que se sostiene la tecla pulsada.
+	if has_made_mistake == false
+		Sint: No exactamente. Revisa el funcionamiento.
+		do minus_pressed_counter()
+		set has_made_mistake = true
+	else
+		Sint: No exactamente. Vuelve a revisar el funcionamiento.
+		do minus_pressed_counter()
+	do sint_talk()
+	=> END
 
 ~ release_activity1
 set select_sound = 1
@@ -160,11 +186,12 @@ do show_button_and_sint()
 
 set select_sound = 1
 do sint_talk()
-Sint: Release activity
-- True
-	Sitn: Exacto. 
+Sint: ¿Qué sucede cuando aumenta el release?
+- Aumenta el tiempo que tarda la señal en llegar a cero.
+	Sint: Exacto. 
 	=> finish_activity1 
-- False
+- Aumenta el tiempo que tarda la señal en llegar a la amplitud máxima.
+- Aumenta el tiempo que tarda la señal en llegar a un cierto valor.
 if has_made_mistake == false
 	Sint: No exactamente. Revisa el funcionamiento.
 	do minus_pressed_counter()
@@ -172,8 +199,12 @@ if has_made_mistake == false
 else
 	Sint: No exactamente. Vuelve a revisar el funcionamiento.
 	do minus_pressed_counter()
-do show_button_and_sint() 
+do sint_talk()
 => END
 
 ~ finish_activity1
-Sint: 
+Sint: ¡Enhorabuena! Ahora tienes en tus manos la responsabilidad de devolver la música al mundo.
+Sint: Seguro que la música que vas a crear será igual, o mejor que la que desapareció.
+do show_button_and_sint()
+do end_game()
+=> END!
