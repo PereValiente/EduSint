@@ -4,7 +4,7 @@ class_name Activity1
 
 @export var synth : Synth
 @onready var character_talk = $Character_talk
-@onready var wave_activity_1 = $wave_activity1/wave_activity1
+#@onready var wave_activity_1 = $wave_activity1/wave_activity1
 @onready var activity_1 = $Activity1/Activity1
 
 var pressed_counter = 0

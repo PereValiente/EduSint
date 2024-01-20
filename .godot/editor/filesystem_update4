@@ -6,3 +6,5 @@ res://Synth_scene/synth_activity_scene.tscn
 res://Synth_scene/synth_and_settings_scene.tscn
 res://Activity1_synth/animation_activity_1.tscn
 res://Animation/Animation.tscn
+res://Activity1_synth/animation_activity_1.gd
+res://Animation/Animation.gd
