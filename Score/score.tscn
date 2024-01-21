@@ -21,7 +21,7 @@ texture = ExtResource("5_rc7yv")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2wkea"]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="Score" type="CanvasLayer"]
 script = ExtResource("1_o0xa8")
 
 [node name="Panel_Settings" type="Panel" parent="."]
@@ -45,6 +45,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -158.0
+offset_bottom = -158.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 250
@@ -62,9 +64,9 @@ columns = 2
 
 [node name="Grade" type="Label" parent="Panel_Settings/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 96
 text = "
-Music
-
+A
 "
 
 [node name="Text_grade" type="Label" parent="Panel_Settings/MarginContainer/VBoxContainer/GridContainer"]
@@ -83,7 +85,7 @@ alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Menu_button" type="Button" parent="Panel_Settings/MarginContainer/VBoxContainer/Container/VBoxContainer"]
+[node name="Exit" type="Button" parent="Panel_Settings/MarginContainer/VBoxContainer/Container/VBoxContainer"]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 size_flags_vertical = 4
@@ -92,4 +94,6 @@ theme_override_styles/hover = SubResource("StyleBoxTexture_y7oyo")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_jtf24")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_r0655")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_2wkea")
-text = "MENU"
+text = "EXIT"
+
+[connection signal="pressed" from="Panel_Settings/MarginContainer/VBoxContainer/Container/VBoxContainer/Exit" to="." method="_on_menu_button_pressed"]

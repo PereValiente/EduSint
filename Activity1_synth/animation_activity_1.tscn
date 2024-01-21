@@ -86,4 +86,8 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_5kbri")
 
 [node name="Settings" parent="." instance=ExtResource("7_j6rii")]
 
+[node name="Score" parent="." node_paths=PackedStringArray("activity1") instance=ExtResource("2_eo0lv")]
+visible = false
+activity1 = NodePath("..")
+
 [connection signal="pressed" from="Activity1/Activity1" to="." method="_on_activity_1_pressed"]

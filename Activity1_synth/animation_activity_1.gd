@@ -5,8 +5,11 @@ class_name Activity1
 @export var score_scene : PackedScene
 @export var synth : Synth
 @onready var character_talk = $Character_talk
-#@onready var wave_activity_1 = $wave_activity1/wave_activity1
 @onready var activity_1 = $Activity1/Activity1
+@onready var panel_synth = $Synth
+@onready var settings = $Settings
+@onready var score = $Score
+
 
 var pressed_counter = 0
 var has_made_mistake: bool = false
@@ -71,8 +74,13 @@ func _on_activity_1_pressed():
 	elif pressed_counter == 7:
 		DialogueManager.show_dialogue_balloon(load("res://Activity1_synth/activity1.dialogue"),"question_release_activity1")
 
+
+
 func end_game():
-	get_tree().change_scene_to_packed(score_scene)
+	panel_synth.visible = !panel_synth.visible
+	settings.visible = !settings.visible
+	score.visible = !score.visible
+
 
 func minus_pressed_counter():
 	pressed_counter -= 1
