@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://blkwssqojb7g"]
+[gd_scene load_steps=16 format=3 uid="uid://blkwssqojb7g"]
 
 [ext_resource type="Texture2D" uid="uid://diwwgake8355a" path="res://Animation/Main charachter/Main_character_talk0.png" id="1_6xa1e"]
 [ext_resource type="Script" path="res://Activity1_synth/animation_activity_1.gd" id="1_w15op"]
+[ext_resource type="PackedScene" uid="uid://blk4nug2v7iuh" path="res://Score/score.tscn" id="2_eo0lv"]
 [ext_resource type="Texture2D" uid="uid://bdoggrc2yv4nl" path="res://Animation/Main charachter/Main_character_talk1.png" id="2_fyrpl"]
 [ext_resource type="Texture2D" uid="uid://cwfgcpk7nhac0" path="res://Animation/Main charachter/Main_character_talk2.png" id="3_m0pk0"]
 [ext_resource type="Texture2D" uid="uid://dcg1woduos7p" path="res://Animation/Main charachter/Main_character_talk3.png" id="4_hset4"]
@@ -47,6 +48,7 @@ modulate_color = Color(0.478431, 0.270588, 1, 1)
 
 [node name="Activity1" type="CanvasLayer" node_paths=PackedStringArray("synth")]
 script = ExtResource("1_w15op")
+score_scene = ExtResource("2_eo0lv")
 synth = NodePath("Synth")
 
 [node name="Synth" parent="." instance=ExtResource("8_ca3va")]

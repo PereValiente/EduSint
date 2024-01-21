@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dvihby5h57lu1"]
+[gd_scene load_steps=15 format=3 uid="uid://dvihby5h57lu1"]
 
 [ext_resource type="Script" path="res://Synth_scene/Settings/Settings.gd" id="1_nj8ct"]
 [ext_resource type="Script" path="res://Synth_scene/Settings/Sound_slider_music.gd" id="2_6cxet"]
@@ -24,23 +24,6 @@ modulate_color = Color(0.478431, 0.270588, 1, 1)
 texture = ExtResource("5_p587k")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dqoi3"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i3s80"]
-texture = ExtResource("4_8tgc1")
-modulate_color = Color(0.835294, 0.254902, 0.968627, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jvjwf"]
-texture = ExtResource("4_8tgc1")
-modulate_color = Color(0, 0.72549, 0.85098, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fjmjn"]
-texture = ExtResource("4_8tgc1")
-modulate_color = Color(0.478431, 0.270588, 1, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_43g4t"]
-texture = ExtResource("5_p587k")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yktt4"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yfuoo"]
 texture = ExtResource("3_hiqwn")
@@ -158,17 +141,6 @@ theme_override_styles/pressed = SubResource("StyleBoxTexture_ljdm2")
 theme_override_styles/disabled = SubResource("StyleBoxTexture_6gvdj")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_dqoi3")
 text = "SELECT"
-
-[node name="Menu_button" type="Button" parent="Panel_Settings/MarginContainer/VBoxContainer/Container/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_styles/normal = SubResource("StyleBoxTexture_i3s80")
-theme_override_styles/hover = SubResource("StyleBoxTexture_jvjwf")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_fjmjn")
-theme_override_styles/disabled = SubResource("StyleBoxTexture_43g4t")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_yktt4")
-text = "MENU"
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 anchors_preset = 10

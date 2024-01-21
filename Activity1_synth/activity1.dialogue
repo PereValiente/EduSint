@@ -51,7 +51,7 @@ set select_sound = 1
 do sint_talk()
 Sint: ¿Con el filtro a máximo nivel, detectas por el sonido que forma de onda es?
 - Saw tooth
-	Sint: Exacto. 
+	Sint: Correcto. 
 	do show_button() 
 	=> attack_activity1 
 - Triangle
