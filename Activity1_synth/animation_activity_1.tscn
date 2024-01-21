@@ -1,14 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://blkwssqojb7g"]
+[gd_scene load_steps=26 format=3 uid="uid://blkwssqojb7g"]
 
 [ext_resource type="Texture2D" uid="uid://diwwgake8355a" path="res://Animation/Main charachter/Main_character_talk0.png" id="1_6xa1e"]
 [ext_resource type="Script" path="res://Activity1_synth/animation_activity_1.gd" id="1_w15op"]
-[ext_resource type="PackedScene" uid="uid://blk4nug2v7iuh" path="res://Score/score.tscn" id="2_eo0lv"]
 [ext_resource type="Texture2D" uid="uid://bdoggrc2yv4nl" path="res://Animation/Main charachter/Main_character_talk1.png" id="2_fyrpl"]
 [ext_resource type="Texture2D" uid="uid://cwfgcpk7nhac0" path="res://Animation/Main charachter/Main_character_talk2.png" id="3_m0pk0"]
 [ext_resource type="Texture2D" uid="uid://dcg1woduos7p" path="res://Animation/Main charachter/Main_character_talk3.png" id="4_hset4"]
 [ext_resource type="PackedScene" uid="uid://dvihby5h57lu1" path="res://Synth_scene/Settings/Settings.tscn" id="7_j6rii"]
 [ext_resource type="Texture2D" uid="uid://bei6r11h32bi7" path="res://Animation/UI Animation/Custom Button Active Arrow.png" id="7_kvbd3"]
 [ext_resource type="PackedScene" uid="uid://kwr6dwirb8jd" path="res://Synth_scene/Synth/Synth.tscn" id="8_ca3va"]
+[ext_resource type="Texture2D" uid="uid://b38gx5fc4wb4c" path="res://Animation/UI Animation/Standart Button Active 2.png" id="10_evr3a"]
+[ext_resource type="Texture2D" uid="uid://dppuratph8lmk" path="res://Main_menu/particle.png" id="11_n1ohi"]
+[ext_resource type="Texture2D" uid="uid://ciojclcw8mp4w" path="res://Animation/UI Animation/Standart Button Disable 2.png" id="11_ok0ph"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cyfdd"]
 animations = [{
@@ -46,9 +48,46 @@ modulate_color = Color(0.478431, 0.270588, 1, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5kbri"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6t2l8"]
+texture = ExtResource("10_evr3a")
+modulate_color = Color(0.835294, 0.254902, 0.968627, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vdlns"]
+texture = ExtResource("10_evr3a")
+modulate_color = Color(0, 0.72549, 0.85098, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_phvwu"]
+texture = ExtResource("10_evr3a")
+modulate_color = Color(0.478431, 0.270588, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b7nul"]
+texture = ExtResource("11_ok0ph")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_punay"]
+
+[sub_resource type="Curve" id="Curve_hgntc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.175399, 1), 0.0, 0.0, 0, 0, Vector2(0.8041, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_af3gp"]
+curve = SubResource("Curve_hgntc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iukd1"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 10000.0
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.03
+scale_max = 0.05
+scale_curve = SubResource("CurveTexture_af3gp")
+color = Color(1, 1, 1, 0.364706)
+
 [node name="Activity1" type="CanvasLayer" node_paths=PackedStringArray("synth")]
 script = ExtResource("1_w15op")
-score_scene = ExtResource("2_eo0lv")
 synth = NodePath("Synth")
 
 [node name="Synth" parent="." instance=ExtResource("8_ca3va")]
@@ -86,8 +125,90 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_5kbri")
 
 [node name="Settings" parent="." instance=ExtResource("7_j6rii")]
 
-[node name="Score" parent="." node_paths=PackedStringArray("activity1") instance=ExtResource("2_eo0lv")]
+[node name="Panel_score" type="Panel" parent="."]
 visible = false
-activity1 = NodePath("..")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Panel_score"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.133333, 0.133333, 0.133333, 0.803922)
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel_score"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -158.0
+offset_bottom = -158.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_top = 250
+theme_override_constants/margin_right = 250
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel_score/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label_puntuation" type="Label" parent="Panel_score/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Puntuación:"
+
+[node name="GridContainer" type="GridContainer" parent="Panel_score/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/h_separation = 16
+columns = 2
+
+[node name="Label_grade" type="Label" parent="Panel_score/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 96
+text = "
+A
+"
+
+[node name="Label_text_grade" type="Label" parent="Panel_score/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "
+Synth
+
+"
+
+[node name="Container" type="HBoxContainer" parent="Panel_score/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel_score/MarginContainer/VBoxContainer/Container"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Exit" type="Button" parent="Panel_score/MarginContainer/VBoxContainer/Container/VBoxContainer"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_6t2l8")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vdlns")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_phvwu")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_b7nul")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_punay")
+text = "EXIT"
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Panel_score"]
+position = Vector2(551, 140)
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_iukd1")
+texture = ExtResource("11_n1ohi")
 
 [connection signal="pressed" from="Activity1/Activity1" to="." method="_on_activity_1_pressed"]
+[connection signal="pressed" from="Panel_score/MarginContainer/VBoxContainer/Container/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

@@ -2,16 +2,19 @@ extends CanvasLayer
 
 class_name Activity1
 
-@export var score_scene : PackedScene
 @export var synth : Synth
 @onready var character_talk = $Character_talk
 @onready var activity_1 = $Activity1/Activity1
 @onready var panel_synth = $Synth
 @onready var settings = $Settings
-@onready var score = $Score
+@onready var label_grade = $Panel_score/MarginContainer/VBoxContainer/GridContainer/Label_grade
+@onready var label_text_grade = $Panel_score/MarginContainer/VBoxContainer/GridContainer/Label_text_grade
+
+@onready var panel_score = $Panel_score
 
 
-var pressed_counter = 0
+
+var pressed_counter: int = 0
 var has_made_mistake: bool = false
 var grade = 10
 
@@ -79,7 +82,19 @@ func _on_activity_1_pressed():
 func end_game():
 	panel_synth.visible = !panel_synth.visible
 	settings.visible = !settings.visible
-	score.visible = !score.visible
+	if grade == 10:
+		label_grade.text = "S"
+		label_text_grade.text = "¡Excelente trabajo, has logrado la mejor puntuación!"
+	elif grade < 10 and grade > 6:
+		label_grade.text = "A"
+		label_text_grade.text = "¡Muy bien, has asimilado la mayoría de los conceptos!"
+	elif grade == 5 or grade == 4:
+		label_grade.text = "B"
+		label_text_grade.text = "¡Bien, has logrado responder todas las preguntas satisfactoriamente!"
+	else:
+		label_grade.text = "C"
+		label_text_grade.text = "Toca seguir practicando con el sintetizador"
+	panel_score.visible = !panel_score.visible
 
 
 func minus_pressed_counter():
@@ -100,3 +115,6 @@ func show_sustain():
 
 func show_release():
 	synth.show_release()
+
+func _on_exit_pressed():
+	get_tree().quit()
