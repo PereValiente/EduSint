@@ -21,7 +21,7 @@ var grade = 10
 
 
 func _ready():
-	await get_tree().create_timer(2).timeout
+	await get_tree().create_timer(120).timeout
 	DialogueManager.show_dialogue_balloon(load("res://Activity1_synth/activity1.dialogue"),"intro_activity1")
 	character_talk.play("Character_talk")
 

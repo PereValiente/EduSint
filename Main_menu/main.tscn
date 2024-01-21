@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://biyyejk3jgomd"]
+[gd_scene load_steps=34 format=3 uid="uid://biyyejk3jgomd"]
 
 [ext_resource type="Script" path="res://Main_menu/src/menu_controller.gd" id="1_7x6vp"]
 [ext_resource type="PackedScene" uid="uid://dy6wmog2cla22" path="res://Animation/Animation.tscn" id="2_1ftrh"]
@@ -82,6 +82,25 @@ texture = ExtResource("6_v750j")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c4xds"]
 
+[sub_resource type="FontVariation" id="FontVariation_20ig1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_61pth"]
+texture = ExtResource("4_8mui7")
+modulate_color = Color(0.835294, 0.254902, 0.968627, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0adfj"]
+texture = ExtResource("4_8mui7")
+modulate_color = Color(0, 0.72549, 0.85098, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a2jsk"]
+texture = ExtResource("4_8mui7")
+modulate_color = Color(0.478431, 0.270588, 1, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ccx88"]
+texture = ExtResource("6_v750j")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q71iv"]
+
 [node name="main" type="Node"]
 
 [node name="MainMenu" type="Control" parent="." node_paths=PackedStringArray("settings")]
@@ -97,7 +116,7 @@ settings = NodePath("Settings")
 scene_animation = ExtResource("2_1ftrh")
 synth_and_settings_scene = ExtResource("3_w2jca")
 
-[node name="Bg" type="Sprite2D" parent="MainMenu"]
+[node name="Background" type="Sprite2D" parent="MainMenu"]
 position = Vector2(509, 325)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_pt7cx")
@@ -183,6 +202,114 @@ text = "EXIT
 
 [node name="Settings" parent="MainMenu" instance=ExtResource("8_jo0ve")]
 
+[node name="Credits" type="ColorRect" parent="MainMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.498039)
+
+[node name="ColorRect" type="ColorRect" parent="MainMenu/Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 90.0
+offset_right = -30.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12549, 0, 0.0980392, 0.498039)
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenu/Credits/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainMenu/Credits/ColorRect/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/Credits/ColorRect/MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainMenu/Credits/ColorRect/MarginContainer/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/Credits/ColorRect/MarginContainer/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenu/Credits/ColorRect/MarginContainer/ScrollContainer/HBoxContainer/VBoxContainer"]
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_fonts/normal_font = SubResource("FontVariation_20ig1")
+theme_override_font_sizes/normal_font_size = 25
+text = "						Audio
+
+				Sonido voz Sint 									Kenney
+				Sonido máquina de escribir 			Pixabay
+				Música menú principal						Pixabay
+
+
+						Imagen
+
+				Fondo menú principal						upklyak
+				Fondo primera animación 				Designed by upklyak / Freepik
+				Partícula animación							Kenney
+				Icono settings									Kenney
+				Interficie botones								Wenrexa
+				Slider grabber sintetizador				Osmic
+
+
+						Programación
+
+				Gestor de diálogos							Nathanhoad"
+
+[node name="Return" type="Button" parent="MainMenu/Credits/ColorRect"]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_top = 18.0
+offset_right = 75.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_61pth")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0adfj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_a2jsk")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ccx88")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_q71iv")
+text = "RETURN"
+
+[node name="Label" type="Label" parent="MainMenu/Credits"]
+layout_mode = 0
+offset_left = 75.0
+offset_top = 12.0
+offset_right = 281.0
+offset_bottom = 79.0
+theme_override_font_sizes/font_size = 48
+text = "Créditos:"
+
 [node name="Music_menu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_y6rj2")
 volume_db = -12.0
@@ -192,4 +319,6 @@ bus = &"Music"
 [connection signal="pressed" from="MainMenu/MarginContainer/MainContainer/Start_button" to="MainMenu" method="_on_start_button_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/MainContainer/Synthesizer_button" to="MainMenu" method="_on_synthesizer_button_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/MainContainer/Option_button" to="MainMenu" method="_on_option_button_pressed"]
+[connection signal="pressed" from="MainMenu/MarginContainer/MainContainer/Credit_button" to="MainMenu" method="_on_credit_button_pressed"]
 [connection signal="pressed" from="MainMenu/MarginContainer/MainContainer/Exit_button" to="MainMenu" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MainMenu/Credits/ColorRect/Return" to="MainMenu" method="_on_return_pressed"]

@@ -8,3 +8,4 @@ res://Animation/Animation.tscn
 res://Score/score.tscn
 res://Activity1_synth/animation_activity_1.gd
 res://Score/score.gd
+res://Main_menu/src/menu_controller.gd

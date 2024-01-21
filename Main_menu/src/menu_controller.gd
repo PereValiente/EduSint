@@ -6,6 +6,8 @@ class_name Menu
 @export var settings : Settings
 @export var scene_animation : PackedScene
 @export var synth_and_settings_scene : PackedScene
+@onready var credits = $Credits
+@onready var margin_container = $MarginContainer
 
 
 func _ready():
@@ -27,3 +29,12 @@ func _on_option_button_pressed():
 func _on_exit_button_pressed():
 	get_tree().quit()
 
+
+func _on_credit_button_pressed():
+	credits.visible = !credits.visible
+	margin_container.visible = !margin_container.visible
+
+
+func _on_return_pressed():
+	credits.visible = !credits.visible
+	margin_container.visible = !margin_container.visible
